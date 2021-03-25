@@ -1,5 +1,7 @@
 # Group 7 - Scope Approval Outline
 
+_Holly, Matthew & Gloria_
+
 ### Description of Project
 
 Find something new to watch on TV! Based on user provided input, app will return a selection of possible TV shows to watch.
