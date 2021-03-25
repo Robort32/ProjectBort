@@ -35,7 +35,7 @@ see http://api.tvmaze.com/search/shows?q=girls
   - dropdown will prompt for a genre selection, and another to select an average rating
   - submit button
 
-- store user selection in variables
+- store user selection in variables.
 
 - make an API call to api.tvmaze.com using the users selection to search for shows
 
