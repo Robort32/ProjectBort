@@ -1,8 +1,8 @@
-# WELCOME!
+<img src="https://github.com/Robort32/ideal-eureka/blob/main/Robort32Logo.png">
 
-<img scr="https://github.com/Robort32/ideal-eureka/blob/main/Robort32Logo.png" alt="project two robot mascot project bort">
+# WELCOME TO PROJECT BORT
 
-## Project Two Style Guid
+## Project Two Style Guide
 
 :robot: :game_die: :sparkles:
 
@@ -34,16 +34,16 @@
 
 **Variable Names**
 
-- $accent - #f38d8d - pink
+- $accent
 - $primary1 -#227284 - dusk blue
 - $primary2 - #68B0C1 - grey blue
 - $primary3 - #B9DDE7 - light blue grey
 - $primary4 - #F6F6F6 - white shade
 - $black - #171717 - black
-- $white - #FFFFFF - white
+- $white - #f1f1f1 - white
 
-- $headerFont - "Oswald", sans-serif
-- $bodyFont - "Cabin", sans-serif
+- $headerFont -
+- $bodyFont -
 
 - $headingFontSize1 - 80px
 - $headingFontSize2 - 42px
