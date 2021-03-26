@@ -121,10 +121,11 @@ h5,
 p,
 button,
 select {
-  text-transform: none;
+  text-transform: capitalize;
   padding: 0;
   margin: 0;
-  font-size: 125%;
+  letter-spacing: 1px;
+  line-height: 125%;
 }
 button,
 html [type="button"],
@@ -214,6 +215,7 @@ template {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  color: var(--black);
 }
 *,
 *:before,
@@ -250,25 +252,33 @@ template {
 /*  */
 /* General Styling */
 :root {
-  --accent: orange;
-  --primary1: blue;
-  --white: #f1f1f1;
+  --accent: #daa49a;
+  --primary1: #373f51;
+  --primary2: #58a4b0;
+  --primary3: #a9cbd0;
+  --primary4: #d8d8e2;
+  --white: #f8f8f8;
   --black: #121212;
   --border-radius: 15px;
   --padding: 20px;
   --margin: 20px;
+  --headerFontType: "Cabin", sans-serif;
+  --bodyFontType: "Playfair Display", serif;
+}
+body {
+  background-color: var(--white);
 }
 .wrapper {
   max-width: 1220px;
   margin: 0 auto;
   padding: 40px;
+  font-family: var(--bodyFontType);
 }
 
 /*  */
 /* gameResult Section */
 /* main Results diplay styling */
 .gameResultContainer {
-  background-color: lightcyan;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
@@ -280,17 +290,59 @@ template {
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  border: 1px solid red;
+  border: 1px solid var(--black);
+  border-radius: var(--border-radius);
 }
 /* resize image to fit container */
 .gameImageContainer {
-  width: 80%;
-  height: 400px;
+  width: 100%;
+  height: 520px;
+  border-bottom: 5px solid var(--primary2);
 }
-img {
+.gameImageContainer img {
   width: 100%;
   height: 100%;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
   object-fit: cover;
+  opacity: 0.8;
+}
+.gameTextContainer {
+  padding: var(--padding);
+  max-width: 350px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+.gameTextContainer h2,
+.gameTextContainer p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.gameTextContainer h2 {
+  height: 50px;
+  padding-bottom: var(--padding);
+  -webkit-line-clamp: 1;
+  font-family: var(--headerFontType);
+  font-size: 1.8rem;
+  line-height: 60px;
+  color: var(--primary1);
+}
+.gameTextContainer > p {
+  -webkit-line-clamp: 7;
+  text-align: left;
+}
+.lineBreak {
+  width: 60%;
+  height: 5px;
+  margin: 15px auto;
+  background-color: var(--primary1);
+}
+.gamePrice {
+  font-family: var(--headerFontType);
+  font-size: 1.4rem;
 }
