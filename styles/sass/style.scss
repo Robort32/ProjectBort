@@ -1,0 +1,96 @@
+@import "./setup";
+@import "./variables";
+
+body {
+  background-color: var(--white);
+}
+.wrapper {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 var(--padding);
+  font-family: var(--bodyFontType);
+}
+
+/*  */
+/* gameResult Section */
+/* main Results diplay styling */
+.gameResultContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 820px;
+  grid-gap: var(--padding);
+}
+
+/* individual card result styling */
+.gameCard {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid var(--black);
+  border-radius: var(--border-radius);
+  box-shadow: 5px 5px 15px var(--shading1);
+}
+/* resize image to fit container */
+.gameImageContainer {
+  width: 100%;
+  height: 450px;
+  border-bottom: 5px solid var(--primary1);
+}
+.gameImageContainer img {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  object-fit: cover;
+  opacity: 0.8;
+}
+.gameTextContainer {
+  padding: var(--padding);
+  min-width: 300px;
+  max-width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+.gameTextContainer h2,
+.gameTextContainer p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.gameTextContainer h2 {
+  height: 50px;
+  padding-bottom: var(--padding);
+  -webkit-line-clamp: 1;
+  font-family: var(--headerFontType);
+  font-size: 1.8rem;
+  line-height: 60px;
+  color: var(--primary1);
+}
+.lineBreak {
+  width: 60%;
+  height: 2px;
+  margin: 15px auto;
+  background-color: var(--primary2);
+}
+.gameDetail {
+  display: flex;
+  flex-direction: row;
+}
+.gamePrice {
+  font-family: var(--headerFontType);
+  font-size: 1.4rem;
+}
+
+/*not currently on the screen - the trunicated descriptions  */
+.gameTextContainer > p {
+  -webkit-line-clamp: 7;
+  text-align: left;
+}
+.gameDescription {
+  margin-bottom: 20px;
+  background-color: aqua;
+}
