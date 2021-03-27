@@ -1,0 +1,31 @@
+.headerImage {
+  background-image: url("/assets/hero-unsplash.jpg");
+  height: 70vh;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+.headerTextBox {
+  @include flexRowCenterItems;
+  justify-content: space-between;
+  width: 65%;
+  position: absolute;
+  bottom: 40px;
+  height: 150px;
+  left: 0;
+  right: 0;
+  background: $primary4;
+  border-radius: $borderRadius;
+}
+.headerTextBox h1 {
+  width: 45%;
+  padding-left: 40px;
+  font-size: $headingFontSize1;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.headerTextBox p {
+  width: 25%;
+  padding-right: 40px;
+  text-align: right;
+}

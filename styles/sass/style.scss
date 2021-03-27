@@ -1,6 +1,7 @@
 @import "./setup";
 @import "./variables";
 @import "./gameResults";
+@import "./header";
 @import "./footer";
 body {
   background-color: $white;
@@ -13,5 +14,10 @@ body {
   margin: 0 auto;
   padding: $padding;
 }
-
+.lineBreak {
+  width: 60%;
+  height: 2px;
+  margin: 15px auto;
+  background-color: $primary2;
+}
 /*  */

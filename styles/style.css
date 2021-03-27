@@ -379,13 +379,6 @@ template {
   color: #273349;
 }
 
-.lineBreak {
-  width: 60%;
-  height: 2px;
-  margin: 15px auto;
-  background-color: #44587d;
-}
-
 .gameDetail {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -410,6 +403,55 @@ template {
 .gameDescription {
   margin-bottom: 20px;
   background-color: aqua;
+}
+
+.headerImage {
+  background-image: url("/assets/hero-unsplash.jpg");
+  height: 70vh;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.headerTextBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 65%;
+  position: absolute;
+  bottom: 40px;
+  height: 150px;
+  left: 0;
+  right: 0;
+  background: #f5f5ef;
+  border-radius: 15px;
+}
+
+.headerTextBox h1 {
+  width: 45%;
+  padding-left: 40px;
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.headerTextBox p {
+  width: 25%;
+  padding-right: 40px;
+  text-align: right;
 }
 
 footer {
@@ -499,6 +541,13 @@ body {
   max-width: 1220px;
   margin: 0 auto;
   padding: 20px;
+}
+
+.lineBreak {
+  width: 60%;
+  height: 2px;
+  margin: 15px auto;
+  background-color: #44587d;
 }
 
 /*  */
