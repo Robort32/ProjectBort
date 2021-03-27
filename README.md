@@ -29,25 +29,26 @@
 - All images should have descriptive alt descriptions
 - All forms need to use proper accessibility techniques
 - Wrapper Padding 20px;
-- Hover/Focus Effects
-  - Nav Menu & Button : hover/focus should transition text to $white
 
-**Variable Names**
+**Variable Names & Styling**
 
-- $accent
-- $primary1 -#227284 - dusk blue
-- $primary2 - #68B0C1 - grey blue
-- $primary3 - #B9DDE7 - light blue grey
-- $primary4 - #F6F6F6 - white shade
-- $black - #171717 - black
-- $white - #f1f1f1 - white
-
-- $headerFont -
-- $bodyFont -
-
-- $headingFontSize1 - 80px
-- $headingFontSize2 - 42px
-- $headingFontSize3 - 32px
-- $headingFontSize4 - 24px
-- $mainFontSize - 20px
-- $letterSpacing - 1px
+--accent: #ff5757;
+--primary1: #273349;
+--primary2: #44587d;
+--primary3: #5d7cb5;
+--primary4: #f5f5ef;
+--shading1: #cbcbcb;
+--shading2: #e6e6e6;
+--white: #f8f8f8;
+--black: #121212;
+--border-radius: 15px;
+--padding: 20px;
+--margin: 20px;
+--headerFontType: "Barlow", sans-serif;
+--bodyFontType: "Roboto", sans-serif;
+--headingFontSize1 - 80px
+--headingFontSize2 - 42px
+--headingFontSize3 - 32px
+--headingFontSize4 - 24px
+--mainFontSize - 20px
+--letterSpacing - 1px

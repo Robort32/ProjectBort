@@ -1,0 +1,23 @@
+@import "./setup";
+@import "./variables";
+@import "./header";
+@import "./searchContainer";
+@import "./gameResults";
+@import "./footer";
+
+body {
+  background-color: $white;
+  font-family: $bodyFontType;
+}
+.wrapper {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: $padding;
+}
+.lineBreak {
+  width: 60%;
+  height: 2px;
+  margin: 15px auto;
+  background-color: $primary2;
+}
+/*  */
