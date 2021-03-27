@@ -54,7 +54,7 @@ projectBort.clientID = "pKTceFALuw";
 projectBort.theMasterFunction = () => {
   projectBort.submitButton.addEventListener("click", function (e) {
     e.preventDefault();
-    projectBort.buuttonDisable();
+    // projectBort.buttonDisable();
     //Value of our options drop down
     projectBort.mechanicsOption = document.querySelector("#optionSelect").value;
     //getting the player option

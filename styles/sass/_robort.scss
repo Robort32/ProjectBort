@@ -1,0 +1,17 @@
+//robort background color
+
+.robort {
+  background: $shading1;
+}
+
+.robortContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.robortImage {
+  background-image: url("./assets/robots.png");
+  height: 300px;
+  background-size: $mainFontSize;
+  width: 400px;
+}

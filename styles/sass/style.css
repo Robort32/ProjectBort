@@ -34,7 +34,7 @@ figure {
 
 hr {
   -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
   height: 0;
   overflow: visible;
 }
@@ -53,7 +53,7 @@ abbr[title] {
   border-bottom: none;
   text-decoration: underline;
   -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
 b,
@@ -169,7 +169,7 @@ fieldset {
 
 legend {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: inherit;
   display: table;
   max-width: 100%;
@@ -189,7 +189,7 @@ textarea {
 [type="checkbox"],
 [type="radio"] {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0;
 }
 
@@ -252,7 +252,7 @@ html {
 *:before,
 *:after {
   -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 .sr-only {
@@ -264,7 +264,7 @@ html {
   padding: 0;
   white-space: nowrap;
   -webkit-clip-path: inset(100%);
-          clip-path: inset(100%);
+  clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
@@ -292,17 +292,8 @@ h4 {
   font-size: 1.2rem;
 }
 
-p,
-h1,
-h2,
-h3,
-h4 {
-  padding: 0;
-  margin: 0;
-}
-
 .headerImage {
-  background-image: url("/assets/hero-unsplash.jpg");
+  background-image: url("../../assets/hero-unsplash.jpg");
   height: 70vh;
   background-position: center;
   background-size: cover;
@@ -315,17 +306,17 @@ h4 {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   width: 65%;
   position: absolute;
   bottom: 40px;
@@ -349,29 +340,6 @@ h4 {
   text-align: right;
 }
 
-.robort {
-  background: #cbcbcb;
-}
-
-.robortContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.robortImage {
-  background-image: url("./assets/robots.png");
-  height: 300px;
-  background-size: 1rem;
-  width: 400px;
-}
-
 .searchContainer {
   background-color: #f5f5ef;
 }
@@ -382,25 +350,26 @@ h4 {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
 }
 
 .searchStart {
   background-color: #273349;
+  width: 300px;
   position: absolute;
   top: 10px;
   left: 20px;
   border-left: 150px solid #273349;
   -webkit-box-shadow: -300px 0px #273349;
-          box-shadow: -300px 0px #273349;
+  box-shadow: -300px 0px #273349;
   border-radius: 15px;
 }
 
@@ -408,8 +377,6 @@ h4 {
   text-transform: uppercase;
   color: #ffffff;
   line-height: 70px;
-  margin: 0;
-  padding-right: 20px;
 }
 
 .searchStartForm {
@@ -418,17 +385,17 @@ h4 {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   margin-top: 80px;
 }
 
@@ -439,13 +406,13 @@ form {
 .searchDropdown {
   margin: 0 40px;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border: 1px solid #cbcbcb;
   width: 50%;
   height: 40px;
   text-align: center;
-  background-image: url("/assets/angle-double-down.svg");
+  background-image: url(/assets/angle-double-down.svg);
   background-size: 1rem;
   background-repeat: no-repeat;
   background-position-x: 95%;
@@ -475,7 +442,7 @@ input[type="submit"]:hover {
   background-color: #ce3636;
   color: #ffffff;
   -webkit-box-shadow: 5px 5px 15px #cbcbcb;
-          box-shadow: 5px 5px 15px #cbcbcb;
+  box-shadow: 5px 5px 15px #cbcbcb;
 }
 
 legend,
@@ -495,10 +462,10 @@ label {
 .gameResultContainer {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
+
+  grid-template-columns: repeat(4, 1fr);
   -ms-grid-rows: 1fr;
-      grid-template-rows: 1fr;
+  grid-template-rows: 1fr;
   grid-gap: 20px;
 }
 
@@ -510,18 +477,18 @@ label {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   border: 1px solid #171717;
   border-radius: 15px;
   -webkit-box-shadow: 5px 5px 15px #cbcbcb;
-          box-shadow: 5px 5px 15px #cbcbcb;
+  box-shadow: 5px 5px 15px #cbcbcb;
 }
 
 .gameImageContainer {
@@ -536,7 +503,7 @@ label {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   opacity: 0.8;
 }
 
@@ -548,8 +515,8 @@ label {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .gameTextContainer h2,
@@ -574,8 +541,8 @@ label {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .gamePrice {
@@ -600,14 +567,14 @@ footer {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   background-color: #44587d;
 }
 
@@ -619,7 +586,7 @@ footer {
   width: 100%;
   height: 60vh;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .footerText {
@@ -634,26 +601,27 @@ footer {
   text-transform: uppercase;
 }
 
+.footerText h3:nth-child(4) {
+  padding-top: 60px;
+}
+
 .footerTextSocial {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 
 .footerTextSocial i {
@@ -685,3 +653,4 @@ body {
 }
 
 /*  */
+/*# sourceMappingURL=style.css.map */
