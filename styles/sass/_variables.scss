@@ -12,5 +12,26 @@ $white: #ffffff;
 $borderRadius: 15px;
 $padding: 20px;
 $margin: 20px;
+
+$headingFontSize1: 4rem;
+$headingFontSize2: 2.1rem;
+$headingFontSize3: 1.6rem;
+$headingFontSize4: 1.2rem;
+$mainFontSize: 1rem;
+
 $headerFontType: "Barlow", sans-serif;
 $bodyFontType: "Roboto", sans-serif;
+
+//mixins
+@mixin flexRowCenterItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flexColumnCenterItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
