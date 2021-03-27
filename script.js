@@ -42,45 +42,47 @@ projectBort.optionsArray = [
     mechId: "GsNGxZFNCK",
   },
 ];
+projectBort.submitButton = document.getElementById("choose");
 
-projectBort.mechanicsOption = document.getElementById("board").value;
 projectBort.api = "https://api.boardgameatlas.com/api/search?";
 
 projectBort.clientID = "pKTceFALuw";
 
-projectBort.getApi = () => {
-  const url = new URL(projectBort.api);
-  url.search = new URLSearchParams({
-    client_id: projectBort.clientID,
-    limit: 20,
-    min_players: 2,
-    mechanics: projectBort.useInMech,
+projectBort.theMasterFunction = () => {
+  projectBort.submitButton.addEventListener("click", function (e) {
+    e.preventDefault();
+    projectBort.mechanicsOption = document.getElementById("board").value;
+    // console.log(projectBort.mechanicsOption);
 
-    //POPULAR ID's for mechanics and what they mean
-    //this is for our mechanism option
-
-    //RIGHT NOW manually go
-  });
-  console.log(url);
-  fetch(url)
-    .then((res) => {
-      return res.json();
-    })
-    .then((jsonResponse) => {
-      console.log(jsonResponse);
-      // jsonResponse.games.forEach(function (e) {
-      //   console.log(e.mechanics[0].id);
+    projectBort.optionsArray.forEach((e) => {
+      if (e.value === projectBort.mechanicsOption) {
+        projectBort.useInMech = e.mechId;
+        console.log(projectBort.useInMech);
+      }
     });
-};
-projectBort.optionsArray.forEach((e) => {
-  if (e.value === projectBort.mechanicsOption) {
-    projectBort.useInMech = e.mechId;
-    console.log(projectBort.useInMech);
-  }
-});
 
+    const url = new URL(projectBort.api);
+    url.search = new URLSearchParams({
+      client_id: projectBort.clientID,
+      limit: 20,
+      min_players: 2,
+      mechanics: projectBort.useInMech,
+    });
+    console.log(url);
+    fetch(url)
+      .then((res) => {
+        return res.json();
+      })
+      .then((jsonResponse) => {
+        console.log(jsonResponse);
+        jsonResponse.games.forEach(function (e) {
+          console.log(e.mechanics[0].id);
+        });
+      });
+  });
+};
 projectBort.init = () => {
-  projectBort.getApi();
+  projectBort.theMasterFunction();
 };
 
 projectBort.init();
