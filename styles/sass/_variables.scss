@@ -13,7 +13,7 @@ $borderRadius: 15px;
 $padding: 20px;
 $margin: 20px;
 
-$headingFontSize1: 4rem;
+$headingFontSize1: 3.5rem;
 $headingFontSize2: 2.1rem;
 $headingFontSize3: 1.6rem;
 $headingFontSize4: 1.2rem;
@@ -21,6 +21,27 @@ $mainFontSize: 1rem;
 
 $headerFontType: "Barlow", sans-serif;
 $bodyFontType: "Roboto", sans-serif;
+
+//general styling assignments
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $headerFontType;
+}
+h1 {
+  font-size: $headingFontSize1;
+}
+h2 {
+  font-size: $headingFontSize2;
+}
+h3 {
+  font-size: $headingFontSize3;
+}
+h4 {
+  font-size: $headingFontSize4;
+}
 
 //mixins
 @mixin flexRowCenterItems {
