@@ -1,0 +1,85 @@
+/* gameResult Section */
+//
+/* main Results diplay styling */
+.gameResultContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 820px;
+  grid-gap: $padding;
+}
+
+/* individual card result styling */
+.gameCard {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid $black;
+  border-radius: $borderRadius;
+  box-shadow: 5px 5px 15px $shading1;
+}
+/* resize image to fit container */
+.gameImageContainer {
+  width: 100%;
+  height: 450px;
+  border-bottom: 5px solid $primary1;
+}
+.gameImageContainer img {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: $borderRadius;
+  border-top-right-radius: $borderRadius;
+  object-fit: cover;
+  opacity: 0.8;
+}
+.gameTextContainer {
+  padding: $padding;
+  min-width: 300px;
+  max-width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+.gameTextContainer h2,
+.gameTextContainer p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.gameTextContainer h2 {
+  height: 50px;
+  padding-bottom: $padding;
+  -webkit-line-clamp: 1;
+  font-family: $headerFontType;
+  font-size: 1.8rem;
+  line-height: 60px;
+  color: $primary1;
+}
+.lineBreak {
+  width: 60%;
+  height: 2px;
+  margin: 15px auto;
+  background-color: $primary2;
+}
+.gameDetail {
+  display: flex;
+  flex-direction: row;
+}
+.gamePrice {
+  font-family: $headerFontType;
+  font-size: 1.4rem;
+}
+//
+//
+//
+/*not currently on the screen - the trunicated descriptions  */
+.gameTextContainer > p {
+  -webkit-line-clamp: 7;
+  text-align: left;
+}
+.gameDescription {
+  margin-bottom: 20px;
+  background-color: aqua;
+}

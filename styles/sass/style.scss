@@ -1,0 +1,17 @@
+@import "./setup";
+@import "./variables";
+@import "./gameResults";
+@import "./footer";
+body {
+  background-color: $white;
+}
+body {
+  font-family: $bodyFontType;
+}
+.wrapper {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: $padding;
+}
+
+/*  */
