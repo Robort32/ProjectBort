@@ -80,10 +80,11 @@ projectBort.theMasterFunction = () => {
       })
       //THIS IS WHERE WE GET THE DATAS
       .then((jsonResponse) => {
-        console.log(jsonResponse);
-        // jsonResponse.games.forEach(function (e) {
-        //   console.log(e.mechanics[0].id);
-        // });
+        jsonResponse.games.forEach(function (e) {
+          console.log(e.mechanics[0].id);
+
+          // });
+        });
       });
   });
 };
