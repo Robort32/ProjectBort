@@ -1,5 +1,5 @@
 const projectBort = {};
-
+//sorry tonight i am far to lazy to make this alphabetical
 projectBort.optionsArray = [
   {
     value: "Betting",
@@ -26,11 +26,11 @@ projectBort.optionsArray = [
     mechId: "qZx4PEzKKz",
   },
   {
-    value: "trading",
+    value: "Trading",
     mechId: "AVY6EvSQTP",
   },
   {
-    value: "Cooperative play ",
+    value: "Cooperative play",
     mechId: "9mNukNBxfZ",
   },
   {
@@ -38,34 +38,43 @@ projectBort.optionsArray = [
     mechId: "n1GtBt35Rd",
   },
   {
-    value: "deduction",
+    value: "Deduction",
     mechId: "GsNGxZFNCK",
   },
 ];
-projectBort.submitButton = document.getElementById("choose");
+//submit button
+projectBort.submitButton = document.querySelector(".submitBtn");
 
 projectBort.api = "https://api.boardgameatlas.com/api/search?";
 
 projectBort.clientID = "pKTceFALuw";
 
+//DISABLING BUTTON UNTIL OPTIONS ARE FILLED
+
 projectBort.theMasterFunction = () => {
   projectBort.submitButton.addEventListener("click", function (e) {
     e.preventDefault();
-    projectBort.mechanicsOption = document.getElementById("board").value;
-    // console.log(projectBort.mechanicsOption);
-
+    projectBort.buuttonDisable();
+    //Value of our options drop down
+    projectBort.mechanicsOption = document.querySelector("#optionSelect").value;
+    //getting the player option
+    projectBort.playerOption = document.querySelector("#playerOption").value;
+    //chainge the min player dropdown to a number
+    let playerOptionNumber = parseInt(projectBort.playerOption, 10);
+    console.log(playerOptionNumber);
+    //iteraiting though the created array full of objects to see which option was selected and retruning the correct mechId
     projectBort.optionsArray.forEach((e) => {
       if (e.value === projectBort.mechanicsOption) {
+        //project.bort.useInMech gets passed the meachanics params
         projectBort.useInMech = e.mechId;
-        console.log(projectBort.useInMech);
       }
     });
-
+    //Getting Our API
     const url = new URL(projectBort.api);
     url.search = new URLSearchParams({
       client_id: projectBort.clientID,
       limit: 20,
-      min_players: 2,
+      min_players: playerOptionNumber,
       mechanics: projectBort.useInMech,
     });
     console.log(url);
@@ -73,16 +82,22 @@ projectBort.theMasterFunction = () => {
       .then((res) => {
         return res.json();
       })
+      //THIS IS WHERE WE GET THE DATAS
       .then((jsonResponse) => {
         console.log(jsonResponse);
-        jsonResponse.games.forEach(function (e) {
-          console.log(e.mechanics[0].id);
-        });
+        //This forEach was me going thought checking to make sure Each Game that came up Actually had the ID on it
+        // jsonResponse.games.forEach(function (e) {
+        //   console.log(e.mechanics[0].id);
+
+        // });
       });
   });
+  //});
 };
 projectBort.init = () => {
   projectBort.theMasterFunction();
 };
 
 projectBort.init();
+
+//script is changggggggged
