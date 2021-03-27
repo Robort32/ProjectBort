@@ -23,7 +23,7 @@
     <header>
       <div class="headerImage">
         <div class="headerTextBox wrapper">
-          <h1>check this out</h1>
+          <h1>Bort</h1>
           <div class="lineBreak"></div>
           <p>Find your new favourite game</p>
         </div>
@@ -32,31 +32,43 @@
     <!--  Header end -->
     <main>
       <!-- Search bar / User input section start -->
-      <section class="wrapper">
-        <form action="" method="" class="" name="">
-          <!-- userInput for ??? -->
-          <label for=""></label>
-          <select name="" id="">
-            <option value="makeASelection" disabled selected>OPTIONS?</option>
-            <option value="">option1</option>
-            <option value="">option2</option>
-            <option value="">option2</option>
-          </select>
-          <!-- userInput for ??? -->
-          <label for=""></label>
-          <select name="" id="">
-            <option value="makeASelection" disabled selected>OPTIONS?</option>
-            <option value="">option1</option>
-            <option value="">option2</option>
-            <option value="">option2</option>
-          </select>
-          <!-- submit button to generate game list -->
-          <input type="submit" value="generate games" class="submitBtn" />
-        </form>
+      <section class="searchContainer">
+        <div class="searchOptionsContainer wrapper">
+          <div class="searchStart">
+            <h4>start your search</h4>
+          </div>
+
+          <form
+            action=""
+            method=""
+            class="searchStartForm"
+            name="searchStartForm"
+          >
+            <!-- userInput for ??? -->
+            <label for=""></label>
+            <select name="" id="" class="searchDropdown">
+              <option value="makeASelection" disabled selected>OPTIONS?</option>
+              <option value="">option1</option>
+              <option value="">option2</option>
+              <option value="">option2</option>
+            </select>
+            <!-- userInput for ??? -->
+            <label for=""></label>
+            <select name="" id="" class="searchDropdown">
+              <option value="makeASelection" disabled selected>OPTIONS?</option>
+              <option value="">option1</option>
+              <option value="">option2</option>
+              <option value="">option2</option>
+            </select>
+            <!-- submit button to generate game list -->
+            <input type="submit" value="search" class="submitBtn" />
+          </form>
+        </div>
       </section>
       <!-- Search bar / User input section end -->
 
       <!-- Search Result senction start  -->
+      <!-- /!!!!!!! THIS SECTION CURRENT VISIBILITY: HIDDEN !!!!!!!!!! -->
       <section class="gameResultContainer wrapper">
         <!-- individual result start -->
         <div class="gameCard">
@@ -89,6 +101,31 @@
           </div>
         </div>
         <!-- individual result end -->
+        <div class="gameCard">
+          <div class="gameImageContainer">
+            <img
+              src="https://placekitten.com/g/400/300"
+              alt=""
+              id="gameImage"
+            />
+          </div>
+
+          <div class="gameTextContainer">
+            <h2 id="gameTitle">first result</h2>
+            <div class="lineBreak"></div>
+            <p id="gameCategory">category</p>
+            <p id="gamePrice">20.00</p>
+            <!-- css styling still active for gameDescription
+            <p class="gameDescription" id="gameDescription">
+              Marshmallow chocolate bar lemon drops lemon drops lemon drops
+              muffin. Apple pie pie caramels donut pastry sugar plum halvah.
+              Icing cake jelly beans wafer. Chupa chups pie bonbon.Marshmallow
+              chocolate bar lemon drops lemon drops lemon drops muffin. Apple
+              pie pie caramels donut pastry sugar plum halvah. Icing cake jelly
+              beans wafer. Chupa chups pie bonbon.
+            </p> -->
+          </div>
+        </div>
         <div class="gameCard">
           <div class="gameImageContainer">
             <img

@@ -1,0 +1,71 @@
+.searchContainer {
+  background-color: $primary4;
+  //   height: 70vh;
+}
+.searchOptionsContainer {
+  @include flexRowCenterItems;
+  position: relative;
+}
+.searchStart {
+  background-color: $primary1;
+  width: 300px;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  border-left: 150px solid $primary1;
+  box-shadow: -300px 0px $primary1;
+  border-radius: $borderRadius;
+}
+.searchStart h4 {
+  text-transform: uppercase;
+  color: $white;
+  line-height: 70px;
+}
+.searchStartForm {
+  @include flexRowCenterItems;
+  justify-content: space-between;
+  margin-top: 80px;
+}
+form {
+  width: 100%;
+}
+.searchDropdown {
+  margin: 0 40px;
+  appearance: none;
+  border: 1px solid $shading1;
+  width: 50%;
+  height: 40px;
+  text-align: center;
+  background-image: url(/assets/angle-double-down.svg);
+  background-size: $mainFontSize;
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: center;
+  transition: all 0.3s;
+}
+.searchDropdown:hover {
+  background-color: $shading2;
+}
+input[type="submit"] {
+  text-transform: uppercase;
+  background-color: $accent;
+  border: transparent;
+  border-radius: $borderRadius;
+  height: 55px;
+  padding: $padding 45px;
+  white-space: normal;
+  word-wrap: break-word;
+  transition: all 0.3s;
+}
+input[type="submit"]:hover {
+  background-color: #ce3636;
+  color: $white;
+  box-shadow: 5px 5px 15px $shading1;
+}
+legend,
+label {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  visibility: hidden;
+}

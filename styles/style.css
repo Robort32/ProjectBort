@@ -296,113 +296,27 @@ template {
   overflow: hidden;
 }
 
-/* gameResult Section */
-/* main Results diplay styling */
-.gameResultContainer {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
-  -ms-grid-rows: 820px;
-      grid-template-rows: 820px;
-  grid-gap: 20px;
-}
-
-/* individual card result styling */
-.gameCard {
-  text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border: 1px solid #171717;
-  border-radius: 15px;
-  -webkit-box-shadow: 5px 5px 15px #cbcbcb;
-          box-shadow: 5px 5px 15px #cbcbcb;
-}
-
-/* resize image to fit container */
-.gameImageContainer {
-  width: 100%;
-  height: 450px;
-  border-bottom: 5px solid #273349;
-}
-
-.gameImageContainer img {
-  width: 100%;
-  height: 100%;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  opacity: 0.8;
-}
-
-.gameTextContainer {
-  padding: 20px;
-  min-width: 300px;
-  max-width: 300px;
-  height: 400px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.gameTextContainer h2,
-.gameTextContainer p {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-}
-
-.gameTextContainer h2 {
-  height: 50px;
-  padding-bottom: 20px;
-  -webkit-line-clamp: 1;
+h1,
+h2,
+h3,
+h4 {
   font-family: "Barlow", sans-serif;
-  font-size: 1.8rem;
-  line-height: 60px;
-  color: #273349;
 }
 
-.gameDetail {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+h1 {
+  font-size: 3.5rem;
 }
 
-.gamePrice {
-  font-family: "Barlow", sans-serif;
-  font-size: 1.4rem;
+h2 {
+  font-size: 2.1rem;
 }
 
-/*not currently on the screen - the trunicated descriptions  */
-.gameTextContainer > p {
-  -webkit-line-clamp: 7;
-  text-align: left;
+h3 {
+  font-size: 1.6rem;
 }
 
-.gameDescription {
-  margin-bottom: 20px;
-  background-color: aqua;
+h4 {
+  font-size: 1.2rem;
 }
 
 .headerImage {
@@ -433,7 +347,7 @@ template {
   width: 65%;
   position: absolute;
   bottom: 40px;
-  height: 150px;
+  height: 90px;
   left: 0;
   right: 0;
   background: #f5f5ef;
@@ -441,9 +355,8 @@ template {
 }
 
 .headerTextBox h1 {
-  width: 45%;
+  width: 30%;
   padding-left: 40px;
-  font-size: 3.5rem;
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -452,6 +365,227 @@ template {
   width: 25%;
   padding-right: 40px;
   text-align: right;
+}
+
+.searchContainer {
+  background-color: #f5f5ef;
+}
+
+.searchOptionsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.searchStart {
+  background-color: #273349;
+  width: 300px;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  border-left: 150px solid #273349;
+  -webkit-box-shadow: -300px 0px #273349;
+          box-shadow: -300px 0px #273349;
+  border-radius: 15px;
+}
+
+.searchStart h4 {
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 70px;
+}
+
+.searchStartForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 80px;
+}
+
+form {
+  width: 100%;
+}
+
+.searchDropdown {
+  margin: 0 40px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 1px solid #cbcbcb;
+  width: 50%;
+  height: 40px;
+  text-align: center;
+  background-image: url(/assets/angle-double-down.svg);
+  background-size: 1rem;
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.searchDropdown:hover {
+  background-color: #e6e6e6;
+}
+
+input[type="submit"] {
+  text-transform: uppercase;
+  background-color: #ff5757;
+  border: transparent;
+  border-radius: 15px;
+  height: 55px;
+  padding: 20px 45px;
+  white-space: normal;
+  word-wrap: break-word;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+input[type="submit"]:hover {
+  background-color: #ce3636;
+  color: #ffffff;
+  -webkit-box-shadow: 5px 5px 15px #cbcbcb;
+          box-shadow: 5px 5px 15px #cbcbcb;
+}
+
+legend,
+label {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  visibility: hidden;
+}
+
+/* gameResult Section */
+.gameResultContainer {
+  visibility: hidden;
+}
+
+/* main Results diplay styling */
+.gameResultContainer {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  grid-gap: 20px;
+}
+
+/* individual card result styling */
+.gameCard {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #171717;
+  border-radius: 15px;
+  -webkit-box-shadow: 5px 5px 15px #cbcbcb;
+          box-shadow: 5px 5px 15px #cbcbcb;
+}
+
+.gameImageContainer {
+  width: 100%;
+  height: 350px;
+  border-bottom: 5px solid #273349;
+}
+
+.gameImageContainer img {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0.8;
+}
+
+.gameTextContainer {
+  padding: 20px;
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.gameTextContainer h2,
+.gameTextContainer p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.gameTextContainer h2 {
+  height: 50px;
+  padding-bottom: 20px;
+  -webkit-line-clamp: 1;
+  line-height: 60px;
+  color: #273349;
+}
+
+.gameDetail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.gamePrice {
+  font-family: "Barlow", sans-serif;
+  font-size: 1.4rem;
+}
+
+/*not currently on the screen - the trunicated descriptions  */
+.gameTextContainer > p {
+  -webkit-line-clamp: 7;
+  text-align: left;
+}
+
+.gameDescription {
+  margin-bottom: 20px;
+  background-color: aqua;
 }
 
 footer {
@@ -491,9 +625,7 @@ footer {
 
 .footerText h3 {
   padding-bottom: 20px;
-  font-size: 1.6rem;
   text-transform: uppercase;
-  font-family: "Barlow", sans-serif;
 }
 
 .footerText h3:nth-child(4) {
@@ -531,9 +663,6 @@ footer {
 
 body {
   background-color: #ffffff;
-}
-
-body {
   font-family: "Roboto", sans-serif;
 }
 
