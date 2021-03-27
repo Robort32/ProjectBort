@@ -7,164 +7,136 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
 </head>
+<link rel="shortcut icon" href="#" />
+<!-- StyleSheets -->
+<link rel="stylesheet" href="./styles/styles.css" />
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Roboto&display=swap" rel="stylesheet" />
+<!-- Font Awesome -->
 
 <body>
-  <form action="">
-    <select name="Things" id="board">
-      <option class="options" value="Action">Action</option>
-      <option class="options" value="Card">Card</option>
-    </select>
-  </form>
   <!-- HELLO FELLOW JUNO STUDENTS & FRONT-END WEB DEVELOPERS! WELCOME TO PROJECT TWO -->
-  <script src="script.js"></script>
+  <div class="wrapper">
+    <!--  Header Start -->
+    <header>
+      <h1>Project Bort</h1>
+    </header>
+    <!--  Header end -->
+    <main>
+      <!-- Search bar / User input section start -->
+      <section>
+        <form>
+          <!-- userInput for ??? -->
+          <label for="optionSelect"></label>
+          <select name="optionSelect" id="optionSelect">
+            <option value="makeASelection" disabled selected>OPTIONS?</option>
+            <option value="Acting">Acting</option>
+            <option value="Action">Action</option>
+            <option value="Betting">Betting</option>
+            <option value="Campaign">Campaign</option>
+            <option value="Cooperative play">Cooperative play </option>
+            <option value="Deduction">Deduction</option>
+            <option value="Network and Route Building">Network and Route Building</option>
+            <option value="Player Elimination">Player Elimination</option>
+            <option value="Race">Race</option>
+            <option value="Trading">Trading</option>
+          </select>
+          <!-- userInput for ??? -->
+          <label for=""></label>
+          <select name="playerOption" id="playerOption">
+            <option value="makeASelection" disabled selected>OPTIONS?</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+          <!-- submit button to generate game list -->
+          <input type="submit" value="generate games" class="submitBtn" />
+        </form>
+      </section>
+      <!-- Search bar / User input section end -->
+
+      <!-- Search Result senction start  -->
+      <section class="gameResultContainer">
+        <!-- individual result start -->
+        <div class="gameCard">
+          <div class="gameImageContainer">
+            <img src="https://placekitten.com/g/400/300" alt="" id="gameImage" />
+          </div>
+
+          <div class="gameTextContainer">
+            <h2 id="gameTitle">ONE ReSULT</h2>
+            <div class="lineBreak"></div>
+            <div class="gameDetail">
+              <p id="gameCategory">category</p>
+            </div>
+            <div class="gameDetail">
+              <p id="gamePrice">20.00</p>
+            </div>
+            <!-- css styling still active for gameDescription
+            <p class="gameDescription" id="gameDescription">
+              Marshmallow chocolate bar lemon drops lemon drops lemon drops
+              muffin. Apple pie pie caramels donut pastry sugar plum halvah.
+              Icing cake jelly beans wafer. Chupa chups pie bonbon.Marshmallow
+              chocolate bar lemon drops lemon drops lemon drops muffin. Apple
+              pie pie caramels donut pastry sugar plum halvah. Icing cake jelly
+              beans wafer. Chupa chups pie bonbon.
+            </p> -->
+          </div>
+        </div>
+        <!-- individual result end -->
+        <div class="gameCard">
+          <div class="gameImageContainer">
+            <img src="https://placekitten.com/g/400/300" alt="" id="gameImage" />
+          </div>
+
+          <div class="gameTextContainer">
+            <h2 id="gameTitle">first result</h2>
+            <div class="lineBreak"></div>
+            <p id="gameCategory">category</p>
+            <p id="gamePrice">20.00</p>
+            <!-- css styling still active for gameDescription
+            <p class="gameDescription" id="gameDescription">
+              Marshmallow chocolate bar lemon drops lemon drops lemon drops
+              muffin. Apple pie pie caramels donut pastry sugar plum halvah.
+              Icing cake jelly beans wafer. Chupa chups pie bonbon.Marshmallow
+              chocolate bar lemon drops lemon drops lemon drops muffin. Apple
+              pie pie caramels donut pastry sugar plum halvah. Icing cake jelly
+              beans wafer. Chupa chups pie bonbon.
+            </p> -->
+          </div>
+        </div>
+        <div class="gameCard">
+          <div class="gameImageContainer">
+            <img src="https://placekitten.com/g/400/300" alt="" id="gameImage" />
+          </div>
+
+          <div class="gameTextContainer">
+            <h2 id="gameTitle">first result</h2>
+            <div class="lineBreak"></div>
+            <p id="gameCategory">category</p>
+            <p id="gamePrice">20.00</p>
+            <!-- css styling still active for gameDescription
+            <p class="gameDescription" id="gameDescription">
+              Marshmallow chocolate bar lemon drops lemon drops lemon drops
+              muffin. Apple pie pie caramels donut pastry sugar plum halvah.
+              Icing cake jelly beans wafer. Chupa chups pie bonbon.Marshmallow
+              chocolate bar lemon drops lemon drops lemon drops muffin. Apple
+              pie pie caramels donut pastry sugar plum halvah. Icing cake jelly
+              beans wafer. Chupa chups pie bonbon.
+            </p> -->
+          </div>
+        </div>
+
+        <!--  -->
+        <!--  -->
+        <!-- individual result end -->
+      </section>
+      <!-- Search Result senction end  -->
+    </main>
+  </div>
+  <!-- wrapper end -->
+  <script src="./scripts/script.js"></script>
 </body>
 
 </html>
-
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <link rel="shortcut icon" href="#" />
-  <!-- StyleSheets -->
-  <link rel="stylesheet" href="./styles/styles.css" />
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Roboto&display=swap"
-    rel="stylesheet"
-  />
-  <!-- Font Awesome -->
-
-  <body>
-    <!-- HELLO FELLOW JUNO STUDENTS & FRONT-END WEB DEVELOPERS! WELCOME TO PROJECT TWO -->
-    <div class="wrapper">
-      <!--  Header Start -->
-      <header>
-        <h1>Project Bort</h1>
-      </header>
-      <!--  Header end -->
-      <main>
-        <!-- Search bar / User input section start -->
-        <section>
-          <form action="" method="" class="" name="">
-            <!-- userInput for ??? -->
-            <label for=""></label>
-            <select name="" id="">
-              <option value="makeASelection" disabled selected>OPTIONS?</option>
-              <option value="">option1</option>
-              <option value="">option2</option>
-              <option value="">option2</option>
-            </select>
-            <!-- userInput for ??? -->
-            <label for=""></label>
-            <select name="" id="">
-              <option value="makeASelection" disabled selected>OPTIONS?</option>
-              <option value="">option1</option>
-              <option value="">option2</option>
-              <option value="">option2</option>
-            </select>
-            <!-- submit button to generate game list -->
-            <input type="submit" value="generate games" class="submitBtn" />
-          </form>
-        </section>
-        <!-- Search bar / User input section end -->
-
-        <!-- Search Result senction start  -->
-        <section class="gameResultContainer">
-          <!-- individual result start -->
-          <div class="gameCard">
-            <div class="gameImageContainer">
-              <img
-                src="https://placekitten.com/g/400/300"
-                alt=""
-                id="gameImage"
-              />
-            </div>
-
-            <div class="gameTextContainer">
-              <h2 id="gameTitle">ONE ReSULT</h2>
-              <div class="lineBreak"></div>
-              <div class="gameDetail">
-                <p id="gameCategory">category</p>
-              </div>
-              <div class="gameDetail">
-                <p id="gamePrice">20.00</p>
-              </div>
-              <!-- css styling still active for gameDescription
-            <p class="gameDescription" id="gameDescription">
-              Marshmallow chocolate bar lemon drops lemon drops lemon drops
-              muffin. Apple pie pie caramels donut pastry sugar plum halvah.
-              Icing cake jelly beans wafer. Chupa chups pie bonbon.Marshmallow
-              chocolate bar lemon drops lemon drops lemon drops muffin. Apple
-              pie pie caramels donut pastry sugar plum halvah. Icing cake jelly
-              beans wafer. Chupa chups pie bonbon.
-            </p> -->
-            </div>
-          </div>
-          <!-- individual result end -->
-          <div class="gameCard">
-            <div class="gameImageContainer">
-              <img
-                src="https://placekitten.com/g/400/300"
-                alt=""
-                id="gameImage"
-              />
-            </div>
-
-            <div class="gameTextContainer">
-              <h2 id="gameTitle">first result</h2>
-              <div class="lineBreak"></div>
-              <p id="gameCategory">category</p>
-              <p id="gamePrice">20.00</p>
-              <!-- css styling still active for gameDescription
-            <p class="gameDescription" id="gameDescription">
-              Marshmallow chocolate bar lemon drops lemon drops lemon drops
-              muffin. Apple pie pie caramels donut pastry sugar plum halvah.
-              Icing cake jelly beans wafer. Chupa chups pie bonbon.Marshmallow
-              chocolate bar lemon drops lemon drops lemon drops muffin. Apple
-              pie pie caramels donut pastry sugar plum halvah. Icing cake jelly
-              beans wafer. Chupa chups pie bonbon.
-            </p> -->
-            </div>
-          </div>
-          <div class="gameCard">
-            <div class="gameImageContainer">
-              <img
-                src="https://placekitten.com/g/400/300"
-                alt=""
-                id="gameImage"
-              />
-            </div>
-
-            <div class="gameTextContainer">
-              <h2 id="gameTitle">first result</h2>
-              <div class="lineBreak"></div>
-              <p id="gameCategory">category</p>
-              <p id="gamePrice">20.00</p>
-              <!-- css styling still active for gameDescription
-            <p class="gameDescription" id="gameDescription">
-              Marshmallow chocolate bar lemon drops lemon drops lemon drops
-              muffin. Apple pie pie caramels donut pastry sugar plum halvah.
-              Icing cake jelly beans wafer. Chupa chups pie bonbon.Marshmallow
-              chocolate bar lemon drops lemon drops lemon drops muffin. Apple
-              pie pie caramels donut pastry sugar plum halvah. Icing cake jelly
-              beans wafer. Chupa chups pie bonbon.
-            </p> -->
-            </div>
-          </div>
-
-          <!--  -->
-          <!--  -->
-          <!-- individual result end -->
-        </section>
-        <!-- Search Result senction end  -->
-      </main>
-    </div>
-    <!-- wrapper end -->
-    <!-- <script src="./scripts/scripts.js"></script> -->
-  </body>
-</html>
-
