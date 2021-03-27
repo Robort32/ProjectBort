@@ -42,15 +42,19 @@ projectBort.optionsArray = [
     mechId: "GsNGxZFNCK",
   },
 ];
+//submit button
 projectBort.submitButton = document.querySelector(".submitBtn");
 
 projectBort.api = "https://api.boardgameatlas.com/api/search?";
 
 projectBort.clientID = "pKTceFALuw";
 
+//DISABLING BUTTON UNTIL OPTIONS ARE FILLED
+
 projectBort.theMasterFunction = () => {
   projectBort.submitButton.addEventListener("click", function (e) {
     e.preventDefault();
+    projectBort.buuttonDisable();
     //Value of our options drop down
     projectBort.mechanicsOption = document.querySelector("#optionSelect").value;
     //getting the player option
