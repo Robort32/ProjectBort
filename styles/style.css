@@ -1,5 +1,4 @@
 html {
-  font-size: 20px;
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -16,6 +15,11 @@ header,
 nav,
 section {
   display: block;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
 }
 
 figcaption,
@@ -110,8 +114,6 @@ audio:not([controls]) {
 
 img {
   border-style: none;
-  display: block;
-  max-width: 100%;
 }
 
 svg:not(:root) {
@@ -122,15 +124,11 @@ button,
 input,
 optgroup,
 select,
-textarea,
-ul,
-li {
+textarea {
   font-family: sans-serif;
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
-  margin: 0;
-  padding: 0;
 }
 
 button,
@@ -138,19 +136,9 @@ input {
   overflow: visible;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-p,
 button,
 select {
-  text-transform: capitalize;
-  padding: 0;
-  margin: 0;
-  letter-spacing: 1px;
-  line-height: 125%;
+  text-transform: none;
 }
 
 button,
@@ -255,10 +243,9 @@ template {
   height: 0;
 }
 
-* {
+html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  color: var(--black);
 }
 
 *,
@@ -266,20 +253,6 @@ template {
 *:after {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
-}
-
-.visuallyHidden:not(:focus):not(:active) {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  -webkit-clip-path: inset(100%);
-          clip-path: inset(100%);
-  clip: rect(0 0 0);
-  overflow: hidden;
 }
 
 .sr-only {
@@ -319,8 +292,18 @@ h4 {
   font-size: 1.2rem;
 }
 
+p,
+h1,
+h2,
+h3,
+h4 {
+  padding: 0;
+  margin: 0;
+}
+
 .headerImage {
   background-image: url("/assets/hero-unsplash.jpg");
+  background-color: #44587d;
   height: 70vh;
   background-position: center;
   background-size: cover;
@@ -390,7 +373,6 @@ h4 {
 
 .searchStart {
   background-color: #273349;
-  width: 300px;
   position: absolute;
   top: 10px;
   left: 20px;
@@ -404,6 +386,8 @@ h4 {
   text-transform: uppercase;
   color: #ffffff;
   line-height: 70px;
+  margin: 0;
+  padding-right: 20px;
 }
 
 .searchStartForm {
@@ -481,10 +465,6 @@ label {
 }
 
 /* gameResult Section */
-.gameResultContainer {
-  visibility: hidden;
-}
-
 /* main Results diplay styling */
 .gameResultContainer {
   display: -ms-grid;
@@ -628,10 +608,6 @@ footer {
   text-transform: uppercase;
 }
 
-.footerText h3:nth-child(4) {
-  padding-top: 60px;
-}
-
 .footerTextSocial {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -649,6 +625,9 @@ footer {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .footerTextSocial i {

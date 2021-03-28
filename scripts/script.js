@@ -42,8 +42,6 @@ projectBort.optionsArray = [
     mechId: "GsNGxZFNCK",
   },
 ];
-//submit button
-projectBort.submitButton = document.querySelector(".submitBtn");
 
 projectBort.api = "https://api.boardgameatlas.com/api/search?";
 
@@ -52,16 +50,21 @@ projectBort.clientID = "pKTceFALuw";
 //DISABLING BUTTON UNTIL OPTIONS ARE FILLED
 
 projectBort.theMasterFunction = () => {
+  //submit button
+  projectBort.submitButton = document.querySelector(".submitBtn");
+  //Value of our options drop down
+  projectBort.mechanicsOption = document.querySelector("#optionSelect").value;
+  //getting the player option
+  projectBort.playerOption = document.querySelector("#playerOption").value;
+
   projectBort.submitButton.addEventListener("click", function (e) {
     e.preventDefault();
-    projectBort.buuttonDisable();
-    //Value of our options drop down
-    projectBort.mechanicsOption = document.querySelector("#optionSelect").value;
-    //getting the player option
-    projectBort.playerOption = document.querySelector("#playerOption").value;
+    // projectBort.buttonDisable();
+    console.log("CLICKS");
+
     //chainge the min player dropdown to a number
     let playerOptionNumber = parseInt(projectBort.playerOption, 10);
-    console.log(playerOptionNumber);
+
     //iteraiting though the created array full of objects to see which option was selected and retruning the correct mechId
     projectBort.optionsArray.forEach((e) => {
       if (e.value === projectBort.mechanicsOption) {
@@ -77,7 +80,7 @@ projectBort.theMasterFunction = () => {
       min_players: playerOptionNumber,
       mechanics: projectBort.useInMech,
     });
-    console.log(url);
+
     fetch(url)
       .then((res) => {
         return res.json();
@@ -86,6 +89,7 @@ projectBort.theMasterFunction = () => {
       .then((jsonResponse) => {
         console.log(jsonResponse);
         //This forEach was me going thought checking to make sure Each Game that came up Actually had the ID on it
+
         // jsonResponse.games.forEach(function (e) {
         //   console.log(e.mechanics[0].id);
 
@@ -99,5 +103,3 @@ projectBort.init = () => {
 };
 
 projectBort.init();
-
-//script is changggggggged
