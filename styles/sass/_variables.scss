@@ -18,11 +18,13 @@ $headingFontSize4: 1.2rem;
 $mainFontSize: 1rem;
 $headerFontType: "Barlow", sans-serif;
 $bodyFontType: "Roboto", sans-serif;
+
 //general styling assignments
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5 {
   font-family: $headerFontType;
 }
 h1 {
@@ -37,11 +39,19 @@ h3 {
 h4 {
   font-size: $headingFontSize4;
 }
+h5 {
+  font-size: $mainFontSize;
+}
+p {
+  font-size: $mainFontSize;
+  font-family: $bodyFontType;
+}
 p,
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5 {
   padding: 0;
   margin: 0;
 }
