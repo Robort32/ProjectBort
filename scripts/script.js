@@ -142,6 +142,7 @@ projectBort.showGames = (result) => {
       </div>
       <div class="gameDetail">
         <p id="gamePrice">$${x.price_ca}</p>
+        
       </div>
     </div></div>`;
   });
