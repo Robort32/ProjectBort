@@ -12,8 +12,8 @@
   position: absolute;
   top: 10px;
   left: 20px;
-  border-left: 150px solid $primary1;
-  box-shadow: -300px 0px $primary1;
+  padding-left: 1000px;
+  margin-left: -1000px;
   border-radius: $borderRadius;
 }
 .searchStart h4 {

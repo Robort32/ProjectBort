@@ -376,9 +376,8 @@ h4 {
   position: absolute;
   top: 10px;
   left: 20px;
-  border-left: 150px solid #273349;
-  -webkit-box-shadow: -300px 0px #273349;
-          box-shadow: -300px 0px #273349;
+  padding-left: 1000px;
+  margin-left: -1000px;
   border-radius: 15px;
 }
 
