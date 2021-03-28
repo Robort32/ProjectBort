@@ -1,5 +1,5 @@
 const projectBort = {};
-//sorry tonight i am far to lazy to make this alphabetical
+
 projectBort.optionsArray = [
   {
     value: "Betting",
@@ -84,9 +84,7 @@ projectBort.theMasterFunction = () => {
       .then((res) => {
         return res.json();
       })
-      //THIS IS WHERE WE GET THE DATAS
       .then((jsonResponse) => {
-        console.log("API RETURNS");
         projectBort.showGames(jsonResponse);
       });
   });
