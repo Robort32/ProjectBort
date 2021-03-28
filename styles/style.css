@@ -452,7 +452,7 @@ form {
   width: 50%;
   height: 40px;
   text-align: center;
-  background-image: url("/assets/angle-double-down.svg");
+  background-image: url("../assets/angle-double-down.svg");
   background-size: 1rem;
   background-repeat: no-repeat;
   background-position-x: 95%;
