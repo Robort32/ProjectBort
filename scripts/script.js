@@ -136,11 +136,9 @@ projectBort.theMasterFunction = () => {
 
     fetch(url)
       .then((res) => {
-        console.log(res);
         return res.json();
       })
       .then((jsonResponse) => {
-        console.log(jsonResponse);
         projectBort.showGames(jsonResponse);
         projectBort.hideRobortSection(jsonResponse);
       });
@@ -150,7 +148,6 @@ projectBort.theMasterFunction = () => {
 projectBort.showGames = (result) => {
   const gameResultContainer = document.querySelector(".gameResultContainer");
   const resultArray = result.games;
-  console.log(resultArray);
   const gameContent = resultArray.map((resultItem) => {
     return `
     <div class="gameCard">
