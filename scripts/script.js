@@ -94,6 +94,24 @@ projectBort.theMasterFunction = () => {
         projectBort.priceLowerThen = priceNumber + 25;
       }
     };
+    //function for making a better user expereince and contorl what you see when you hit the button
+    projectBort.hideRobortSection = (info) => {
+      if (info.count === 0) {
+        projectBort.robortSection.classList.remove("hidden");
+        projectBort.robortSection.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+          inline: "nearest",
+        });
+      } else {
+        projectBort.robortSection.classList.add("hidden");
+        projectBort.gameResultContainer.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest",
+        });
+      }
+    };
     // };
     projectBort.priceOptionSelected(projectBort.priceOption);
 
@@ -124,21 +142,7 @@ projectBort.theMasterFunction = () => {
       .then((jsonResponse) => {
         console.log(jsonResponse);
         projectBort.showGames(jsonResponse);
-        if (jsonResponse.count === 0) {
-          projectBort.robortSection.classList.remove("hidden");
-          projectBort.robortSection.scrollIntoView({
-            behavior: "smooth",
-            block: "end",
-            inline: "nearest",
-          });
-        } else {
-          projectBort.robortSection.classList.add("hidden");
-          projectBort.gameResultContainer.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-            inline: "nearest",
-          });
-        }
+        projectBort.hideRobortSection(jsonResponse);
       });
   });
 };
@@ -205,11 +209,6 @@ projectBort.showGames = (result) => {
     </div>`;
   });
   gameResultContainer.innerHTML = gameContent.join("");
-
-  //   projectBort.hideRobortSection = () => {
-  //     projectBort.robortSection.classList.toggle("hidden");
-  //   };
-  //   projectBort.hideRobortSection();
 };
 
 projectBort.getCategory = () => {};
