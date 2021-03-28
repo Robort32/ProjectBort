@@ -54,11 +54,21 @@ projectBort.theMasterFunction = () => {
   projectBort.submitButton.addEventListener("click", function (e) {
     e.preventDefault();
 
-    //Value of our options drop down
+    //value of our price drop dow
+    projectBort.priceOption = document.querySelector("#priceOption").value;
+    //variables for api search for lower and greater
+    projectBort.priceLowerThen;
+    projectBort.priceGreaterThen;
+    //Value of our options for mechanics drop down
     projectBort.mechanicsOption = document.querySelector("#optionSelect").value;
 
-    //getting the player option
+    //getting the minimum player options
     projectBort.playerOption = document.querySelector("#playerOption").value;
+
+    //getting the max+ options
+    projectBort.MaxplayerOption = document.querySelector(
+      "#MaxplayerOption"
+    ).value;
 
     //iteraiting though the created array full of objects to see which option was selected and retruning the correct mechId
     projectBort.optionsArray.forEach((e) => {
@@ -67,8 +77,24 @@ projectBort.theMasterFunction = () => {
       }
     });
 
+    projectBort.priceOptionSelected = (price) => {
+      let priceNumber = parseInt(price, 10);
+      if (priceNumber === 75) {
+        projectBort.priceGreaterThen = 75;
+        projectBort.priceLowerThen = 7500;
+      } else {
+        projectBort.priceGreaterThen = priceNumber;
+        projectBort.priceLowerThen = priceNumber + 25;
+      }
+    };
+    // };
+    projectBort.priceOptionSelected(projectBort.priceOption);
+
     //chainge the min player to a number
     const playerOptionNumber = parseInt(projectBort.playerOption, 10);
+
+    //changomg the max player ta number
+    const maxPLayerNumber = parseInt(projectBort.MaxplayerOption, 10);
 
     //Getting Our API
     const url = new URL(projectBort.api);
@@ -77,15 +103,20 @@ projectBort.theMasterFunction = () => {
       limit: 20,
       min_players: playerOptionNumber,
       mechanics: projectBort.useInMech,
-      gt_price: 20,
-      lt_price: 40,
+
+      gt_price: projectBort.priceGreaterThen,
+      lt_price: projectBort.priceLowerThen,
+      gt_max_players: maxPLayerNumber,
+
     });
 
     fetch(url)
       .then((res) => {
+        console.log(res);
         return res.json();
       })
       .then((jsonResponse) => {
+        console.log(jsonResponse);
         projectBort.showGames(jsonResponse);
       });
   });
