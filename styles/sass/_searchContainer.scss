@@ -8,7 +8,7 @@
 }
 .searchStart {
   background-color: $primary1;
-  width: 300px;
+  // width: 300px;
   position: absolute;
   top: 10px;
   left: 20px;
@@ -20,6 +20,8 @@
   text-transform: uppercase;
   color: $white;
   line-height: 70px;
+  margin: 0;
+  padding-right: $padding;
 }
 .searchStartForm {
   @include flexRowCenterItems;
@@ -36,7 +38,7 @@ form {
   width: 50%;
   height: 40px;
   text-align: center;
-  background-image: url(/assets/angle-double-down.svg);
+  background-image: url("/assets/angle-double-down.svg");
   background-size: $mainFontSize;
   background-repeat: no-repeat;
   background-position-x: 95%;
