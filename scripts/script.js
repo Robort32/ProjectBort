@@ -48,6 +48,9 @@ projectBort.clientID = "b8a4fHq3xL";
 
 //DISABLING BUTTON UNTIL OPTIONS ARE FILLED
 
+//selecting the robort section to toggle
+projectBort.robortSection = document.querySelector(".robortSection");
+
 projectBort.theMasterFunction = () => {
   projectBort.submitButton = document.querySelector(".submitBtn");
 
@@ -64,7 +67,11 @@ projectBort.theMasterFunction = () => {
 
     //getting the minimum player options
     projectBort.playerOption = document.querySelector("#playerOption").value;
+    //grabbing the game container
 
+    projectBort.gameResultContainer = document.querySelector(
+      ".gameResultContainer"
+    );
     //getting the max+ options
     projectBort.MaxplayerOption = document.querySelector(
       "#MaxplayerOption"
@@ -87,6 +94,24 @@ projectBort.theMasterFunction = () => {
         projectBort.priceLowerThen = priceNumber + 25;
       }
     };
+    //function for making a better user expereince and contorl what you see when you hit the button
+    projectBort.hideRobortSection = (info) => {
+      if (info.count === 0) {
+        projectBort.robortSection.classList.remove("hidden");
+        projectBort.robortSection.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+          inline: "nearest",
+        });
+      } else {
+        projectBort.robortSection.classList.add("hidden");
+        projectBort.gameResultContainer.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest",
+        });
+      }
+    };
     // };
     projectBort.priceOptionSelected(projectBort.priceOption);
 
@@ -107,17 +132,15 @@ projectBort.theMasterFunction = () => {
       gt_price: projectBort.priceGreaterThen,
       lt_price: projectBort.priceLowerThen,
       gt_max_players: maxPLayerNumber,
-
     });
 
     fetch(url)
       .then((res) => {
-        console.log(res);
         return res.json();
       })
       .then((jsonResponse) => {
-        console.log(jsonResponse);
         projectBort.showGames(jsonResponse);
+        projectBort.hideRobortSection(jsonResponse);
       });
   });
 };
@@ -125,7 +148,6 @@ projectBort.theMasterFunction = () => {
 projectBort.showGames = (result) => {
   const gameResultContainer = document.querySelector(".gameResultContainer");
   const resultArray = result.games;
-  console.log(resultArray);
   const gameContent = resultArray.map((resultItem) => {
     return `
     <div class="gameCard">
@@ -159,6 +181,7 @@ projectBort.showGames = (result) => {
         </div>
       </div>
       <div class="gameDetail">
+
         <div class="gameDetailItem">
           <p class="gameSmallText">Min Players</p>
         </div>
@@ -174,6 +197,7 @@ projectBort.showGames = (result) => {
           <h5>${resultItem.max_players}</h5>
         </div>
       </div>
+
 
 
 

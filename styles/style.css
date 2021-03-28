@@ -362,7 +362,7 @@ h5 {
   text-align: right;
 }
 
-.robort {
+.robortSection {
   background: #cbcbcb;
 }
 
@@ -728,3 +728,6 @@ body {
 }
 
 /*  */
+.hidden {
+  display: none;
+}
