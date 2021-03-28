@@ -302,7 +302,8 @@ h4 {
 }
 
 .headerImage {
-  background-image: url("/assets/hero-unsplash.jpg");
+  background-image: url("../assets/hero-unsplash.jpg");
+  background-color: #44587d;
   height: 70vh;
   background-position: center;
   background-size: cover;
@@ -405,9 +406,8 @@ h4 {
   position: absolute;
   top: 10px;
   left: 20px;
-  border-left: 150px solid #273349;
-  -webkit-box-shadow: -300px 0px #273349;
-          box-shadow: -300px 0px #273349;
+  padding-left: 1000px;
+  margin-left: -1000px;
   border-radius: 15px;
 }
 
@@ -494,10 +494,6 @@ label {
 }
 
 /* gameResult Section */
-.gameResultContainer {
-  visibility: hidden;
-}
-
 /* main Results diplay styling */
 .gameResultContainer {
   display: -ms-grid;

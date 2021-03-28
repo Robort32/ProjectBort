@@ -1,5 +1,6 @@
 .headerImage {
-  background-image: url("/assets/hero-unsplash.jpg");
+  background-image: url("../assets/hero-unsplash.jpg");
+  background-color: $primary2;
   height: 70vh;
   background-position: center;
   background-size: cover;

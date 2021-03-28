@@ -18,55 +18,79 @@
   <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
 </head>
 
-<body>
-  <!--  Header Start -->
-  <header>
-    <div class="headerImage">
-      <div class="headerTextBox wrapper">
-        <h1>Bort</h1>
-        <div class="lineBreak"></div>
-        <p>Find your new favourite game</p>
-      </div>
-    </div>
-  </header>
-  <!--  Header end -->
-  <main>
-    <!-- Search bar / User input section start -->
-    <section class="searchContainer">
-      <div class="searchOptionsContainer wrapper">
-        <div class="searchStart">
-          <h4>start your search</h4>
+  <body>
+    <!--  Header Start -->
+    <header>
+      <div class="headerImage">
+        <div class="headerTextBox wrapper">
+          <h1>Bort</h1>
+          <div class="lineBreak"></div>
+          <p>Find your new favourite game</p>
         </div>
-        <form action="" method="" class="searchStartForm" name="searchStartForm">
-          <label for=""></label>
-          <select name="optionSelect" id="optionSelect" class="searchDropdown">
-            <option value="makeASelection" disabled selected>OPTIONS?</option>
-            <option value="Acting">Acting</option>
-            <option value="Action">Action</option>
-            <option value="Betting">Betting</option>
-            <option value="Campaign">Campaign</option>
-            <option value="Cooperative play">Cooperative play</option>
-            <option value="Deduction">Deduction</option>
-            <option value="Network and Route Building">
-              Network and Route Building
-            </option>
-            <option value="Player Elimination">Player Elimination</option>
-            <option value="Race">Race</option>
-            <option value="Trading">Trading</option>
-          </select>
-          <!-- userInput for ??? -->
-          <label for=""></label>
-          <select name="playerOption" id="playerOption" class="searchDropdown">
-            <option value="makeASelection" disabled selected>OPTIONS?</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-          <!-- submit button to generate game list -->
-          <input type="submit" value="search" class="submitBtn" />
-        </form>
       </div>
-    </section>
+    </header>
+    <!--  Header end -->
+    <main>
+      <!-- Search bar / User input section start -->
+      <section class="searchContainer">
+        <div class="searchOptionsContainer wrapper">
+          <div class="searchStart">
+            <h4>start your search</h4>
+          </div>
+          <form
+            action=""
+            method="GET"
+            class="searchStartForm"
+            name="searchStartForm"
+          >
+            <label for="searchMechanics" class="visually-hidden"></label>
+            <select
+              name="optionSelect"
+              id="optionSelect"
+              class="searchDropdown"
+            >
+              <option value="makeASelection" disabled selected>
+                Game Mechanics
+              </option>
+              <option value="Acting">Acting</option>
+              <option value="Action">Action</option>
+              <option value="Betting">Betting</option>
+              <option value="Campaign">Campaign</option>
+              <option value="Cooperative play">Cooperative play</option>
+              <option value="Deduction">Deduction</option>
+              <option value="Network and Route Building">
+                Network and Route Building
+              </option>
+              <option value="Player Elimination">Player Elimination</option>
+              <option value="Race">Race</option>
+              <option value="Trading">Trading</option>
+            </select>
+            <!-- userInput for ??? -->
+            <label for="searchPlayers" class="visually-hidden"></label>
+            <select
+              name="playerOption"
+              id="playerOption"
+              class="searchDropdown"
+            >
+              <option value="makeASelection" disabled selected>
+                Number of Players
+              </option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <!-- submit button to generate game list -->
+            <input type="submit" value="search" class="submitBtn" />
+          </form>
+        </div>
+      </section>
+      <!-- Search bar / User input section end -->
+
+     
+
+        
+    
+    
     <section class="robort">
       <div class="wrapper">
         <div class="robortContainer ">
@@ -77,73 +101,60 @@
       </div>
     </section>
     <!-- Search bar / User input section end -->
+    
+    
+    
     <!-- game results start -->
     <section class="gameResultContainer wrapper">
-      <!-- individual result start -->
-      <div class="gameCard">
-        <div class="gameImageContainer">
-          <img src="https://placekitten.com/g/400/300" alt="" id="gameImage" />
+      </section>
+    </main>
+
+    <!-- footer start -->
+    <footer>
+      <div class="footerImage">
+        <div class="footerImageContainer">
+          <img
+            src="./assets/edge2edge-media-unsplash.jpg"
+            alt="a pair of white six sided die"
+            title=" pair of white six sided die"
+          />
         </div>
-        <div class="gameTextContainer">
-          <h2 id="gameTitle">ONE ReSULT</h2>
-          <div class="lineBreak"></div>
-          <div class="gameDetail">
-            <p id="gameCategory">category</p>
-          </div>
-          <div class="gameDetail">
-            <p id="gamePrice">20.00</p>
-          </div>
+      </div>
+      <div class="footerText">
+        <h3>created by</h3>
+        <div class="footerTextSocial">
+          <a href="" target="_blank">
+            <i class="lni lni-github-original"></i
+          ></a>
+          <a href="" target="_blank">
+            <i class="lni lni-twitter-original"></i
+          ></a>
+          <p>Holly Jasiura</p>
         </div>
+        <div class="footerTextSocial">
+          <a href="" target="_blank">
+            <i class="lni lni-github-original"></i
+          ></a>
+          <a href="" target="_blank">
+            <i class="lni lni-twitter-original"></i
+          ></a>
+          <p>Matthew Whitely</p>
+        </div>
+        <h3>created for</h3>
+        <div class="footerTextSocial">
+          <a href="https://www.junocollege.com" target="_blank">
+            <img
+              src="./assets/junoLogo.jpg"
+              alt="juno college logo"
+              title="juno college logo"
+          /></a>
+          <p>Juno College</p>
+        </div>
+      </div>
+    </footer>
+    <!-- footer end -->
+    <!-- wrapper end -->
 
-
-        <!-- css styling still active for gameDescription -->
-        <p class="gameDescription" id="gameDescription">
-          Marshmallow chocolate bar lemon drops lemon drops lemon drops
-          muffin. Apple pie pie caramels donut pastry sugar plum halvah.
-          Icing cake jelly beans wafer. Chupa chups pie bonbon.Marshmallow
-          chocolate bar lemon drops lemon drops lemon drops muffin. Apple
-          pie pie caramels donut pastry sugar plum halvah. Icing cake jelly
-          beans wafer. Chupa chups pie bonbon.
-        </p>
-      </div>
-      <!-- individual result end -->
-    </section>
-  </main>
-  <!-- footer start -->
-  <footer>
-    <div class="footerImage">
-      <div class="footerImageContainer">
-        <img src="./assets/edge2edge-media-unsplash.jpg" alt="a pair of white six sided die"
-          title=" pair of white six sided die" />
-      </div>
-    </div>
-    <div class="footerText">
-      <h3>created by</h3>
-      <div class="footerTextSocial">
-        <a href="" target="_blank">
-          <i class="lni lni-github-original"></i></a>
-        <a href="" target="_blank">
-          <i class="lni lni-twitter-original"></i></a>
-        <p>Holly Jasiura</p>
-      </div>
-      <div class="footerTextSocial">
-        <a href="" target="_blank">
-          <i class="lni lni-github-original"></i></a>
-        <a href="" target="_blank">
-          <i class="lni lni-twitter-original"></i></a>
-        <p>Matthew Whitely</p>
-      </div>
-      <h3>created for</h3>
-      <div class="footerTextSocial">
-        <a href="https://www.junocollege.com" target="_blank">
-          <img src="./assets/junoLogo.jpg" alt="juno college logo" title="juno college logo" /></a>
-        <p>Juno College</p>
-      </div>
-    </div>
-  </footer>
-  <!-- footer end -->
-  <!-- wrapper end -->
-  <script src="./scripts/script.js"></script>
-</body>
-
+    <script src="./scripts/script.js"></script>
+  </body>
 </html>

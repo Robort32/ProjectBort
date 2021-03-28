@@ -25,7 +25,7 @@
 
 - HTML font size 125% (20px)
 - Site is needs to be responsive. Mobile should have good UI
-- Grid must be used
+- Grid must be used for displaying results
 - All images should have descriptive alt descriptions
 - All forms need to use proper accessibility techniques
 - Wrapper Padding 20px;
