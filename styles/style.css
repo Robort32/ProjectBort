@@ -362,7 +362,7 @@ h5 {
   text-align: right;
 }
 
-.robort {
+.robortSection {
   background: #cbcbcb;
 }
 
@@ -490,9 +490,11 @@ input[type="submit"] {
   transition: all 0.3s;
 }
 
-input[type="submit"]:hover {
-  background-color: #ce3636;
-  color: #ffffff;
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  background-color: #ff6b6b;
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
   -webkit-box-shadow: 5px 5px 15px #cbcbcb;
           box-shadow: 5px 5px 15px #cbcbcb;
 }
@@ -619,12 +621,12 @@ label {
   margin-right: 20px;
 }
 
-.gameTextContainer h3,
-.gameTextContainer p {
+.gameTextContainer h3 {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 /*not currently on the screen - the trunicated descriptions  */
@@ -728,3 +730,30 @@ body {
 }
 
 /*  */
+.returnToTop {
+  visibility: none;
+  opacity: 0;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  background-color: #ff5757;
+  padding: 15px;
+  border-radius: 15px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.returnToTop img {
+  width: 30px;
+}
+
+.returnToTop:hover,
+.returnToTop:focus {
+  background-color: #ff6b6b;
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+  -webkit-box-shadow: 5px 5px 15px #cbcbcb;
+          box-shadow: 5px 5px 15px #cbcbcb;
+  opacity: 1;
+}

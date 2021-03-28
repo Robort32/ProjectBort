@@ -50,7 +50,7 @@ form {
 }
 input[type="submit"] {
   text-transform: uppercase;
-  background-color: $accent;
+  background-color: $accent1;
   border: transparent;
   border-radius: $borderRadius;
   height: 55px;
@@ -59,10 +59,9 @@ input[type="submit"] {
   word-wrap: break-word;
   transition: all 0.3s;
 }
-input[type="submit"]:hover {
-  background-color: #ce3636;
-  color: $white;
-  box-shadow: 5px 5px 15px $shading1;
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  @include buttonPress;
 }
 legend,
 label {

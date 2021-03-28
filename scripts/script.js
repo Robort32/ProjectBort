@@ -103,11 +103,9 @@ projectBort.theMasterFunction = () => {
       limit: 20,
       min_players: playerOptionNumber,
       mechanics: projectBort.useInMech,
-
       gt_price: projectBort.priceGreaterThen,
       lt_price: projectBort.priceLowerThen,
       gt_max_players: maxPLayerNumber,
-
     });
 
     fetch(url)
@@ -186,8 +184,25 @@ projectBort.showGames = (result) => {
 
 projectBort.getCategory = () => {};
 
+projectBort.returnToTop = () => {
+  const backToTop = document.getElementById("returnToTop");
+  window.addEventListener("scroll", function () {
+    if (
+      document.body.scrollTop > 200 ||
+      document.documentElement.scrollTop > 200
+    ) {
+      backToTop.style.visibility = "visible";
+      backToTop.style.opacity = 1;
+    } else {
+      backToTop.style.visibility = "hidden";
+      backToTop.style.opacity = 0;
+    }
+  });
+};
+
 projectBort.init = () => {
   projectBort.theMasterFunction();
+  projectBort.returnToTop();
 };
 
 projectBort.init();

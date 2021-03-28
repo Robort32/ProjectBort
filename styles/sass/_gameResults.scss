@@ -1,7 +1,4 @@
 /* gameResult Section */
-.gameResultContainer {
-  // visibility: hidden;
-}
 /* main Results diplay styling */
 .gameResultContainer {
   display: grid;
@@ -65,15 +62,13 @@
   text-align: left;
   margin-right: 20px;
 }
-.gameTextContainer h3,
-.gameTextContainer p {
+.gameTextContainer h3 {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
-//
-//
 //
 /*not currently on the screen - the trunicated descriptions  */
 .gameTextContainer > p {
@@ -83,11 +78,3 @@
 .gameDescription {
   margin-bottom: 20px;
 }
-
-// .gameTextContainer h5 {
-//   height: 75px;
-//   padding-bottom: $padding;
-//   -webkit-line-clamp: 1;
-//   line-height: 60px;
-//   color: $primary1;
-// }

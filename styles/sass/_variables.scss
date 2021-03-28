@@ -1,5 +1,6 @@
 // colours
-$accent: #ff5757;
+$accent1: #ff5757;
+$accent2: #ff6b6b;
 $primary1: #273349;
 $primary2: #44587d;
 $primary3: #5d7cb5;
@@ -68,4 +69,9 @@ h5 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+@mixin buttonPress {
+  background-color: $accent2;
+  transform: scale(0.98);
+  box-shadow: 5px 5px 15px $shading1;
 }
