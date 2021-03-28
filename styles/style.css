@@ -349,6 +349,36 @@ h4 {
   text-align: right;
 }
 
+.robort {
+  background: #cbcbcb;
+}
+
+.robortContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 40px 0;
+}
+
+.robortImage {
+  text-align: center;
+  border-radius: 50%;
+  background: #e6e6e6;
+  height: 300px;
+  width: 300px;
+}
+
+.robortImage img {
+  -webkit-transform: translateY(17%);
+          transform: translateY(17%);
+}
+
 .searchContainer {
   background-color: #f5f5ef;
 }
@@ -662,18 +692,3 @@ body {
 }
 
 /*  */
-.robort {
-  background: #cbcbcb;
-}
-
-.robortContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}

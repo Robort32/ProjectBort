@@ -1,6 +1,7 @@
 @import "./setup";
 @import "./variables";
 @import "./header";
+@import "./robort";
 @import "./searchContainer";
 @import "./gameResults";
 @import "./footer";
@@ -21,12 +22,3 @@ body {
   background-color: $primary2;
 }
 /*  */
-.robort {
-  background: $shading1;
-}
-
-.robortContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
