@@ -23,6 +23,28 @@ body {
 }
 /*  */
 
+.returnToTop {
+  visibility: none;
+  opacity: 0;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  background-color: $accent1;
+  padding: 15px;
+  border-radius: $borderRadius;
+  transition: all 1s;
+}
+.returnToTop img {
+  width: 30px;
+}
+.returnToTop:hover,
+.returnToTop:focus {
+  @include buttonPress;
+  opacity: 1;
+
+
 .hidden {
   display: none;
+
 }
