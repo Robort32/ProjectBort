@@ -77,22 +77,18 @@ projectBort.theMasterFunction = () => {
       }
     });
 
-    projectBort.priceOptionSelected = () => {
-      if (projectBort.priceOption === "25") {
-        projectBort.priceLowerThen = 25;
-        projectBort.priceGreaterThen = 0;
-      } else if (projectBort.priceOption === "50") {
-        projectBort.priceLowerThen = 50;
-        projectBort.priceGreaterThen = 25;
-      } else if (projectBort.priceOption === "75") {
-        projectBort.priceLowerThen = 75;
-        projectBort.priceGreaterThen = 50;
-      } else if (projectBort.priceOption === "100") {
-        projectBort.priceLowerThen = 7500;
+    projectBort.priceOptionSelected = (price) => {
+      let priceNumber = parseInt(price, 10);
+      if (priceNumber === 75) {
         projectBort.priceGreaterThen = 75;
+        projectBort.priceLowerThen = 7500;
+      } else {
+        projectBort.priceGreaterThen = priceNumber;
+        projectBort.priceLowerThen = priceNumber + 25;
       }
     };
-    projectBort.priceOptionSelected();
+    // };
+    projectBort.priceOptionSelected(projectBort.priceOption);
 
     //chainge the min player to a number
     const playerOptionNumber = parseInt(projectBort.playerOption, 10);
