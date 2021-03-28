@@ -1,0 +1,22 @@
+//robort background color
+.robort {
+  background: $shading1;
+}
+
+.robortContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
+.robortImage {
+  text-align: center;
+  border-radius: 50%;
+  background: $shading2;
+  height: 300px;
+  width: 300px;
+
+  img {
+    transform: translateY(17%);
+  }
+}
