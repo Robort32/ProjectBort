@@ -730,6 +730,7 @@ body {
 }
 
 /*  */
+
 .returnToTop {
   visibility: none;
   opacity: 0;
@@ -756,4 +757,7 @@ body {
   -webkit-box-shadow: 5px 5px 15px #cbcbcb;
           box-shadow: 5px 5px 15px #cbcbcb;
   opacity: 1;
+
+.hidden {
+
 }

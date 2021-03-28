@@ -22,8 +22,8 @@ body {
   background-color: $primary2;
 }
 /*  */
+
 .returnToTop {
-  // display: none;
   visibility: none;
   opacity: 0;
   position: fixed;
@@ -42,4 +42,9 @@ body {
 .returnToTop:focus {
   @include buttonPress;
   opacity: 1;
+
+
+.hidden {
+  display: none;
+
 }
