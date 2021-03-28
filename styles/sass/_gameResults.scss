@@ -17,6 +17,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  height: 32rem;
   border: 1px solid $black;
   border-radius: $borderRadius;
   box-shadow: 5px 5px 15px $shading1;
@@ -35,36 +36,41 @@
   opacity: 0.8;
 }
 .gameTextContainer {
-  padding: $padding;
-  //   min-width: 300px;
-  //   max-width: 300px;
-  height: 200px;
-
+  padding: 10px;
+  width: 100%;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
 }
-.gameTextContainer h2,
+.gameTextContainer h3 {
+  height: 3.5rem;
+}
+.gameTitle {
+  @include flexRowCenterItems;
+}
+.gameDetail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+.gameDetailItem {
+  text-align: right;
+}
+.gameSmallText {
+  font-size: 0.8rem;
+}
+.gameCard p:first-child {
+  text-align: left;
+  margin-right: 20px;
+}
+.gameTextContainer h3,
 .gameTextContainer p {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-}
-.gameTextContainer h2 {
-  height: 50px;
-  padding-bottom: $padding;
-  -webkit-line-clamp: 1;
-  line-height: 60px;
-  color: $primary1;
-}
-
-.gameDetail {
-  display: flex;
-  flex-direction: row;
-}
-.gamePrice {
-  font-family: $headerFontType;
-  font-size: 1.4rem;
 }
 //
 //
@@ -76,5 +82,12 @@
 }
 .gameDescription {
   margin-bottom: 20px;
-  background-color: aqua;
 }
+
+// .gameTextContainer h5 {
+//   height: 75px;
+//   padding-bottom: $padding;
+//   -webkit-line-clamp: 1;
+//   line-height: 60px;
+//   color: $primary1;
+// }

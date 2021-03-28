@@ -103,9 +103,11 @@ projectBort.theMasterFunction = () => {
       limit: 20,
       min_players: playerOptionNumber,
       mechanics: projectBort.useInMech,
+
       gt_price: projectBort.priceGreaterThen,
       lt_price: projectBort.priceLowerThen,
       gt_max_players: maxPLayerNumber,
+
     });
 
     fetch(url)
@@ -123,27 +125,61 @@ projectBort.theMasterFunction = () => {
 projectBort.showGames = (result) => {
   const gameResultContainer = document.querySelector(".gameResultContainer");
   const resultArray = result.games;
-
-  const gameContent = resultArray.map((x) => {
-    return `<div class="gameCard">
+  console.log(resultArray);
+  const gameContent = resultArray.map((resultItem) => {
+    return `
+    <div class="gameCard">
       <div class="gameImageContainer">
         <img
-          src=${x.image_url}
-        alt=""
-        id="gameImage"
-      />
-    </div>
+          src=${resultItem.image_url}
+          alt=${resultItem.name}
+          id="gameImage"
+          />
+      </div>
   
-    <div class="gameTextContainer">
-      <h2 id="gameTitle">${x.name}</h2>
-      <div class="lineBreak"></div>
+      <div class="gameTextContainer">
+        <h3 id="gameTitle" class="gameTitle">${resultItem.name}</h3>
+        <div class="lineBreak"></div>
+        
+
       <div class="gameDetail">
-        <p id="gameCategory">CATEGORY</p>
+        <div class="gameDetailItem">
+          <p class="gameSmallText">Mechanic</p>
+        </div>
+        <div class="gameDetailItem">
+          <h5>network and route building</h5>
+        </div>
       </div>
       <div class="gameDetail">
-        <p id="gamePrice">$${x.price_ca}</p>
+        <div class="gameDetailItem">
+          <p class="gameSmallText">Price</p>
+        </div>
+        <div class="gameDetailItem">
+          <h5>$ ${resultItem.price_ca}</h5>
+        </div>
       </div>
-    </div></div>`;
+      <div class="gameDetail">
+        <div class="gameDetailItem">
+          <p class="gameSmallText">Min Players</p>
+        </div>
+        <div class="gameDetailItem">
+          <h5>${resultItem.min_players}</h5>
+        </div>
+      </div>
+      <div class="gameDetail">
+        <div class="gameDetailItem">
+          <p class="gameSmallText">Max Players</p>
+        </div>
+        <div class="gameDetailItem">
+          <h5>${resultItem.max_players}</h5>
+        </div>
+      </div>
+
+
+
+      </div>
+      
+    </div>`;
   });
   gameResultContainer.innerHTML = gameContent.join("");
 };
