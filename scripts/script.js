@@ -49,7 +49,6 @@ projectBort.clientID = "b8a4fHq3xL";
 //DISABLING BUTTON UNTIL OPTIONS ARE FILLED
 
 projectBort.theMasterFunction = () => {
-  //submit button
   projectBort.submitButton = document.querySelector(".submitBtn");
 
   projectBort.submitButton.addEventListener("click", function (e) {
@@ -117,6 +116,8 @@ projectBort.showGames = (result) => {
   });
   gameResultContainer.innerHTML = gameContent.join("");
 };
+
+projectBort.getCategory = () => {};
 
 projectBort.init = () => {
   projectBort.theMasterFunction();
