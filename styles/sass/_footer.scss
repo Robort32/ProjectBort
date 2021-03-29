@@ -1,6 +1,7 @@
 footer {
   @include flexRowCenterItems;
   background-color: $primary2;
+  border-top: 5px solid $primary1;
 }
 .footerImage {
   width: 68%;

@@ -363,33 +363,52 @@ h5 {
 }
 
 .robortSection {
-  background: #e6e6e6;
-  height: 60vh;
-}
-
-.robortContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: #e6e6e6;
+  height: 70vh;
 }
 
 .robortImage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
   border-radius: 50%;
   background: #cbcbcb;
-  height: 300px;
-  width: 300px;
+  height: 500px;
+  width: 500px;
+}
+
+.robortImage h4 {
+  padding-top: 20px;
+  text-transform: uppercase;
+  color: #6e6e6e;
 }
 
 .robortImage img {
-  -webkit-transform: translateY(17%);
-          transform: translateY(17%);
+  color: #6e6e6e;
 }
 
 .searchContainer {
@@ -653,6 +672,7 @@ footer {
       -ms-flex-align: center;
           align-items: center;
   background-color: #44587d;
+  border-top: 5px solid #273349;
 }
 
 .footerImage {
