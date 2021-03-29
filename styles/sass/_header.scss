@@ -5,6 +5,7 @@
   background-position: center;
   background-size: cover;
   position: relative;
+  border-bottom: 2px solid $primary1;
 }
 .headerTextBox {
   @include flexRowCenterItems;

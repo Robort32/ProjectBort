@@ -147,7 +147,7 @@ projectBort.theMasterFunction = () => {
 projectBort.showGames = (result) => {
   const gameResultContainer = document.querySelector(".gameResultContainer");
   const resultArray = result.games;
-  console.log(result.games);
+
   const gameContent = resultArray.map((resultItem) => {
     return `
     <div class="gameCard">
@@ -162,7 +162,9 @@ projectBort.showGames = (result) => {
       </div>
   
       <div class="gameTextContainer">
+      <a href=${resultItem.url} target="_blank">
         <h3 id="gameTitle" class="gameTitle">${resultItem.name}</h3>
+        </a>
         <div class="lineBreak"></div>
         
 

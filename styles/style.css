@@ -321,6 +321,7 @@ h5 {
   background-position: center;
   background-size: cover;
   position: relative;
+  border-bottom: 2px solid #273349;
 }
 
 .headerTextBox {
@@ -420,7 +421,7 @@ h5 {
 
 .searchContainer {
   background-color: #f5f5ef;
-  border-bottom: 5px solid #273349;
+  border-bottom: 2px solid #273349;
 }
 
 .searchOptionsContainer {
@@ -542,6 +543,7 @@ legend {
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
   grid-gap: 20px;
+  background-color: #fdfdfd;
 }
 
 /* individual card result styling */
@@ -565,6 +567,7 @@ legend {
   border-radius: 15px;
   -webkit-box-shadow: 5px 5px 15px #cbcbcb;
           box-shadow: 5px 5px 15px #cbcbcb;
+  background-color: #ffffff;
 }
 
 .gameImageContainer {
@@ -584,7 +587,7 @@ legend {
 }
 
 .gameTextContainer {
-  padding: 10px;
+  padding: 10px 15px;
   width: 100%;
   min-height: 200px;
   display: -webkit-box;
@@ -598,6 +601,17 @@ legend {
 
 .gameTextContainer h3 {
   height: 3.5rem;
+}
+
+.gameTextContainer a,
+.gameTextContainer a:visited {
+  color: #171717;
+  text-decoration: none;
+}
+
+.gameTextContainer a:hover,
+.gameTextContainer a:focus {
+  text-decoration: underline;
 }
 
 .gameTitle {
@@ -635,6 +649,10 @@ legend {
 
 .gameDetailItem {
   text-align: right;
+}
+
+.gameDetailItem h5 {
+  text-transform: capitalize;
 }
 
 .gameSmallText {
