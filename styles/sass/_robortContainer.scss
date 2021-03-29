@@ -1,18 +1,18 @@
 //robort background color
 .robortSection {
-  background: $shading1;
+  background: $shading2;
+  height: 60vh;
 }
-
 .robortContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 0;
+  // padding: 40px 0;
 }
 .robortImage {
   text-align: center;
   border-radius: 50%;
-  background: $shading2;
+  background: $shading1;
   height: 300px;
   width: 300px;
 

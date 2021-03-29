@@ -42,9 +42,8 @@ body {
 .returnToTop:focus {
   @include buttonPress;
   opacity: 1;
-
+}
 
 .hidden {
   display: none;
-
 }
