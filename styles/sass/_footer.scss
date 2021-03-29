@@ -21,16 +21,22 @@ footer {
   padding-bottom: $padding;
   text-transform: uppercase;
 }
+.footerText h3:nth-child(4) {
+  padding-top: 40px;
+}
 .footerTextSocial {
   @include flexRowCenterItems;
   justify-content: flex-start;
   align-items: flex-start;
 }
-.footerTextSocial i {
+.footerText p {
+  padding-left: 20px;
+}
+.footerTextSocial a {
+  color: $white;
   font-size: $headingFontSize4;
   padding: 0 10px;
 }
 .footerText img {
   height: 40px;
-  padding-right: $padding;
 }

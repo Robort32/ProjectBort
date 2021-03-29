@@ -15,6 +15,10 @@ body {
   margin: 0 auto;
   padding: $padding;
 }
+.wrapperTopBottom {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
 .lineBreak {
   width: 60%;
   height: 2px;
@@ -43,7 +47,6 @@ body {
   @include buttonPress;
   opacity: 1;
 }
-
 .hidden {
   display: none;
 }
