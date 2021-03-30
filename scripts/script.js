@@ -157,15 +157,15 @@ projectBort.showGames = (result) => {
       const gameTemplate = document
         .getElementById("gameResultTemplate")
         .content.cloneNode(true);
-      gameTemplate.getElementById("gameTitle").innerText = game.name;
-      gameTemplate.getElementById("gameImage").src = game.image_url;
-      gameTemplate.getElementById("gameImage").alt = game.name;
-      gameTemplate.getElementById("gameDetailMechanic").innerText =
+      gameTemplate.querySelector(".gameTitle").innerText = game.name;
+      gameTemplate.querySelector(".gameImage").src = game.image_url;
+      gameTemplate.querySelector(".gameImage").alt = game.name;
+      gameTemplate.querySelector(".gameDetailMechanic").innerText =
         "mechanic var";
-      gameTemplate.getElementById("gameDetailPrice").innerText = game.price;
-      gameTemplate.getElementById("gameDetailMinPlayer").innerText =
+      gameTemplate.querySelector(".gameDetailPrice").innerText = game.price;
+      gameTemplate.querySelector(".gameDetailMinPlayer").innerText =
         game.min_players;
-      gameTemplate.getElementById("gameDetailMaxPlayer").innerText =
+      gameTemplate.querySelector(".gameDetailMaxPlayer").innerText =
         game.max_players;
 
       gameResultContainer.appendChild(gameTemplate);
