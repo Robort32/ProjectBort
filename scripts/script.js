@@ -1,5 +1,5 @@
 const projectBort = {};
-
+//For the game mechanic drop down.
 projectBort.optionsArray = [
   {
     value: "Betting",
@@ -46,105 +46,94 @@ projectBort.optionsArray = [
 projectBort.api = "https://api.boardgameatlas.com/api/search?";
 projectBort.clientID = "b8a4fHq3xL";
 
-//DISABLING BUTTON UNTIL OPTIONS ARE FILLED
-
 //selecting the robort section to toggle
-projectBort.robortSection = document.querySelector(".robortSection");
 
-projectBort.theMasterFunction = () => {
-  projectBort.submitButton = document.querySelector(".submitBtn");
-
-  projectBort.submitButton.addEventListener("click", function (e) {
+projectBort.submitDataToApi = () => {
+  projectBort.submitBtn = document.querySelector(".submitBtn");
+  projectBort.submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
 
-    //value of our price drop dow
-    projectBort.priceOption = document.querySelector("#priceOption").value;
-    //variables for api search for lower and greater
-    projectBort.priceLowerThen;
-    projectBort.priceGreaterThen;
-    //Value of our options for mechanics drop down
-    projectBort.mechanicsOption = document.querySelector("#optionSelect").value;
-
-    //getting the minimum player options
-    projectBort.playerOption = document.querySelector("#playerOption").value;
-    //grabbing the game container
-
-    projectBort.gameResultContainer = document.querySelector(
-      ".gameResultContainer"
+    projectBort.mechanics();
+    projectBort.pricePoint();
+    projectBort.minMaxPlayers();
+    projectBort.apiCall(
+      projectBort.minPlayerNumber,
+      projectBort.maxPlayerNumber,
+      projectBort.useInMech,
+      projectBort.priceGreaterThen,
+      projectBort.priceLowerThen
     );
-    //getting the max+ options
-    projectBort.MaxplayerOption = document.querySelector(
-      "#MaxplayerOption"
-    ).value;
-
-    //iteraiting though the created array full of objects to see which option was selected and retruning the correct mechId
-    projectBort.optionsArray.forEach((e) => {
-      if (e.value === projectBort.mechanicsOption) {
-        projectBort.useInMech = e.mechId;
-      }
-    });
-
-    projectBort.priceOptionSelected = (price) => {
-      let priceNumber = parseInt(price, 10);
-      if (priceNumber === 75) {
-        projectBort.priceGreaterThen = 75;
-        projectBort.priceLowerThen = 7500;
-      } else {
-        projectBort.priceGreaterThen = priceNumber;
-        projectBort.priceLowerThen = priceNumber + 25;
-      }
-    };
-    //function for making a better user expereince and contorl what you see when you hit the button
-    projectBort.hideRobortSection = (info) => {
-      if (info.count === 0) {
-        projectBort.robortSection.classList.remove("hidden");
-        projectBort.robortSection.scrollIntoView({
-          behavior: "smooth",
-          block: "end",
-          inline: "nearest",
-        });
-      } else {
-        projectBort.robortSection.classList.add("hidden");
-        projectBort.gameResultContainer.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-          inline: "nearest",
-        });
-      }
-    };
-
-    projectBort.priceOptionSelected(projectBort.priceOption);
-
-    //chainge the min player to a number
-    const playerOptionNumber = parseInt(projectBort.playerOption, 10);
-
-    //changomg the max player ta number
-    const maxPLayerNumber = parseInt(projectBort.MaxplayerOption, 10);
-
-    //Getting Our API
-    const url = new URL(projectBort.api);
-    url.search = new URLSearchParams({
-      client_id: projectBort.clientID,
-      limit: 20,
-      min_players: playerOptionNumber,
-      mechanics: projectBort.useInMech,
-      gt_price: projectBort.priceGreaterThen,
-      lt_price: projectBort.priceLowerThen,
-      gt_max_players: maxPLayerNumber,
-    });
-
-    fetch(url)
-      .then((res) => {
-        return res.json();
-      })
-      .then((jsonResponse) => {
-        projectBort.showGames(jsonResponse);
-        projectBort.hideRobortSection(jsonResponse);
-      })
-      .catch((err) =>
-        console.error("Your browser does not support templates :(")
-      );
   });
+};
+//Getting Value for minimum players and maximum players
+projectBort.minMaxPlayers = () => {
+  projectBort.minPlayerOption = document.querySelector(
+    "#minPlayerOption"
+  ).value;
+  projectBort.maxPlayerOption = document.querySelector(
+    "#maxPlayerOption"
+  ).value;
+  projectBort.minPlayerNumber = parseInt(projectBort.minPlayerOption, 10);
+  projectBort.maxPlayerNumber = parseInt(projectBort.maxPlayerOption, 10);
+};
+//getting value for mechanics
+projectBort.mechanics = () => {
+  projectBort.mechanicsOption = document.querySelector("#mechOption").value;
+  projectBort.optionsArray.forEach((e) => {
+    if (e.value === projectBort.mechanicsOption) {
+      projectBort.useInMech = e.mechId;
+    }
+  });
+};
+//get value for price
+projectBort.pricePoint = () => {
+  projectBort.priceOption = document.querySelector("#priceOption").value;
+  let priceNumber = parseInt(projectBort.priceOption, 10);
+  if (priceNumber === 75) {
+    projectBort.priceGreaterThen = 75;
+    projectBort.priceLowerThen = 7500;
+  } else {
+    projectBort.priceGreaterThen = priceNumber;
+    projectBort.priceLowerThen = priceNumber + 25;
+  }
+};
+
+projectBort.hideRobortSection = (info) => {
+  projectBort.robortSection = document.querySelector(".robortSection");
+  projectBort.gameResultContainer = document.querySelector(
+    ".gameResultContainer"
+  );
+  if (info.count === 0) {
+    projectBort.robortSection.classList.remove("hidden");
+    projectBort.robortSection.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+      inline: "nearest",
+    });
+
+
+//Getting Our API
+projectBort.apiCall = (minPlayers, maxPlayers, mechanics, gtprice, ltprice) => {
+  const url = new URL(projectBort.api);
+  url.search = new URLSearchParams({
+    client_id: projectBort.clientID,
+    limit: 20,
+    min_players: minPlayers,
+    mechanics: mechanics,
+    gt_price: gtprice,
+    lt_price: ltprice,
+    gt_max_players: maxPlayers,
+
+  });
+  console.log(url);
+  fetch(url)
+    .then((res) => {
+      return res.json();
+    })
+    .then((jsonResponse) => {
+      projectBort.showGames(jsonResponse);
+      projectBort.hideRobortSection(jsonResponse);
+    });
 };
 
 projectBort.showGames = (result) => {
@@ -174,9 +163,9 @@ projectBort.showGames = (result) => {
     console.error("Your browser does not support templates");
   }
 };
-
-projectBort.getCategory = () => {};
-
+// This will be to get a category
+// projectBort.getCategory = () => {};
+//Hiding/unhiding the back to top button
 projectBort.returnToTop = () => {
   const backToTop = document.getElementById("returnToTop");
   window.addEventListener("scroll", function () {
@@ -194,7 +183,7 @@ projectBort.returnToTop = () => {
 };
 
 projectBort.init = () => {
-  projectBort.theMasterFunction();
+  projectBort.submitDataToApi();
   projectBort.returnToTop();
 };
 
