@@ -88,6 +88,15 @@
               <option value="2">2</option>
               <option value="3">3</option>
             </select>
+
+            <label for="priceOption" class="">price range</label>
+            <select name="priceOption" id="priceOption" class="searchDropdown">
+              <option value="makeASelection" disabled selected>Price</option>
+              <option value="0">$0-$25</option>
+              <option value="25">$26-$50</option>
+              <option value="50">$51-$75</option>
+              
+            </select>
          
             <label for="maxPlayerOption" class="">maximum players</label>
             <select
@@ -101,15 +110,6 @@
               <option value="3">4+</option>
               <option value="7">8+</option>
               <option value="11">12+</option>
-            </select>
-
-            <label for="priceOption" class="">price range</label>
-            <select name="priceOption" id="priceOption" class="searchDropdown">
-              <option value="makeASelection" disabled selected>Price</option>
-              <option value="0">$0-$25</option>
-              <option value="25">$26-$50</option>
-              <option value="50">$51-$75</option>
-              
             </select>
             
             <!-- submit button to generate game list -->
@@ -136,6 +136,8 @@
 
     <!-- game results start -->
     <section class="gameResultContainer wrapper wrapperTopBottom"></section>
+  
+  
   </main>
 
     <!-- footer start -->
