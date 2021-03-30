@@ -111,36 +111,12 @@ projectBort.hideRobortSection = (info) => {
       inline: "nearest",
     });
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7561e1220ed835b449b527a519dfa88b3572bad2
 
-    projectBort.priceOptionSelected = (price) => {
-      let priceNumber = parseInt(price, 10);
-      if (priceNumber === 75) {
-        projectBort.priceGreaterThen = 75;
-        projectBort.priceLowerThen = 7500;
-      } else {
-        projectBort.priceGreaterThen = priceNumber;
-        projectBort.priceLowerThen = priceNumber + 25;
-      }
-    };
-    //function for making a better user expereince and contorl what you see when you hit the button
-    projectBort.hideRobortSection = (info) => {
-      if (info.count === 0) {
-        projectBort.robortSection.classList.remove("hidden");
-        projectBort.robortSection.scrollIntoView({
-          behavior: "smooth",
-          block: "end",
-          inline: "nearest",
-        });
-      } else {
-        projectBort.robortSection.classList.add("hidden");
-        projectBort.gameResultContainer.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-          inline: "nearest",
-        });
-      }
-    };
 
+<<<<<<< HEAD
     projectBort.priceOptionSelected(projectBort.priceOption);
 
     //chainge the min player to a number
@@ -184,6 +160,8 @@ projectBort.hideRobortSection = (info) => {
         console.error("Your browser does not support templates :(")
       );
 =======
+=======
+>>>>>>> 7561e1220ed835b449b527a519dfa88b3572bad2
 //Getting Our API
 projectBort.apiCall = (minPlayers, maxPlayers, mechanics, gtprice, ltprice) => {
   const url = new URL(projectBort.api);
@@ -195,7 +173,11 @@ projectBort.apiCall = (minPlayers, maxPlayers, mechanics, gtprice, ltprice) => {
     gt_price: gtprice,
     lt_price: ltprice,
     gt_max_players: maxPlayers,
+<<<<<<< HEAD
 >>>>>>> main
+=======
+
+>>>>>>> 7561e1220ed835b449b527a519dfa88b3572bad2
   });
   console.log(url);
   fetch(url)
