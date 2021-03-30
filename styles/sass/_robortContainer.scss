@@ -1,23 +1,10 @@
 //robort background color
 .robortSection {
   @include flexColumnCenterItems;
-  background: $shading2;
+  background: $shading1;
   height: 70vh;
 }
 
-.robortImage {
-  @include flexColumnCenterItems;
-  text-align: center;
-  border-radius: 50%;
-  background: $shading1;
-  height: 500px;
-  width: 500px;
-}
-.robortImage h4 {
-  padding-top: 20px;
-  text-transform: uppercase;
-  color: $shading3;
-}
-.robortImage img {
-  color: $shading3;
+.robortContainer img {
+  width: 900px;
 }

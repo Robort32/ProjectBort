@@ -384,39 +384,12 @@ h5 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #e6e6e6;
+  background: #cbcbcb;
   height: 70vh;
 }
 
-.robortImage {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-align: center;
-  border-radius: 50%;
-  background: #cbcbcb;
-  height: 500px;
-  width: 500px;
-}
-
-.robortImage h4 {
-  padding-top: 20px;
-  text-transform: uppercase;
-  color: #6e6e6e;
-}
-
-.robortImage img {
-  color: #6e6e6e;
+.robortContainer img {
+  width: 900px;
 }
 
 .searchContainer {
@@ -603,6 +576,11 @@ legend {
 
 .gameTextContainer h3 {
   height: 3.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .gameTextContainer a,
@@ -649,10 +627,6 @@ legend {
   padding-bottom: 10px;
 }
 
-.gameDetailItem {
-  text-align: right;
-}
-
 .gameDetailItem h5 {
   text-transform: capitalize;
 }
@@ -661,29 +635,7 @@ legend {
   font-size: 0.8rem;
 }
 
-.gameCard p:first-child {
-  text-align: left;
-  margin-right: 20px;
-}
-
-.gameTextContainer h3 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
 /*not currently on the screen - the trunicated descriptions  */
-.gameTextContainer > p {
-  -webkit-line-clamp: 7;
-  text-align: left;
-}
-
-.gameDescription {
-  margin-bottom: 20px;
-}
-
 footer {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -43,6 +43,11 @@
 }
 .gameTextContainer h3 {
   height: 3.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 .gameTextContainer a,
 .gameTextContainer a:visited {
@@ -63,32 +68,19 @@
   align-items: center;
   padding-bottom: 10px;
 }
-.gameDetailItem {
-  text-align: right;
-}
 .gameDetailItem h5 {
   text-transform: capitalize;
 }
 .gameSmallText {
   font-size: 0.8rem;
 }
-.gameCard p:first-child {
-  text-align: left;
-  margin-right: 20px;
-}
-.gameTextContainer h3 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
+
 //
 /*not currently on the screen - the trunicated descriptions  */
-.gameTextContainer > p {
-  -webkit-line-clamp: 7;
-  text-align: left;
-}
-.gameDescription {
-  margin-bottom: 20px;
-}
+// .gameTextContainer > p {
+//   -webkit-line-clamp: 7;
+//   text-align: left;
+// }
+// .gameDescription {
+//   margin-bottom: 20px;
+// }

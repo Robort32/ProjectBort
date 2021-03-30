@@ -112,7 +112,7 @@ projectBort.theMasterFunction = () => {
         });
       }
     };
-    // };
+
     projectBort.priceOptionSelected(projectBort.priceOption);
 
     //chainge the min player to a number
@@ -140,76 +140,39 @@ projectBort.theMasterFunction = () => {
       .then((jsonResponse) => {
         projectBort.showGames(jsonResponse);
         projectBort.hideRobortSection(jsonResponse);
-      });
+      })
+      .catch((err) =>
+        console.error("Your browser does not support templates :(")
+      );
   });
 };
 
 projectBort.showGames = (result) => {
-  const gameResultContainer = document.querySelector(".gameResultContainer");
   const resultArray = result.games;
+  console.log(resultArray);
+  //check to make sure templates are supported (catch added to fetch statement)
+  if ("content" in document.createElement("template")) {
+    const gameResultContainer = document.getElementById("gameResultContainer");
+    resultArray.forEach((game) => {
+      const gameTemplate = document
+        .getElementById("gameResultTemplate")
+        .content.cloneNode(true);
+      gameTemplate.getElementById("gameTitle").innerText = game.name;
+      gameTemplate.getElementById("gameImage").src = game.image_url;
+      gameTemplate.getElementById("gameImage").alt = game.name;
+      gameTemplate.getElementById("gameDetailMechanic").innerText =
+        "mechanic var";
+      gameTemplate.getElementById("gameDetailPrice").innerText = game.price;
+      gameTemplate.getElementById("gameDetailMinPlayer").innerText =
+        game.min_players;
+      gameTemplate.getElementById("gameDetailMaxPlayer").innerText =
+        game.max_players;
 
-  const gameContent = resultArray.map((resultItem) => {
-    return `
-    <div class="gameCard">
-      <div class="gameImageContainer">
-      <a href=${resultItem.url} target="_blank">
-        <img
-          src=${resultItem.image_url}
-          alt=${resultItem.name}
-          id="gameImage"
-          />
-      </a>
-      </div>
-  
-      <div class="gameTextContainer">
-      <a href=${resultItem.url} target="_blank">
-        <h3 id="gameTitle" class="gameTitle">${resultItem.name}</h3>
-        </a>
-        <div class="lineBreak"></div>
-        
-
-      <div class="gameDetail">
-        <div class="gameDetailItem">
-          <p class="gameSmallText">Mechanic</p>
-        </div>
-        <div class="gameDetailItem">
-          <h5>network and route building</h5>
-        </div>
-      </div>
-      <div class="gameDetail">
-        <div class="gameDetailItem">
-          <p class="gameSmallText">Price</p>
-        </div>
-        <div class="gameDetailItem">
-          <h5>$ ${resultItem.price_ca}</h5>
-        </div>
-      </div>
-      <div class="gameDetail">
-
-        <div class="gameDetailItem">
-          <p class="gameSmallText">Min Players</p>
-        </div>
-        <div class="gameDetailItem">
-          <h5>${resultItem.min_players}</h5>
-        </div>
-      </div>
-      <div class="gameDetail">
-        <div class="gameDetailItem">
-          <p class="gameSmallText">Max Players</p>
-        </div>
-        <div class="gameDetailItem">
-          <h5>${resultItem.max_players}</h5>
-        </div>
-      </div>
-
-
-
-
-      </div>
-      
-    </div>`;
-  });
-  gameResultContainer.innerHTML = gameContent.join("");
+      gameResultContainer.appendChild(gameTemplate);
+    });
+  } else {
+    console.error("Your browser does not support templates");
+  }
 };
 
 projectBort.getCategory = () => {};
@@ -236,3 +199,5 @@ projectBort.init = () => {
 };
 
 projectBort.init();
+//
+//
