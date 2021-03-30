@@ -132,7 +132,7 @@ projectBort.apiCall = (minPlayers, maxPlayers, mechanics, gtprice, ltprice) => {
     lt_price: ltprice,
     gt_max_players: maxPlayers,
   });
-  console.log(url);
+
   fetch(url)
     .then((res) => {
       return res.json();
