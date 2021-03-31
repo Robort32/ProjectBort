@@ -1,6 +1,6 @@
 .searchContainer {
   background-color: $primary4;
-  //   height: 70vh;
+  border-bottom: 2px solid $primary1;
 }
 .searchOptionsContainer {
   @include flexRowCenterItems;
@@ -8,7 +8,6 @@
 }
 .searchStart {
   background-color: $primary1;
-  // width: 300px;
   position: absolute;
   top: 10px;
   left: 20px;
@@ -24,18 +23,24 @@
   padding-right: $padding;
 }
 .searchStartForm {
-  @include flexRowCenterItems;
-  justify-content: space-between;
   margin-top: 80px;
 }
 form {
-  width: 100%;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1.7fr;
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 25px;
+  padding-bottom: 20px;
+}
+label {
+  font-family: $mainFontSize;
+  text-transform: capitalize;
+  padding-top: 10px;
 }
 .searchDropdown {
-  margin: 0 40px;
   appearance: none;
   border: 1px solid $shading1;
-  width: 50%;
   height: 40px;
   text-align: center;
   background-image: url("../assets/angle-double-down.svg");
@@ -43,28 +48,31 @@ form {
   background-repeat: no-repeat;
   background-position-x: 95%;
   background-position-y: center;
+  border-radius: $borderRadius;
   transition: all 0.3s;
 }
-.searchDropdown:hover {
-  background-color: $shading2;
-}
 input[type="submit"] {
+  width: 100%;
+  line-height: 1px;
+  font-family: $headerFontType;
+  font-size: $headingFontSize4;
   text-transform: uppercase;
   background-color: $accent1;
   border: transparent;
   border-radius: $borderRadius;
   height: 55px;
-  padding: $padding 45px;
+  padding: 35px 45px;
   white-space: normal;
   word-wrap: break-word;
   transition: all 0.3s;
+  grid-area: 1 / 3 / span 4;
 }
+
 input[type="submit"]:hover,
 input[type="submit"]:focus {
   @include buttonPress;
 }
-legend,
-label {
+legend {
   position: absolute !important;
   top: -9999px !important;
   left: -9999px !important;
