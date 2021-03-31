@@ -50,26 +50,21 @@
             name="searchStartForm"
           >
             <label for="searchMechanics" class="">game mechanics</label>
-            <select
-              name="optionSelect"
-              id="optionSelect"
-              class="searchDropdown"
-            >
+            <select name="mechOption" id="mechOption" class="searchDropdown">
               <option value="makeASelection" disabled selected>
                 Game Mechanics
               </option>
-              <option value="Acting">Acting</option>
-              <option value="Action">Action</option>
-              <option value="Betting">Betting</option>
-              <option value="Campaign">Campaign</option>
-              <option value="Cooperative play">Cooperative play</option>
-              <option value="Deduction">Deduction</option>
-              <option value="Network and Route Building">
-                Network and Route Building
+            </select>
+
+            <label for="searchCategories" class="">game category</label>
+            <select
+              name="categoryOption"
+              id="categoryOption"
+              class="searchDropdown"
+            >
+              <option value="makeASelection" disabled selected>
+                Game Category
               </option>
-              <option value="Player Elimination">Player Elimination</option>
-              <option value="Race">Race</option>
-              <option value="Trading">Trading</option>
             </select>
 
             <label for="priceOption" class="">price range</label>
@@ -82,8 +77,8 @@
 
             <label for="searchPlayers" class="">minimum players</label>
             <select
-              name="playerOption"
-              id="playerOption"
+              name="minPlayerOption"
+              id="minPlayerOption"
               class="searchDropdown"
             >
               <option value="makeASelection" disabled selected>
@@ -97,7 +92,7 @@
             <label for="maxPlayerOption" class="">maximum players</label>
             <select
               name="maxPlayerOption"
-              id="MaxplayerOption"
+              id="maxPlayerOption"
               class="searchDropdown"
             >
               <option value="makeASelection" disabled selected>
@@ -132,13 +127,13 @@
         <template id="gameResultTemplate" class="">
           <div class="gameCard">
             <div class="gameImageContainer">
-              <a href="" target="_blank">
+              <a href="" target="_blank" class="gameLink">
                 <img src="" alt="" class="gameImage" />
               </a>
             </div>
 
             <div class="gameTextContainer">
-              <a href="" target="_blank">
+              <a href="" target="_blank" class="gameLink">
                 <h3 class="gameTitle"></h3>
               </a>
               <div class="lineBreak"></div>

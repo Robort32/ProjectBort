@@ -44,24 +44,26 @@ projectBort.optionsArray = [
 ];
 
 projectBort.api = "https://api.boardgameatlas.com/api/search?";
-projectBort.clientID = "b8a4fHq3xL";
 
-//selecting the robort section to toggle
+projectBort.clientID = "b8a4fHq3xL";
 
 projectBort.submitDataToApi = () => {
   projectBort.submitBtn = document.querySelector(".submitBtn");
   projectBort.submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
+    projectBort.useMerchanics = document.querySelector("#mechOption").value;
+    projectBort.useCategories = document.querySelector("#categoryOption").value;
 
-    projectBort.mechanics();
+    // projectBort.mechanics();
     projectBort.pricePoint();
     projectBort.minMaxPlayers();
     projectBort.apiCall(
       projectBort.minPlayerNumber,
       projectBort.maxPlayerNumber,
-      projectBort.useInMech,
+      projectBort.useMerchanics,
       projectBort.priceGreaterThen,
-      projectBort.priceLowerThen
+      projectBort.priceLowerThen,
+      projectBort.useCategories
     );
   });
 };
@@ -77,14 +79,14 @@ projectBort.minMaxPlayers = () => {
   projectBort.maxPlayerNumber = parseInt(projectBort.maxPlayerOption, 10);
 };
 //getting value for mechanics
-projectBort.mechanics = () => {
-  projectBort.mechanicsOption = document.querySelector("#mechOption").value;
-  projectBort.optionsArray.forEach((e) => {
-    if (e.value === projectBort.mechanicsOption) {
-      projectBort.useInMech = e.mechId;
-    }
-  });
-};
+// projectBort.mechanics = () => {
+//   projectBort.mechanicsOption = document.querySelector("#mechOption").value;
+//   projectBort.optionsArray.forEach((e) => {
+//     if (e.value === projectBort.mechanicsOption) {
+//       projectBort.useInMech = e.mechId;
+//     }
+//   });
+// };
 //get value for price
 projectBort.pricePoint = () => {
   projectBort.priceOption = document.querySelector("#priceOption").value;
@@ -97,7 +99,7 @@ projectBort.pricePoint = () => {
     projectBort.priceLowerThen = priceNumber + 25;
   }
 };
-
+//hide robort section when games are received OR display "nothing found"
 projectBort.hideRobortSection = (info) => {
   projectBort.robortSection = document.querySelector(".robortSection");
   projectBort.gameResultContainer = document.querySelector(
@@ -114,7 +116,17 @@ projectBort.hideRobortSection = (info) => {
 };
 
 //Getting Our API
-projectBort.apiCall = (minPlayers, maxPlayers, mechanics, gtprice, ltprice) => {
+projectBort.apiCall = (
+  minPlayers,
+  maxPlayers,
+  mechanics,
+  gtprice,
+  ltprice,
+  categories
+) => {
+  //////
+
+  //////
   const url = new URL(projectBort.api);
   url.search = new URLSearchParams({
     client_id: projectBort.clientID,
@@ -124,6 +136,7 @@ projectBort.apiCall = (minPlayers, maxPlayers, mechanics, gtprice, ltprice) => {
     gt_price: gtprice,
     lt_price: ltprice,
     gt_max_players: maxPlayers,
+    categories: categories,
   });
   console.log(url);
   fetch(url)
@@ -136,9 +149,9 @@ projectBort.apiCall = (minPlayers, maxPlayers, mechanics, gtprice, ltprice) => {
     });
 };
 
+//show game results
 projectBort.showGames = (result) => {
   const resultArray = result.games;
-  console.log(resultArray);
   //check to make sure templates are supported (catch added to fetch statement)
   if ("content" in document.createElement("template")) {
     const gameResultContainer = document.getElementById("gameResultContainer");
@@ -146,6 +159,7 @@ projectBort.showGames = (result) => {
       const gameTemplate = document
         .getElementById("gameResultTemplate")
         .content.cloneNode(true);
+      gameTemplate.querySelector(".gameLink").href = game.url;
       gameTemplate.querySelector(".gameTitle").innerText = game.name;
       gameTemplate.querySelector(".gameImage").src = game.image_url;
       gameTemplate.querySelector(".gameImage").alt = game.name;
@@ -160,7 +174,7 @@ projectBort.showGames = (result) => {
       gameResultContainer.appendChild(gameTemplate);
     });
   } else {
-    console.error("Your browser does not support templates");
+    console.log("Your browser does not support templates");
   }
 };
 
@@ -181,7 +195,50 @@ projectBort.returnToTop = () => {
   });
 };
 
+projectBort.loadDropdowMechanic = () => {
+  projectBort.apiMechanics =
+    "https://api.boardgameatlas.com/api/game/mechanics?";
+  window.addEventListener("load", () => {
+    const url = new URL(projectBort.apiMechanics);
+    url.search = new URLSearchParams({
+      client_id: projectBort.clientID,
+    });
+    fetch(url).then((res) => {
+      res.json().then((response) => {
+        projectBort.populateDropdown(response.mechanics, "#mechOption");
+      });
+    });
+  });
+};
+projectBort.loadDropdowCategorgies = () => {
+  projectBort.apiCategories =
+    "https://api.boardgameatlas.com/api/game/categories?";
+  window.addEventListener("load", () => {
+    const url = new URL(projectBort.apiCategories);
+    url.search = new URLSearchParams({
+      client_id: projectBort.clientID,
+    });
+    fetch(url).then((res) => {
+      res.json().then((response) => {
+        projectBort.populateDropdown(response.categories, "#categoryOption");
+      });
+    });
+  });
+};
+//shared function to populate the dropdowns from a window load API call (categories & mechanics)
+projectBort.populateDropdown = (apiResult, location) => {
+  const dropdownLocation = document.querySelector(location);
+  apiResult.forEach((item) => {
+    const gameOption = document.createElement("option");
+    gameOption.textContent = item.name;
+    gameOption.value = item.id;
+    dropdownLocation.appendChild(gameOption);
+  });
+};
+
 projectBort.init = () => {
+  projectBort.loadDropdowMechanic();
+  projectBort.loadDropdowCategorgies();
   projectBort.submitDataToApi();
   projectBort.returnToTop();
 };
