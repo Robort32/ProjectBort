@@ -110,58 +110,9 @@ projectBort.hideRobortSection = (info) => {
       block: "end",
       inline: "nearest",
     });
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 7561e1220ed835b449b527a519dfa88b3572bad2
-
-
-<<<<<<< HEAD
-    projectBort.priceOptionSelected(projectBort.priceOption);
-
-    //chainge the min player to a number
-    const playerOptionNumber = parseInt(projectBort.playerOption, 10);
-
-    //changomg the max player ta number
-    const maxPLayerNumber = parseInt(projectBort.MaxplayerOption, 10);
-
-    //Getting Our API
-    const url = new URL(projectBort.api);
-    url.search = new URLSearchParams({
-      client_id: projectBort.clientID,
-      limit: 20,
-      min_players: playerOptionNumber,
-      mechanics: projectBort.useInMech,
-      gt_price: projectBort.priceGreaterThen,
-      lt_price: projectBort.priceLowerThen,
-      gt_max_players: maxPLayerNumber,
-=======
-  } else {
-    projectBort.robortSection.classList.add("hidden");
-    projectBort.gameResultContainer.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-      inline: "nearest",
->>>>>>> main
-    });
   }
 };
 
-<<<<<<< HEAD
-    fetch(url)
-      .then((res) => {
-        return res.json();
-      })
-      .then((jsonResponse) => {
-        projectBort.showGames(jsonResponse);
-        projectBort.hideRobortSection(jsonResponse);
-      })
-      .catch((err) =>
-        console.error("Your browser does not support templates :(")
-      );
-=======
-=======
->>>>>>> 7561e1220ed835b449b527a519dfa88b3572bad2
 //Getting Our API
 projectBort.apiCall = (minPlayers, maxPlayers, mechanics, gtprice, ltprice) => {
   const url = new URL(projectBort.api);
@@ -173,11 +124,6 @@ projectBort.apiCall = (minPlayers, maxPlayers, mechanics, gtprice, ltprice) => {
     gt_price: gtprice,
     lt_price: ltprice,
     gt_max_players: maxPlayers,
-<<<<<<< HEAD
->>>>>>> main
-=======
-
->>>>>>> 7561e1220ed835b449b527a519dfa88b3572bad2
   });
   console.log(url);
   fetch(url)
@@ -217,8 +163,7 @@ projectBort.showGames = (result) => {
     console.error("Your browser does not support templates");
   }
 };
-// This will be to get a category
-// projectBort.getCategory = () => {};
+
 //Hiding/unhiding the back to top button
 projectBort.returnToTop = () => {
   const backToTop = document.getElementById("returnToTop");
