@@ -110,13 +110,6 @@ projectBort.hideRobortSection = (info) => {
       block: "end",
       inline: "nearest",
     });
-  } else {
-    projectBort.robortSection.classList.add("hidden");
-    projectBort.gameResultContainer.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-      inline: "nearest",
-    });
   }
 };
 
@@ -144,69 +137,33 @@ projectBort.apiCall = (minPlayers, maxPlayers, mechanics, gtprice, ltprice) => {
 };
 
 projectBort.showGames = (result) => {
-  const gameResultContainer = document.querySelector(".gameResultContainer");
   const resultArray = result.games;
-  const gameContent = resultArray.map((resultItem) => {
-    return `
-    <div class="gameCard">
-      <div class="gameImageContainer">
-        <img
-          src=${resultItem.image_url}
-          alt=${resultItem.name}
-          id="gameImage"
-          />
-      </div>
-  
-      <div class="gameTextContainer">
-        <h3 id="gameTitle" class="gameTitle">${resultItem.name}</h3>
-        <div class="lineBreak"></div>
-        
+  console.log(resultArray);
+  //check to make sure templates are supported (catch added to fetch statement)
+  if ("content" in document.createElement("template")) {
+    const gameResultContainer = document.getElementById("gameResultContainer");
+    resultArray.forEach((game) => {
+      const gameTemplate = document
+        .getElementById("gameResultTemplate")
+        .content.cloneNode(true);
+      gameTemplate.querySelector(".gameTitle").innerText = game.name;
+      gameTemplate.querySelector(".gameImage").src = game.image_url;
+      gameTemplate.querySelector(".gameImage").alt = game.name;
+      gameTemplate.querySelector(".gameDetailMechanic").innerText =
+        "mechanic var";
+      gameTemplate.querySelector(".gameDetailPrice").innerText = game.price;
+      gameTemplate.querySelector(".gameDetailMinPlayer").innerText =
+        game.min_players;
+      gameTemplate.querySelector(".gameDetailMaxPlayer").innerText =
+        game.max_players;
 
-      <div class="gameDetail">
-        <div class="gameDetailItem">
-          <p class="gameSmallText">Mechanic</p>
-        </div>
-        <div class="gameDetailItem">
-          <h5>network and route building</h5>
-        </div>
-      </div>
-      <div class="gameDetail">
-        <div class="gameDetailItem">
-          <p class="gameSmallText">Price</p>
-        </div>
-        <div class="gameDetailItem">
-          <h5>$ ${resultItem.price_ca}</h5>
-        </div>
-      </div>
-      <div class="gameDetail">
-
-        <div class="gameDetailItem">
-          <p class="gameSmallText">Min Players</p>
-        </div>
-        <div class="gameDetailItem">
-          <h5>${resultItem.min_players}</h5>
-        </div>
-      </div>
-      <div class="gameDetail">
-        <div class="gameDetailItem">
-          <p class="gameSmallText">Max Players</p>
-        </div>
-        <div class="gameDetailItem">
-          <h5>${resultItem.max_players}</h5>
-        </div>
-      </div>
-
-
-
-
-      </div>
-      
-    </div>`;
-  });
-  gameResultContainer.innerHTML = gameContent.join("");
+      gameResultContainer.appendChild(gameTemplate);
+    });
+  } else {
+    console.error("Your browser does not support templates");
+  }
 };
-// This will be to get a category
-// projectBort.getCategory = () => {};
+
 //Hiding/unhiding the back to top button
 projectBort.returnToTop = () => {
   const backToTop = document.getElementById("returnToTop");
@@ -230,3 +187,5 @@ projectBort.init = () => {
 };
 
 projectBort.init();
+//
+//
