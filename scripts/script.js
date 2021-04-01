@@ -112,7 +112,6 @@ projectBort.apiCall = (
     .then((jsonResponse) => {
       projectBort.showGames(jsonResponse);
       projectBort.hideRobortSection(jsonResponse);
-      console.log(jsonResponse);
     });
 };
 //
