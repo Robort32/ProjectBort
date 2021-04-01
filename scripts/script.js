@@ -52,7 +52,7 @@ projectBort.submitDataToApi = () => {
   projectBort.submitBtn = document.querySelector(".submitBtn");
   projectBort.submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
-
+    // projectBort.cleanings();
     projectBort.mechanics();
     projectBort.pricePoint();
     projectBort.minMaxPlayers();
@@ -100,14 +100,19 @@ projectBort.pricePoint = () => {
 
 projectBort.hideRobortSection = (info) => {
   projectBort.robortSection = document.querySelector(".robortSection");
-  projectBort.gameResultContainer = document.querySelector(
-    ".gameResultContainer"
-  );
+
   if (info.count === 0) {
     projectBort.robortSection.classList.remove("hidden");
     projectBort.robortSection.scrollIntoView({
       behavior: "smooth",
       block: "end",
+      inline: "nearest",
+    });
+  } else {
+    projectBort.robortSection.classList.add("hidden");
+    projectBort.gameResultContainer.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
       inline: "nearest",
     });
   }
@@ -118,14 +123,14 @@ projectBort.apiCall = (minPlayers, maxPlayers, mechanics, gtprice, ltprice) => {
   const url = new URL(projectBort.api);
   url.search = new URLSearchParams({
     client_id: projectBort.clientID,
-    limit: 20,
+    limit: 10,
     min_players: minPlayers,
     mechanics: mechanics,
     gt_price: gtprice,
     lt_price: ltprice,
     gt_max_players: maxPlayers,
   });
-  console.log(url);
+
   fetch(url)
     .then((res) => {
       return res.json();
@@ -138,30 +143,44 @@ projectBort.apiCall = (minPlayers, maxPlayers, mechanics, gtprice, ltprice) => {
 
 projectBort.showGames = (result) => {
   const resultArray = result.games;
-  console.log(resultArray);
+
+  projectBort.gameResultContainer = document.getElementById(
+    "gameResultContainer"
+  );
+  //this call will remove the nodes
+  projectBort.removeNodes(projectBort.gameResultContainer);
+
   //check to make sure templates are supported (catch added to fetch statement)
   if ("content" in document.createElement("template")) {
-    const gameResultContainer = document.getElementById("gameResultContainer");
     resultArray.forEach((game) => {
-      const gameTemplate = document
+      projectBort.gameTemplate = document
         .getElementById("gameResultTemplate")
         .content.cloneNode(true);
-      gameTemplate.querySelector(".gameTitle").innerText = game.name;
-      gameTemplate.querySelector(".gameImage").src = game.image_url;
-      gameTemplate.querySelector(".gameImage").alt = game.name;
-      gameTemplate.querySelector(".gameDetailMechanic").innerText =
+
+      projectBort.gameTemplate.querySelector(".gameTitle").innerText =
+        game.name;
+      projectBort.gameTemplate.querySelector(".gameImage").src = game.image_url;
+      projectBort.gameTemplate.querySelector(".gameImage").alt = game.name;
+      projectBort.gameTemplate.querySelector(".gameDetailMechanic").innerText =
         "mechanic var";
-      gameTemplate.querySelector(".gameDetailPrice").innerText = game.price;
-      gameTemplate.querySelector(".gameDetailMinPlayer").innerText =
+      projectBort.gameTemplate.querySelector(".gameDetailPrice").innerText =
+        game.price;
+      projectBort.gameTemplate.querySelector(".gameDetailMinPlayer").innerText =
         game.min_players;
-      gameTemplate.querySelector(".gameDetailMaxPlayer").innerText =
+      projectBort.gameTemplate.querySelector(".gameDetailMaxPlayer").innerText =
         game.max_players;
 
-      gameResultContainer.appendChild(gameTemplate);
+      projectBort.gameResultContainer.appendChild(projectBort.gameTemplate);
     });
   } else {
     console.error("Your browser does not support templates");
   }
+};
+
+projectBort.removeNodes = (template) => {
+  template.querySelectorAll(".gameCard").forEach((e) => {
+    e.parentNode.removeChild(e);
+  });
 };
 
 //Hiding/unhiding the back to top button
@@ -187,5 +206,3 @@ projectBort.init = () => {
 };
 
 projectBort.init();
-//
-//
