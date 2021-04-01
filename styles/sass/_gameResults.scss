@@ -25,6 +25,20 @@
   width: 100%;
   height: 350px;
   border-bottom: 5px solid $primary1;
+  position: relative;
+}
+.gameAvgRating {
+  position: absolute;
+  top: -15px;
+  right: -10px;
+  padding: 10px;
+  background-color: $primary2;
+  color: $white;
+  border-radius: $borderRadius;
+  z-index: 10;
+}
+.gameAvgRating p {
+  font-size: 0.8rem;
 }
 .gameImageContainer img {
   width: 100%;
@@ -74,13 +88,3 @@
 .gameSmallText {
   font-size: 0.8rem;
 }
-
-//
-/*not currently on the screen - the trunicated descriptions  */
-// .gameTextContainer > p {
-//   -webkit-line-clamp: 7;
-//   text-align: left;
-// }
-// .gameDescription {
-//   margin-bottom: 20px;
-// }

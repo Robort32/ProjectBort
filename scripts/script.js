@@ -80,10 +80,8 @@ projectBort.apiCall = (
   ltprice,
   categories
 ) => {
-  //////
   projectBort.api = "https://api.boardgameatlas.com/api/search?";
-  const url = new URL(projectBort.api);
-  // const parms = new URLSearchParams(url.search);
+  const searchUrl = new URL(projectBort.api);
   const searchParams = {
     client_id: projectBort.clientID,
     // limit: 20,
@@ -105,15 +103,16 @@ projectBort.apiCall = (
       cleanUrl.set(value[0], value[1]);
     }
   });
-  url.search = cleanUrl;
+  searchUrl.search = cleanUrl;
 
-  fetch(url)
+  fetch(searchUrl)
     .then((res) => {
       return res.json();
     })
     .then((jsonResponse) => {
       projectBort.showGames(jsonResponse);
       projectBort.hideRobortSection(jsonResponse);
+      console.log(jsonResponse);
     });
 };
 //
@@ -138,11 +137,14 @@ projectBort.showGames = (result) => {
         game.min_players;
       gameTemplate.querySelector(".gameDetailMaxPlayer").innerText =
         game.max_players;
+      gameTemplate.querySelector(
+        ".gameAvgRatingText"
+      ).innerText = game.average_user_rating.toFixed(2);
 
       gameResultContainer.appendChild(gameTemplate);
     });
   } else {
-    console.log("Your browser does not support templates");
+    error("Your browser does not support templates");
   }
 };
 //
