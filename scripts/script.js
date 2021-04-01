@@ -95,6 +95,7 @@ projectBort.apiCall = (
     categories: categories,
   };
 
+  //remove any unselected dropdown means
   const cleanUrl = new URLSearchParams();
   Object.entries(searchParams).forEach((value) => {
     if (
@@ -105,48 +106,6 @@ projectBort.apiCall = (
     }
   });
   url.search = cleanUrl;
-
-  // const keysToDelete = [];
-  // searchParams.forEach((v, k) => {
-  //   // console.log(k, v);
-  //   if (v === "makeASelection") {
-  //     // console.log(k, v);
-  //     keysToDelete.push(k);
-  //   }
-  //   // console.log(keysToDelete)
-  // });
-  // console.log(keysToDelete);
-  // serachParams.forEach((v, k) => {
-  //   console.log(v, k);
-  // });
-
-  // parms.set("client_id", projectBort.clientID);
-
-  // if (categories !== "makeASelection") {
-  //   parms.set("categories", categories);
-  // }
-  // if (minPlayers !== "makeASelection") {
-  //   parms.set("min_player", minPlayers);
-  // }
-
-  // parms.set("categories", categories);
-
-  //////
-  /////
-
-  // projectBort.api = "https://api.boardgameatlas.com/api/search?";
-  // const url = new URL(projectBort.api);
-  // url.search = new URLSearchParams({
-  //   client_id: projectBort.clientID,
-  //   limit: 20,
-  //   min_players: minPlayers,
-  //   mechanics: mechanics,
-  //   gt_price: gtprice,
-  //   lt_price: ltprice,
-  //   gt_max_players: maxPlayers,
-  //   categories: categories,
-  // });
-  // console.log(url);
 
   fetch(url)
     .then((res) => {
