@@ -73,7 +73,6 @@ h5 {
   align-items: center;
 }
 @mixin buttonPress {
-  background-color: $accent2;
   transform: scale(0.98);
   box-shadow: 5px 5px 15px $shading1;
 }

@@ -28,7 +28,7 @@
 form {
   width: 90%;
   display: grid;
-  grid-template-columns: 1fr 2fr 1.7fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-rows: repeat(4, 1fr);
   grid-gap: 25px;
   padding-bottom: 20px;
@@ -51,7 +51,8 @@ label {
   border-radius: $borderRadius;
   transition: all 0.3s;
 }
-input[type="submit"] {
+input[type="submit"],
+input[type="reset"] {
   width: 100%;
   line-height: 1px;
   font-family: $headerFontType;
@@ -65,13 +66,15 @@ input[type="submit"] {
   white-space: normal;
   word-wrap: break-word;
   transition: all 0.3s;
-  grid-area: 1 / 3 / span 4;
+  grid-area: 6 / 2;
 }
 
 input[type="submit"]:hover,
 input[type="submit"]:focus {
   @include buttonPress;
+  background-color: $accent2;
 }
+
 legend {
   position: absolute !important;
   top: -9999px !important;
