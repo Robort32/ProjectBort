@@ -124,7 +124,9 @@ projectBort.apiCall = (
 projectBort.showGames = (result) => {
   const resultArray = result.games;
   const gameResultContainer = document.getElementById("gameResultContainer");
+  const sortDropdown = document.querySelector(".sortDropdown");
   gameResultContainer.style.display = "grid";
+  sortDropdown.style.display = "block";
   projectBort.removeNodes(gameResultContainer);
   //check to make sure templates are supported (catch added to fetch statement)
   if ("content" in document.createElement("template")) {
