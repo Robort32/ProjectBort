@@ -131,9 +131,7 @@ projectBort.showGames = (result) => {
       gameTemplate.querySelector(".gameImage").alt = game.name;
       gameTemplate.querySelector(".gameDetailMechanic").innerText =
         "mechanic var";
-      gameTemplate.querySelector(
-        ".gameDetailPrice"
-      ).innerText = $ ${game.price};
+      gameTemplate.querySelector(".gameDetailPrice").innerText = game.price_ca;
       gameTemplate.querySelector(".gameDetailMinPlayer").innerText =
         game.min_players;
       gameTemplate.querySelector(".gameDetailMaxPlayer").innerText =
@@ -222,6 +220,18 @@ projectBort.returnToTop = () => {
   });
 };
 //
+//
+
+document.querySelector(".clearBtn").addEventListener("click", function () {
+  projectBort.allSelects = document.querySelectorAll("select");
+
+  projectBort.allSelects.forEach((element) => {
+    element.selectedIndex = 0;
+  });
+
+  // document.getElementById("mechOption").selectedIndex = 0;
+  // doc
+});
 //
 //go get it!
 projectBort.init = () => {

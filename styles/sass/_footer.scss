@@ -27,7 +27,6 @@ footer {
 .footerTextSocial {
   @include flexRowCenterItems;
   justify-content: flex-start;
-  align-items: flex-start;
 }
 .footerText p {
   padding-left: 20px;
