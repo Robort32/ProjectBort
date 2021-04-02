@@ -96,7 +96,8 @@ projectBort.apiCall = (
     gt_max_players: maxPlayers,
     categories: categories,
   };
-
+  console.log(searchParams);
+  console.log(searchUrl);
   //remove any unselected dropdown means
   const cleanUrl = new URLSearchParams();
   Object.entries(searchParams).forEach((value) => {
@@ -131,7 +132,7 @@ projectBort.showGames = (result) => {
   //check to make sure templates are supported (catch added to fetch statement)
   if ("content" in document.createElement("template")) {
     resultArray.forEach((game) => {
-      projectBort.gameTemplate = document
+      const gameTemplate = document
         .getElementById("gameResultTemplate")
         .content.cloneNode(true);
 
@@ -139,8 +140,10 @@ projectBort.showGames = (result) => {
       gameTemplate.querySelector(".gameTitle").innerText = game.name;
       gameTemplate.querySelector(".gameImage").src = game.image_url;
       gameTemplate.querySelector(".gameImage").alt = game.name;
-      gameTemplate.querySelector(".gameDetailMechanic").innerText =
-      gameTemplate.querySelector(".gameDetailPrice").innerText = game.price;
+      gameTemplate.querySelector(
+        ".gameDetailMechanic"
+      ).innerText = gameTemplate.querySelector(".gameDetailPrice").innerText =
+        game.price_ca;
       gameTemplate.querySelector(".gameDetailMinPlayer").innerText =
         game.min_players;
       gameTemplate.querySelector(".gameDetailMaxPlayer").innerText =
@@ -155,7 +158,6 @@ projectBort.showGames = (result) => {
     error("Your browser does not support templates");
   }
 };
-
 
 //
 //things that run on the page load - populating drop downs & general stylings
@@ -214,7 +216,6 @@ projectBort.removeNodes = (template) => {
     e.parentNode.removeChild(e);
   });
 };
-
 
 //Hiding/unhiding the back to top button
 projectBort.returnToTop = () => {
