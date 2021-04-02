@@ -388,8 +388,8 @@ h5 {
   height: 70vh;
 }
 
-.robortContainer img {
-  width: 900px;
+.robortcontainer img {
+  width: 84%;
 }
 
 .searchContainer {
@@ -519,6 +519,7 @@ legend {
       grid-template-rows: 1fr;
   grid-gap: 20px;
   background-color: #fdfdfd;
+  display: none;
 }
 
 /* individual card result styling */

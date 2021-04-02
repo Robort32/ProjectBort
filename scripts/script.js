@@ -67,6 +67,13 @@ projectBort.hideRobortSection = (info) => {
       block: "end",
       inline: "nearest",
     });
+  } else {
+    projectBort.robortSection.classList.add("hidden");
+    projectBort.gameResultContainer.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    });
   }
 };
 
@@ -119,6 +126,7 @@ projectBort.apiCall = (
 projectBort.showGames = (result) => {
   const resultArray = result.games;
   const gameResultContainer = document.getElementById("gameResultContainer");
+  gameResultContainer.style.display = "grid";
   projectBort.removeNodes(gameResultContainer);
   //check to make sure templates are supported (catch added to fetch statement)
   if ("content" in document.createElement("template")) {
@@ -132,7 +140,9 @@ projectBort.showGames = (result) => {
       gameTemplate.querySelector(".gameImage").alt = game.name;
       gameTemplate.querySelector(".gameDetailMechanic").innerText =
         "mechanic var";
-      gameTemplate.querySelector(".gameDetailPrice").innerText = game.price;
+      gameTemplate.querySelector(
+        ".gameDetailPrice"
+      ).innerText = `$ ${game.price}`;
       gameTemplate.querySelector(".gameDetailMinPlayer").innerText =
         game.min_players;
       gameTemplate.querySelector(".gameDetailMaxPlayer").innerText =
