@@ -1,17 +1,12 @@
 const projectBort = {};
-
 projectBort.clientID = "b8a4fHq3xL";
-
 projectBort.submitDataToApi = () => {
   projectBort.submitBtn = document.querySelector(".submitBtn");
-
   projectBort.submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
-
     //grab the value of Mechanics and Categories (loaded in window from API first thing)
     projectBort.useMerchanics = document.querySelector("#mechOption").value;
     projectBort.useCategories = document.querySelector("#categoryOption").value;
-
     //creating the price window selected by user
     projectBort.pricePoint();
     //creating the window of min/max players as selected by user
@@ -43,7 +38,6 @@ projectBort.minMaxPlayers = () => {
 //get value for price
 projectBort.pricePoint = () => {
   projectBort.priceOption = document.querySelector("#priceOption").value;
-
   let priceNumber = parseInt(projectBort.priceOption, 10);
   if (priceNumber === 75) {
     projectBort.priceGreaterThen = 75;
@@ -67,9 +61,15 @@ projectBort.hideRobortSection = (info) => {
       block: "end",
       inline: "nearest",
     });
+  } else {
+    projectBort.robortSection.classList.add("hidden");
+    projectBort.gameResultContainer.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    });
   }
 };
-
 //
 //Getting the information from the API
 projectBort.apiCall = (
@@ -92,8 +92,6 @@ projectBort.apiCall = (
     gt_max_players: maxPlayers,
     categories: categories,
   };
-  console.log(searchParams);
-  console.log(searchUrl);
   //remove any unselected dropdown means
   const cleanUrl = new URLSearchParams();
   Object.entries(searchParams).forEach((value) => {
@@ -105,7 +103,6 @@ projectBort.apiCall = (
     }
   });
   searchUrl.search = cleanUrl;
-
   fetch(searchUrl)
     .then((res) => {
       return res.json();
@@ -120,6 +117,7 @@ projectBort.apiCall = (
 projectBort.showGames = (result) => {
   const resultArray = result.games;
   const gameResultContainer = document.getElementById("gameResultContainer");
+  gameResultContainer.style.display = "grid";
   projectBort.removeNodes(gameResultContainer);
   //check to make sure templates are supported (catch added to fetch statement)
   if ("content" in document.createElement("template")) {
@@ -131,16 +129,11 @@ projectBort.showGames = (result) => {
       gameTemplate.querySelector(".gameTitle").innerText = game.name;
       gameTemplate.querySelector(".gameImage").src = game.image_url;
       gameTemplate.querySelector(".gameImage").alt = game.name;
-<<<<<<< HEAD
-      gameTemplate.querySelector(
-        ".gameDetailMechanic"
-      ).innerText = gameTemplate.querySelector(".gameDetailPrice").innerText =
-        game.price_ca;
-=======
       gameTemplate.querySelector(".gameDetailMechanic").innerText =
         "mechanic var";
-      gameTemplate.querySelector(".gameDetailPrice").innerText = game.price;
->>>>>>> main
+      gameTemplate.querySelector(
+        ".gameDetailPrice"
+      ).innerText = $ ${game.price};
       gameTemplate.querySelector(".gameDetailMinPlayer").innerText =
         game.min_players;
       gameTemplate.querySelector(".gameDetailMaxPlayer").innerText =
@@ -148,16 +141,12 @@ projectBort.showGames = (result) => {
       gameTemplate.querySelector(
         ".gameAvgRatingText"
       ).innerText = game.average_user_rating.toFixed(2);
-
       gameResultContainer.appendChild(gameTemplate);
     });
   } else {
     error("Your browser does not support templates");
   }
 };
-<<<<<<< HEAD
-
-=======
 //
 //remove all game cards
 projectBort.removeNodes = (template) => {
@@ -165,7 +154,6 @@ projectBort.removeNodes = (template) => {
     e.parentNode.removeChild(e);
   });
 };
->>>>>>> main
 //
 //things that run on the page load - populating drop downs & general stylings
 projectBort.pageLoad = () => {
@@ -217,16 +205,6 @@ projectBort.populateDropdown = (apiResult, location) => {
   });
 };
 //
-<<<<<<< HEAD
-//remove all game cards
-projectBort.removeNodes = (template) => {
-  template.querySelectorAll(".gameCard").forEach((e) => {
-    e.parentNode.removeChild(e);
-  });
-};
-
-=======
->>>>>>> main
 //Hiding/unhiding the back to top button
 projectBort.returnToTop = () => {
   const backToTop = document.getElementById("returnToTop");
@@ -250,7 +228,6 @@ projectBort.init = () => {
   projectBort.pageLoad();
   projectBort.submitDataToApi();
 };
-
 projectBort.init();
 //
 //
