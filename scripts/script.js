@@ -1,17 +1,12 @@
 const projectBort = {};
-
 projectBort.clientID = "b8a4fHq3xL";
-
 projectBort.submitDataToApi = () => {
   projectBort.submitBtn = document.querySelector(".submitBtn");
-
   projectBort.submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
-
     //grab the value of Mechanics and Categories (loaded in window from API first thing)
     projectBort.useMerchanics = document.querySelector("#mechOption").value;
     projectBort.useCategories = document.querySelector("#categoryOption").value;
-
     //creating the price window selected by user
     projectBort.pricePoint();
     //creating the window of min/max players as selected by user
@@ -43,7 +38,6 @@ projectBort.minMaxPlayers = () => {
 //get value for price
 projectBort.pricePoint = () => {
   projectBort.priceOption = document.querySelector("#priceOption").value;
-
   let priceNumber = parseInt(projectBort.priceOption, 10);
   if (priceNumber === 75) {
     projectBort.priceGreaterThen = 75;
@@ -67,9 +61,15 @@ projectBort.hideRobortSection = (info) => {
       block: "end",
       inline: "nearest",
     });
+  } else {
+    projectBort.robortSection.classList.add("hidden");
+    projectBort.gameResultContainer.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    });
   }
 };
-
 //
 //Getting the information from the API
 projectBort.apiCall = (
@@ -92,7 +92,6 @@ projectBort.apiCall = (
     gt_max_players: maxPlayers,
     categories: categories,
   };
-
   //remove any unselected dropdown means
   const cleanUrl = new URLSearchParams();
   Object.entries(searchParams).forEach((value) => {
@@ -104,7 +103,6 @@ projectBort.apiCall = (
     }
   });
   searchUrl.search = cleanUrl;
-
   fetch(searchUrl)
     .then((res) => {
       return res.json();
@@ -119,116 +117,6 @@ projectBort.apiCall = (
 projectBort.showGames = (result) => {
   const resultArray = result.games;
   const gameResultContainer = document.getElementById("gameResultContainer");
+  gameResultContainer.style.display = "grid";
   projectBort.removeNodes(gameResultContainer);
-  //check to make sure templates are supported (catch added to fetch statement)
-  if ("content" in document.createElement("template")) {
-    resultArray.forEach((game) => {
-      const gameTemplate = document
-        .getElementById("gameResultTemplate")
-        .content.cloneNode(true);
-      gameTemplate.querySelector(".gameLink").href = game.url;
-      gameTemplate.querySelector(".gameTitle").innerText = game.name;
-      gameTemplate.querySelector(".gameImage").src = game.image_url;
-      gameTemplate.querySelector(".gameImage").alt = game.name;
-      gameTemplate.querySelector(".gameDetailMechanic").innerText =
-        "mechanic var";
-      gameTemplate.querySelector(".gameDetailPrice").innerText = game.price;
-      gameTemplate.querySelector(".gameDetailMinPlayer").innerText =
-        game.min_players;
-      gameTemplate.querySelector(".gameDetailMaxPlayer").innerText =
-        game.max_players;
-      gameTemplate.querySelector(
-        ".gameAvgRatingText"
-      ).innerText = game.average_user_rating.toFixed(2);
-
-      gameResultContainer.appendChild(gameTemplate);
-    });
-  } else {
-    error("Your browser does not support templates");
-  }
-};
-//
-//remove all game cards
-projectBort.removeNodes = (template) => {
-  template.querySelectorAll(".gameCard").forEach((e) => {
-    e.parentNode.removeChild(e);
-  });
-};
-//
-//things that run on the page load - populating drop downs & general stylings
-projectBort.pageLoad = () => {
-  window.addEventListener("load", () => {
-    projectBort.loadDropdowMechanic();
-    projectBort.loadDropdowCategorgies();
-    projectBort.returnToTop();
-  });
-};
-//
-//API call to populate game mechanic dropdown
-projectBort.loadDropdowMechanic = () => {
-  const mechanicUrl = new URL(
-    "https://api.boardgameatlas.com/api/game/mechanics?"
-  );
-  mechanicUrl.search = new URLSearchParams({
-    client_id: projectBort.clientID,
-  });
-  fetch(mechanicUrl).then((res) => {
-    res.json().then((response) => {
-      projectBort.populateDropdown(response.mechanics, "#mechOption");
-    });
-  });
-};
-//
-//API call to populate game category dropdown
-projectBort.loadDropdowCategorgies = () => {
-  const categoryUrl = new URL(
-    "https://api.boardgameatlas.com/api/game/categories?"
-  );
-  categoryUrl.search = new URLSearchParams({
-    client_id: projectBort.clientID,
-  });
-  fetch(categoryUrl).then((res) => {
-    res.json().then((response) => {
-      projectBort.populateDropdown(response.categories, "#categoryOption");
-    });
-  });
-};
-//
-//shared function to populate the dropdowns from a window load API call (categories & mechanics)
-projectBort.populateDropdown = (apiResult, location) => {
-  const dropdownLocation = document.querySelector(location);
-  apiResult.forEach((item) => {
-    const gameOption = document.createElement("option");
-    gameOption.textContent = item.name;
-    gameOption.value = item.id;
-    dropdownLocation.appendChild(gameOption);
-  });
-};
-//
-//Hiding/unhiding the back to top button
-projectBort.returnToTop = () => {
-  const backToTop = document.getElementById("returnToTop");
-  window.addEventListener("scroll", function () {
-    if (
-      document.body.scrollTop > 200 ||
-      document.documentElement.scrollTop > 200
-    ) {
-      backToTop.style.visibility = "visible";
-      backToTop.style.opacity = 1;
-    } else {
-      backToTop.style.visibility = "hidden";
-      backToTop.style.opacity = 0;
-    }
-  });
-};
-//
-//
-//go get it!
-projectBort.init = () => {
-  projectBort.pageLoad();
-  projectBort.submitDataToApi();
-};
-
-projectBort.init();
-//
-//
+  //che
