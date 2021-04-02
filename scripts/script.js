@@ -125,7 +125,7 @@ projectBort.apiCall = (
 //
 //show game results in cards
 projectBort.showGames = (result) => {
-  // const resultArray = result.games;
+  console.log(result);
   const gameResultContainer = document.getElementById("gameResultContainer");
   const sortDropdown = document.querySelector(".sortDropdown");
   gameResultContainer.style.display = "grid";
@@ -141,8 +141,6 @@ projectBort.showGames = (result) => {
       gameTemplate.querySelector(".gameTitle").innerText = game.name;
       gameTemplate.querySelector(".gameImage").src = game.image_url;
       gameTemplate.querySelector(".gameImage").alt = game.name;
-      gameTemplate.querySelector(".gameDetailMechanic").innerText =
-        "mechanic var";
       gameTemplate.querySelector(
         ".gameDetailPrice"
       ).innerText = `$ ${game.price}`;
@@ -153,6 +151,10 @@ projectBort.showGames = (result) => {
       gameTemplate.querySelector(
         ".gameAvgRatingText"
       ).innerText = game.average_user_rating.toFixed(2);
+      gameTemplate.querySelector(".gameDetailPlaytime").innerText =
+        game.min_playtime;
+      gameTemplate.querySelector(".gameDetailYear").innerText =
+        game.year_published;
 
       gameResultContainer.appendChild(gameTemplate);
     });
@@ -163,6 +165,8 @@ projectBort.showGames = (result) => {
   projectBort.sortByPrice(result);
   projectBort.sortByName(result);
 };
+//
+
 //
 //remove all game cards
 projectBort.removeNodes = (template) => {
@@ -226,8 +230,8 @@ projectBort.returnToTop = () => {
   const backToTop = document.getElementById("returnToTop");
   window.addEventListener("scroll", function () {
     if (
-      document.body.scrollTop > 200 ||
-      document.documentElement.scrollTop > 200
+      document.body.scrollTop > 600 ||
+      document.documentElement.scrollTop > 600
     ) {
       backToTop.style.visibility = "visible";
       backToTop.style.opacity = 1;
@@ -237,6 +241,19 @@ projectBort.returnToTop = () => {
     }
   });
 };
+//
+//
+
+document.querySelector(".clearBtn").addEventListener("click", function () {
+  projectBort.allSelects = document.querySelectorAll("select");
+
+  projectBort.allSelects.forEach((element) => {
+    element.selectedIndex = 0;
+  });
+
+  // document.getElementById("mechOption").selectedIndex = 0;
+  // doc
+});
 //
 //sort results based on rating (highest to lowest)
 projectBort.sortByRating = (result) => {
@@ -261,7 +278,6 @@ projectBort.sortByName = (result) => {
   const sortAlphabetical = document.getElementById("sortAlphabetical");
   sortAlphabetical.addEventListener("click", function () {
     const sortedResult = result.sort((a, b) => a.name.localeCompare(b.name));
-    // console.log(sortedResult);
     projectBort.showGames(sortedResult);
   });
 };

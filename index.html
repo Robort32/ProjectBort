@@ -105,6 +105,7 @@
 
             <!-- submit button to generate game list -->
             <input type="submit" value="search" class="submitBtn" />
+            <input type="button" value="clear" class="clearBtn" />
           </form>
         </div>
       </section>
@@ -114,30 +115,22 @@
       <section class="robortSection">
         <div class="robortContainer wrapper">
           <img src="./assets/robortLogo.png" alt="Robort-32" id="robortLogo" />
-          <!-- <img src="./assets/robortLogoError.gif" alt="Robort-32 error message" class="hidden"/> -->
         </div>
       </section>
       <!-- Search bar / User input section end -->
 
-      <!--  -->
-      <!--  -->
-      <!--  -->
-      <!--  -->
+      <!-- Sort by bar (appears when search is successful)  -->
       <section class="sortDropdown">
-        <div class="sortContent wrapper">
+        <div class="sortContent">
+          <h4>Sort By<i class="lni lni-arrow-down-circle"></i></h4>
           <ul>
             <li id="sortAverageRating">Average Rating</li>
             <li id="sortLowestPrice">Lowest Price</li>
             <li id="sortAlphabetical">Alphabetical A-Z</li>
           </ul>
         </div>
-        <h4>Sort By<i class="lni lni-arrow-down-circle"></i></h4>
       </section>
-
-      <!--  -->
-      <!--  -->
-      <!--  -->
-      <!--  -->
+      <!-- Sort by end -->
 
       <!-- game results start -->
       <section
@@ -162,10 +155,6 @@
               </a>
               <div class="lineBreak"></div>
               <div class="gameDetail">
-                <p class="gameSmallText">Mechanic</p>
-                <h5 class="gameDetailMechanic"></h5>
-              </div>
-              <div class="gameDetail">
                 <p class="gameSmallText">Price</p>
                 <h5 class="gameDetailPrice"></h5>
               </div>
@@ -176,6 +165,14 @@
               <div class="gameDetail">
                 <p class="gameSmallText">Max Players</p>
                 <h5 class="gameDetailMaxPlayer"></h5>
+              </div>
+              <div class="gameDetail">
+                <p class="gameSmallText">Approx. Playtime</p>
+                <h5 class="gameDetailPlaytime"></h5>
+              </div>
+              <div class="gameDetail">
+                <p class="gameSmallText">Year Published</p>
+                <h5 class="gameDetailYear"></h5>
               </div>
             </div>
           </div>
