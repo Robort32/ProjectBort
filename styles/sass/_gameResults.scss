@@ -108,11 +108,14 @@
 .lni {
   margin-left: 20px;
   transition: transform 0.5s;
+  cursor: pointer;
 }
-.sortDropdown:hover .lni {
+.sortDropdown:hover .lni,
+.sortDropdown:focus .lni {
   transform: rotate(-180deg);
 }
-.sortDropdown:hover .sortContent {
+.sortDropdown:hover .sortContent,
+.sortDropdown:focus .sortContent {
   visibility: visible;
 }
 .sortDropdown ul {
@@ -130,4 +133,5 @@
 .sortDropdown li:hover,
 .sortDropdown li:focus {
   background-color: $primary3;
+  cursor: pointer;
 }

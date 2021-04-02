@@ -672,14 +672,17 @@ legend {
   transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
   transition: transform 0.5s, -webkit-transform 0.5s;
+  cursor: pointer;
 }
 
-.sortDropdown:hover .lni {
+.sortDropdown:hover .lni,
+.sortDropdown:focus .lni {
   -webkit-transform: rotate(-180deg);
           transform: rotate(-180deg);
 }
 
-.sortDropdown:hover .sortContent {
+.sortDropdown:hover .sortContent,
+.sortDropdown:focus .sortContent {
   visibility: visible;
 }
 
@@ -701,6 +704,7 @@ legend {
 .sortDropdown li:hover,
 .sortDropdown li:focus {
   background-color: #5d7cb5;
+  cursor: pointer;
 }
 
 footer {

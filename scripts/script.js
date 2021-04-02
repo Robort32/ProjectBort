@@ -115,14 +115,14 @@ projectBort.apiCall = (
       return res.json();
     })
     .then((jsonResponse) => {
-      projectBort.showGames(jsonResponse);
+      projectBort.showGames(jsonResponse.games);
       projectBort.hideRobortSection(jsonResponse);
     });
 };
 //
 //show game results in cards
 projectBort.showGames = (result) => {
-  const resultArray = result.games;
+  // const resultArray = result.games;
   const gameResultContainer = document.getElementById("gameResultContainer");
   const sortDropdown = document.querySelector(".sortDropdown");
   gameResultContainer.style.display = "grid";
@@ -130,7 +130,7 @@ projectBort.showGames = (result) => {
   projectBort.removeNodes(gameResultContainer);
   //check to make sure templates are supported (catch added to fetch statement)
   if ("content" in document.createElement("template")) {
-    resultArray.forEach((game) => {
+    result.forEach((game) => {
       const gameTemplate = document
         .getElementById("gameResultTemplate")
         .content.cloneNode(true);
@@ -156,6 +156,9 @@ projectBort.showGames = (result) => {
   } else {
     error("Your browser does not support templates");
   }
+  projectBort.sortByRating(result);
+  projectBort.sortByPrice(result);
+  projectBort.sortByName(result);
 };
 //
 //remove all game cards
@@ -232,7 +235,33 @@ projectBort.returnToTop = () => {
   });
 };
 //
-
+//sort results based on rating (highest to lowest)
+projectBort.sortByRating = (result) => {
+  const sortAverageRating = document.getElementById("sortAverageRating");
+  sortAverageRating.addEventListener("click", function () {
+    const sortedResult = result.sort(
+      (x, y) => y.average_user_rating - x.average_user_rating
+    );
+    projectBort.showGames(sortedResult);
+  });
+};
+//sort results based on price (lowest to highest)
+projectBort.sortByPrice = (result) => {
+  const sortLowestPrice = document.getElementById("sortLowestPrice");
+  sortLowestPrice.addEventListener("click", function () {
+    const sortedResult = result.sort((x, y) => x.price - y.price);
+    projectBort.showGames(sortedResult);
+  });
+};
+//sort results alphabetically (a-z)
+projectBort.sortByName = (result) => {
+  const sortAlphabetical = document.getElementById("sortAlphabetical");
+  sortAlphabetical.addEventListener("click", function () {
+    const sortedResult = result.sort((a, b) => a.name.localeCompare(b.name));
+    // console.log(sortedResult);
+    projectBort.showGames(sortedResult);
+  });
+};
 //
 //
 //go get it!
