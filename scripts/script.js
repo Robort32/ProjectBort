@@ -58,7 +58,10 @@ projectBort.pricePoint = () => {
 projectBort.hideRobortSection = (info) => {
   projectBort.robortSection = document.querySelector(".robortSection");
   projectBort.sortDropdown = document.querySelector(".sortDropdown");
+  const robortLogo = document.getElementById("robortLogo");
   if (info.count === 0) {
+    robortLogo.src = "./assets/robortLogoError.gif";
+    robortLogo.alt = "Robort Error. Search Again";
     projectBort.robortSection.classList.remove("hidden");
     projectBort.robortSection.scrollIntoView({
       behavior: "smooth",
