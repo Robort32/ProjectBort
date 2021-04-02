@@ -35,3 +35,36 @@
   padding-right: 20px;
   text-align: right;
 }
+//media queries
+@media (max-width: 1140px) {
+}
+@media (max-width: 960px) {
+}
+@media (max-width: 660px) {
+  .headerImage {
+    height: 50vh;
+  }
+  .headerTextBox {
+    @include flexColumnCenterItems;
+    width: 85%;
+    height: 150px;
+  }
+  .headerTextBox h1 {
+    padding: 10px 0;
+    line-height: 0.9;
+    text-align: center;
+    width: 100%;
+  }
+  .headerTextBox p {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+  .headerTextBox span {
+    letter-spacing: 0;
+  }
+}
+@media (max-width: 480px) {
+}
+@media (max-width: 340px) {
+}

@@ -51,3 +51,14 @@ body {
 .hidden {
   display: none;
 }
+//media queries
+@media (max-width: 1140px) {
+  .lineBreak {
+    width: 10%;
+  }
+}
+@media (max-width: 660px) {
+  .lineBreak {
+    display: none;
+  }
+}
