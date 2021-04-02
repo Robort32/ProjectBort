@@ -549,6 +549,22 @@ legend {
   width: 100%;
   height: 350px;
   border-bottom: 5px solid #273349;
+  position: relative;
+}
+
+.gameAvgRating {
+  position: absolute;
+  top: -15px;
+  right: -10px;
+  padding: 10px;
+  background-color: #44587d;
+  color: #ffffff;
+  border-radius: 15px;
+  z-index: 10;
+}
+
+.gameAvgRating p {
+  font-size: 0.8rem;
 }
 
 .gameImageContainer img {
@@ -635,7 +651,6 @@ legend {
   font-size: 0.8rem;
 }
 
-/*not currently on the screen - the trunicated descriptions  */
 footer {
   display: -webkit-box;
   display: -ms-flexbox;
