@@ -57,9 +57,7 @@ projectBort.pricePoint = () => {
 //hide robort section when games are received OR display "nothing found"
 projectBort.hideRobortSection = (info) => {
   projectBort.robortSection = document.querySelector(".robortSection");
-  projectBort.gameResultContainer = document.querySelector(
-    ".gameResultContainer"
-  );
+  projectBort.sortDropdown = document.querySelector(".sortDropdown");
   if (info.count === 0) {
     projectBort.robortSection.classList.remove("hidden");
     projectBort.robortSection.scrollIntoView({
@@ -69,7 +67,7 @@ projectBort.hideRobortSection = (info) => {
     });
   } else {
     projectBort.robortSection.classList.add("hidden");
-    projectBort.gameResultContainer.scrollIntoView({
+    projectBort.sortDropdown.scrollIntoView({
       behavior: "smooth",
       block: "start",
       inline: "nearest",
