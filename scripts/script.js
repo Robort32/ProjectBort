@@ -1,4 +1,3 @@
-const projectBort = {};
 projectBort.clientID = "b8a4fHq3xL";
 projectBort.submitDataToApi = () => {
   projectBort.submitBtn = document.querySelector(".submitBtn");
@@ -50,13 +49,11 @@ projectBort.hideRobortSection = (info) => {
   const sortDropdown = document.querySelector(".sortDropdown");
   const gameResultContainer = document.getElementById("gameResultContainer");
   const robortLogo = document.getElementById("robortLogo");
-
   if (info.count === 0) {
     robortLogo.src = "./assets/robortLogoError.gif";
     robortLogo.alt = "Robort Error. Search Again";
     sortDropdown.style.display = "none";
     gameResultContainer.style.display = "none";
-
     robortSection.classList.remove("hidden");
     robortSection.scrollIntoView({
       behavior: "smooth",
@@ -103,7 +100,6 @@ projectBort.apiCall = (
       cleanUrl.set(value[0], value[1]);
     }
   });
-
   searchUrl.search = cleanUrl;
   fetch(searchUrl)
     .then((res) => {
@@ -114,15 +110,12 @@ projectBort.apiCall = (
       projectBort.hideRobortSection(jsonResponse);
     });
 };
-
 //show game results in cards
 projectBort.showGames = (result) => {
   const gameResultContainer = document.getElementById("gameResultContainer");
   const sortDropdown = document.querySelector(".sortDropdown");
-
   gameResultContainer.style.display = "grid";
   sortDropdown.style.display = "block";
-
   const mechName = document.getElementById("mechOption");
   const insideTextMechanic = mechName.options[mechName.selectedIndex].text;
   const categoryName = document.getElementById("categoryOption");
@@ -147,7 +140,6 @@ projectBort.showGames = (result) => {
         insideText = insideTextMechanic;
         smallText = " Mechanic";
       }
-
       const gameTemplate = document
         .getElementById("gameResultTemplate")
         .content.cloneNode(true);
@@ -168,19 +160,16 @@ projectBort.showGames = (result) => {
       gameTemplate.querySelector(
         ".gameAvgRatingText"
       ).innerText = game.average_user_rating.toFixed(2);
-
       gameResultContainer.appendChild(gameTemplate);
     });
   } else {
     error("Your browser does not support templates");
   }
-
   projectBort.sortByRating(result);
   projectBort.sortByPrice(result);
   projectBort.sortByName(result);
 };
 //
-
 //
 //remove all game cards
 projectBort.removeNodes = (template) => {
@@ -265,10 +254,8 @@ projectBort.clearSearch = () => {
     allSelects.forEach((element) => {
       element.selectedIndex = 0;
     });
-
     const sortConentDropdown = document.querySelector(".sortConentDropdown");
     sortConentDropdown.classList.add("notVisible");
-
     const menuArrow = document.querySelector(".lni-arrow-down-circle");
     menuArrow.classList.remove("arrowSwing");
   });
@@ -306,14 +293,12 @@ projectBort.sortByName = (result) => {
 projectBort.sortMenu = () => {
   const sortClickMenu = document.querySelector(".sortClickMenu");
   const menuArrow = document.querySelector(".lni-arrow-down-circle");
-
   sortClickMenu.addEventListener("click", function () {
     const sortConentDropdown = document.querySelector(".sortConentDropdown");
     sortConentDropdown.classList.toggle("notVisible");
     menuArrow.classList.toggle("arrowSwing");
   });
 };
-
 //go get it!
 projectBort.init = () => {
   projectBort.pageLoad();
