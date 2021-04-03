@@ -75,6 +75,9 @@
   }
 }
 @media screen and (max-width: 480px) {
+  .headerImage {
+    background-image: url("../assets/hero-unsplashMobile.jpg");
+  }
   .headerTextBox {
     height: 200px;
   }
