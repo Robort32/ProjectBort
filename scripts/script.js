@@ -48,7 +48,7 @@ projectBort.pricePoint = () => {
 projectBort.hideRobortSection = (info) => {
   const robortSection = document.querySelector(".robortSection");
   const gameResultContainer = document.querySelector(".gameResultContainer");
- 
+
   projectBort.sortDropdown = document.querySelector(".sortDropdown");
   const robortLogo = document.getElementById("robortLogo");
   if (info.count === 0) {
@@ -146,25 +146,33 @@ projectBort.showGames = (result) => {
         insideText = insideTextMechanic;
         smallText = " Mechanic";
       }
-   
-    result.forEach((game) => {
-      const gameTemplate = document
-        .getElementById("gameResultTemplate")
-        .content.cloneNode(true);
-      gameTemplate.querySelector(".gameLink").href = game.url;
-      gameTemplate.querySelector(".gameLinkTitle").href = game.url;
-      gameTemplate.querySelector(".gameTitle").innerText = game.name;
-      gameTemplate.querySelector(".gameImage").src = game.image_url;
-      gameTemplate.querySelector(".gameImage").alt = game.name;
-      gameTemplate.querySelector("#smallText").innerText = smallText;
-      gameTemplate.querySelector(".gameDetailMechanic").innerText = insideText;
-      gameTemplate.querySelector(".gameDetailPrice").innerText = `$ ${game.price_ca}`;
-      gameTemplate.querySelector(".gameDetailMinPlayer").innerText = game.min_players;
-      gameTemplate.querySelector(".gameDetailMaxPlayer").innerText = game.max_players;
-      gameTemplate.querySelector(".gameAvgRatingText").innerText = game.average_user_rating.toFixed(2);
 
+      result.forEach((game) => {
+        const gameTemplate = document
+          .getElementById("gameResultTemplate")
+          .content.cloneNode(true);
+        gameTemplate.querySelector(".gameLink").href = game.url;
+        gameTemplate.querySelector(".gameLinkTitle").href = game.url;
+        gameTemplate.querySelector(".gameTitle").innerText = game.name;
+        gameTemplate.querySelector(".gameImage").src = game.image_url;
+        gameTemplate.querySelector(".gameImage").alt = game.name;
+        gameTemplate.querySelector("#smallText").innerText = smallText;
+        gameTemplate.querySelector(
+          ".gameDetailMechanic"
+        ).innerText = insideText;
+        gameTemplate.querySelector(
+          ".gameDetailPrice"
+        ).innerText = `$ ${game.price_ca}`;
+        gameTemplate.querySelector(".gameDetailMinPlayer").innerText =
+          game.min_players;
+        gameTemplate.querySelector(".gameDetailMaxPlayer").innerText =
+          game.max_players;
+        gameTemplate.querySelector(
+          ".gameAvgRatingText"
+        ).innerText = game.average_user_rating.toFixed(2);
 
-      gameResultContainer.appendChild(gameTemplate);
+        gameResultContainer.appendChild(gameTemplate);
+      });
     });
   } else {
     error("Your browser does not support templates");
@@ -193,8 +201,10 @@ projectBort.pageLoad = () => {
 };
 //
 //API call to populate game mechanic dropdown
-projectBort.loadDropdowMechani
-    projectBort.sortMenu();c = () => {
+projectBort.loadDropdowMechani;
+projectBort.sortMenu();
+
+c = () => {
   const mechanicUrl = new URL(
     "https://api.boardgameatlas.com/api/game/mechanics?"
   );
@@ -294,28 +304,23 @@ projectBort.sortMenu = () => {
   const sortClickMenu = document.querySelector(".sortClickMenu");
   const menuArrow = document.querySelector(".lni-arrow-down-circle");
 
-
-projectBort.sortMenu = () => {
-  const sortClickMenu = document.querySelector(".sortClickMenu");
-  const menuArrow = document.querySelector(".lni-arrow-down-circle");
-
   sortClickMenu.addEventListener("click", function () {
     const sortConentDropdown = document.querySelector(".sortConentDropdown");
     sortConentDropdown.classList.toggle("notVisible");
     menuArrow.classList.toggle("arrowSwing");
   });
-};  sortClickMenu.addEventListener("click", function () {
-    const sortConentDropdown = document.querySelector(".sortConentDropdown");
-    sortConentDropdown.classList.toggle("notVisible");
-    menuArrow.classList.toggle("arrowSwing");
-  });
 };
-//  
+sortClickMenu.addEventListener("click", function () {
+  const sortConentDropdown = document.querySelector(".sortConentDropdown");
+  sortConentDropdown.classList.toggle("notVisible");
+  menuArrow.classList.toggle("arrowSwing");
+});
+
+//
 //go get it!
 projectBort.init = () => {
   projectBort.pageLoad();
   projectBort.submitDataToApi();
 };
 projectBort.init();
-//
 //
