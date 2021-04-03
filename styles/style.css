@@ -454,9 +454,9 @@ h5 {
   min-height: 70vh;
 }
 
-.robortcontainer img {
+.robortContainer img {
   width: 84%;
-
+}
 
 @media screen and (max-width: 960px) {
   .robortSection {
@@ -483,7 +483,6 @@ h5 {
   .robortSection {
     display: none;
   }
-
 }
 
 .searchContainer {
@@ -604,8 +603,8 @@ input[type="submit"]:focus {
           transform: scale(0.98);
   -webkit-box-shadow: 5px 5px 15px #cbcbcb;
           box-shadow: 5px 5px 15px #cbcbcb;
-  }
-
+  background-color: #ff6b6b;
+}
 
 input[type="button"]:hover,
 input[type="button"]:focus {
@@ -827,7 +826,6 @@ legend {
   font-size: 0.8rem;
 }
 
-
 .sortDropdown {
   display: none;
   height: 70px;
@@ -844,7 +842,6 @@ legend {
 }
 
 .sortContent ul {
-  visibility: hidden;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -863,15 +860,13 @@ legend {
   cursor: pointer;
 }
 
-.sortDropdown:hover .lni,
-.sortDropdown:focus .lni {
-  -webkit-transform: rotate(-180deg);
-          transform: rotate(-180deg);
+.notVisible {
+  visibility: hidden;
 }
 
-.sortDropdown:hover .sortContent ul,
-.sortDropdown:focus .sortContent ul {
-  visibility: visible;
+.arrowSwing {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
 }
 
 .sortDropdown li {
@@ -908,56 +903,6 @@ legend {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }
-
-
-.sortDropdown {
-  position: relative;
-  height: 70px;
-  background-color: #e6e6e6;
-  padding-left: 100px;
-  line-height: 70px;
-}
-
-.sortContent {
-  visibility: hidden;
-  position: absolute;
-  left: 150px;
-  z-index: 10;
-}
-
-.sortDropdown:hover .sortContent {
-  visibility: visible;
-}
-
-.sortDropdown ul {
-  padding: 0;
-  margin: 60px 0 0 0;
-  list-style: none;
-  background-color: #ffffff;
-  border-radius: 15px;
-}
-
-.sortDropdown li {
-  background-color: cadetblue;
-  display: inline-block;
-  padding: 5px 60px;
-  z-index: 5;
-}
-
-.sortClearFlex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.clearbtnContainer {
-  padding-right: 100px;
 }
 
 footer {
@@ -1025,9 +970,6 @@ footer {
   -webkit-box-align: normal;
       -ms-flex-align: normal;
           align-items: normal;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-
 }
 
 .footerText p {
