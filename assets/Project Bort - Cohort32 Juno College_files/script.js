@@ -1,12 +1,17 @@
 const projectBort = {};
+
 projectBort.clientID = "b8a4fHq3xL";
+
 projectBort.submitDataToApi = () => {
   projectBort.submitBtn = document.querySelector(".submitBtn");
+
   projectBort.submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
+
     //grab the value of Mechanics and Categories (loaded in window from API first thing)
     projectBort.useMerchanics = document.querySelector("#mechOption").value;
     projectBort.useCategories = document.querySelector("#categoryOption").value;
+
     //creating the price window selected by user
     projectBort.pricePoint();
     //creating the window of min/max players as selected by user
@@ -38,6 +43,7 @@ projectBort.minMaxPlayers = () => {
 //get value for price
 projectBort.pricePoint = () => {
   projectBort.priceOption = document.querySelector("#priceOption").value;
+
   let priceNumber = parseInt(projectBort.priceOption, 10);
   if (priceNumber === 75) {
     projectBort.priceGreaterThen = 75;
@@ -64,13 +70,14 @@ projectBort.hideRobortSection = (info) => {
     });
   } else {
     projectBort.robortSection.classList.add("hidden");
-    projectBort.gameResultContainer.scrollIntoView({
+    projectBort.sortDropdown.scrollIntoView({
       behavior: "smooth",
       block: "start",
       inline: "nearest",
     });
   }
 };
+
 //
 //Getting the information from the API
 projectBort.apiCall = (
@@ -93,6 +100,7 @@ projectBort.apiCall = (
     gt_max_players: maxPlayers,
     categories: categories,
   };
+
   //remove any unselected dropdown means
   const cleanUrl = new URLSearchParams();
   Object.entries(searchParams).forEach((value) => {
@@ -104,6 +112,7 @@ projectBort.apiCall = (
     }
   });
   searchUrl.search = cleanUrl;
+
   fetch(searchUrl)
     .then((res) => {
       return res.json();
@@ -120,10 +129,6 @@ projectBort.showGames = (result) => {
   const sortDropdown = document.querySelector(".sortDropdown");
   gameResultContainer.style.display = "grid";
   sortDropdown.style.display = "block";
-
-  const mechName = document.getElementById("mechOption");
-  const mechInsideText = mechName.options[mechName.selectedIndex].text;
-
   projectBort.removeNodes(gameResultContainer);
   //check to make sure templates are supported (catch added to fetch statement)
   if ("content" in document.createElement("template")) {
@@ -132,13 +137,9 @@ projectBort.showGames = (result) => {
         .getElementById("gameResultTemplate")
         .content.cloneNode(true);
       gameTemplate.querySelector(".gameLink").href = game.url;
-      gameTemplate.querySelector(".gameLinkTitle").href = game.url;
       gameTemplate.querySelector(".gameTitle").innerText = game.name;
       gameTemplate.querySelector(".gameImage").src = game.image_url;
       gameTemplate.querySelector(".gameImage").alt = game.name;
-      gameTemplate.querySelector(
-        ".gameDetailMechanic"
-      ).innerText = mechInsideText;
       gameTemplate.querySelector(
         ".gameDetailPrice"
       ).innerText = `$ ${game.price_ca}`;
@@ -149,7 +150,10 @@ projectBort.showGames = (result) => {
       gameTemplate.querySelector(
         ".gameAvgRatingText"
       ).innerText = game.average_user_rating.toFixed(2);
-
+      gameTemplate.querySelector(".gameDetailPlaytime").innerText =
+        game.min_playtime;
+      gameTemplate.querySelector(".gameDetailYear").innerText =
+        game.year_published;
 
       gameResultContainer.appendChild(gameTemplate);
     });
@@ -278,12 +282,12 @@ projectBort.sortByName = (result) => {
 };
 //
 //
-
 //go get it!
 projectBort.init = () => {
   projectBort.pageLoad();
   projectBort.submitDataToApi();
 };
+
 projectBort.init();
 //
 //

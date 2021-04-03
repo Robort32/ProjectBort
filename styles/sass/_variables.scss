@@ -73,7 +73,18 @@ h5 {
   align-items: center;
 }
 @mixin buttonPress {
-  background-color: $accent2;
   transform: scale(0.98);
   box-shadow: 5px 5px 15px $shading1;
+}
+//
+//
+@media screen and (max-width: 1140px) {
+}
+@media screen and (max-width: 960px) {
+}
+@media screen and (max-width: 660px) {
+}
+@media screen and (max-width: 480px) {
+}
+@media screen and (max-width: 340px) {
 }

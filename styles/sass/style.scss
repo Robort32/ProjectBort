@@ -19,12 +19,7 @@ body {
   padding-top: 80px;
   padding-bottom: 80px;
 }
-.lineBreak {
-  width: 60%;
-  height: 2px;
-  margin: 15px auto;
-  background-color: $primary2;
-}
+
 /*  */
 
 .returnToTop {
@@ -50,4 +45,20 @@ body {
 
 .hidden {
   display: none;
+}
+//media queries
+@media screen and (max-width: 1400px) {
+  .lineBreak {
+    width: 25%;
+  }
+}
+@media screen and (max-width: 1140px) {
+  .lineBreak {
+    width: 10%;
+  }
+}
+@media screen and (max-width: 960px) {
+  .lineBreak {
+    display: none;
+  }
 }

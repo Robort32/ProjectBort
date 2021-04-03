@@ -19,6 +19,13 @@
   background: $primary4;
   border-radius: $borderRadius;
 }
+.lineBreak {
+  width: 60%;
+  height: 2px;
+  margin: 15px auto;
+  background-color: $primary2;
+}
+
 .headerTextBox span {
   letter-spacing: 40px;
   font-weight: 900;
@@ -34,4 +41,49 @@
   width: 25%;
   padding-right: 20px;
   text-align: right;
+}
+.lineBreak {
+  width: 60%;
+  height: 2px;
+  margin: 15px auto;
+  background-color: $primary2;
+}
+//media queries
+
+@media screen and (max-width: 660px) {
+  .headerImage {
+    height: 50vh;
+  }
+  .headerTextBox {
+    @include flexColumnCenterItems;
+    width: 85%;
+    height: 150px;
+  }
+  .headerTextBox h1 {
+    padding: 10px 0;
+    line-height: 0.9;
+    text-align: center;
+    width: 100%;
+  }
+  .headerTextBox p {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+  .headerTextBox span {
+    letter-spacing: 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  .headerTextBox {
+    height: 200px;
+  }
+}
+@media screen and (max-width: 340px) {
+  .headerTextBox {
+    height: 225px;
+  }
+  .headerTextBox h1 {
+    font-size: 2.4rem;
+  }
 }
