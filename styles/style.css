@@ -454,13 +454,9 @@ h5 {
   min-height: 70vh;
 }
 
-
 .robortcontainer img {
   width: 84%;
 
-.robortContainer img {
-  width: 84%;
-}
 
 @media screen and (max-width: 960px) {
   .robortSection {
@@ -487,6 +483,7 @@ h5 {
   .robortSection {
     display: none;
   }
+
 }
 
 .searchContainer {
@@ -592,7 +589,6 @@ input[type="submit"] {
   -ms-grid-column: 3;
   grid-area: 1 / 3 / span 4;
 }
-
 
 input[type="button"] {
   background-color: #cbcbcb;
@@ -831,6 +827,7 @@ legend {
   font-size: 0.8rem;
 }
 
+
 .sortDropdown {
   display: none;
   height: 70px;
@@ -911,6 +908,7 @@ legend {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }
+
 
 .sortDropdown {
   position: relative;
@@ -1029,6 +1027,7 @@ footer {
           align-items: normal;
   -webkit-box-align: start;
       -ms-flex-align: start;
+
 }
 
 .footerText p {
