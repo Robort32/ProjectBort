@@ -15,7 +15,7 @@ footer {
   width: 32%;
   padding-left: 40px;
   color: $white;
-  line-height: 40px;
+  // line-height: 40px;
 }
 .footerText h3 {
   padding-bottom: $padding;
@@ -28,14 +28,23 @@ footer {
   @include flexRowCenterItems;
   justify-content: flex-start;
   align-items: normal;
+  padding-bottom: 20px;
+}
+.footerTextSocial .lni {
+  margin: 0;
+}
+.footerTextSocial a:nth-child(2) {
+  padding-left: 20px;
 }
 .footerText p {
   padding-left: 20px;
 }
+.footerText p:nth-child(2) {
+  line-height: 35px;
+}
 .footerTextSocial a {
   color: $white;
   font-size: $headingFontSize4;
-  padding: 0 10px;
 }
 .footerText img {
   height: 40px;
