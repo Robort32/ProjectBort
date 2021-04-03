@@ -52,12 +52,17 @@ body {
   display: none;
 }
 //media queries
-@media (max-width: 1140px) {
+@media screen and (max-width: 1400px) {
+  .lineBreak {
+    width: 25%;
+  }
+}
+@media screen and (max-width: 1140px) {
   .lineBreak {
     width: 10%;
   }
 }
-@media (max-width: 660px) {
+@media screen and (max-width: 960px) {
   .lineBreak {
     display: none;
   }

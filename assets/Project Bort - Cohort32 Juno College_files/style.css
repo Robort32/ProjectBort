@@ -598,32 +598,8 @@ legend {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-  }
-  input[type="submit"] {
-    width: 100%;
-    -ms-grid-row: 6;
-    grid-area: 6;
-  }
-  input[type="button"] {
-    width: 100%;
-    -ms-grid-row: 7;
-    grid-area: 7;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .form {
-    width: inherit;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: start;
-  }
-  .searchDropdown {
-    width: 100%;
-    -ms-grid-column-align: start;
-        justify-self: start;
+    -ms-grid-columns: 1fr, 1fr;
+        grid-template-columns: 1fr, 1fr;
   }
 }
 

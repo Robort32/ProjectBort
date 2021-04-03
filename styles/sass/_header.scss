@@ -36,11 +36,8 @@
   text-align: right;
 }
 //media queries
-@media (max-width: 1140px) {
-}
-@media (max-width: 960px) {
-}
-@media (max-width: 660px) {
+
+@media screen and (max-width: 660px) {
   .headerImage {
     height: 50vh;
   }
@@ -64,7 +61,16 @@
     letter-spacing: 0;
   }
 }
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
+  .headerTextBox {
+    height: 200px;
+  }
 }
-@media (max-width: 340px) {
+@media screen and (max-width: 340px) {
+  .headerTextBox {
+    height: 225px;
+  }
+  .headerTextBox h1 {
+    font-size: 2.4rem;
+  }
 }
