@@ -115,6 +115,7 @@ projectBort.showGames = (result) => {
   gameResultContainer.style.display = "grid";
   //------------
   const mechName = document.getElementById("mechOption");
+
   const insideTextMechanic = mechName.options[mechName.selectedIndex].text;
   const categoryName = document.getElementById("categoryOption");
   const insideTextCategory =
@@ -127,37 +128,32 @@ projectBort.showGames = (result) => {
 
       // console.log(game.year_published);
       let insideText;
-      let yearPublished;
+      let smallText;
       if (mechName.selectedIndex === 0 && categoryName.selectedIndex === 0) {
         insideText = game.year_published;
         console.log(insideText);
-        yearPublished = "Year Published ";
-      } else if (
-        mechName.selectedIndex > 0 &&
-        categoryName.selectedIndex === 0
-      ) {
+        smallText = "Year Published ";
+      } else if (mechName.selectedIndex > 0) {
         insideText = insideTextMechanic;
-        yearPublished = " Mechanic";
+        smallText = " Mechanic";
         console.log(insideText);
-      } else if (
-        mechName.selectedIndex === 0 &&
-        categoryName.selectedIndex > 0
-      ) {
+      } else if (categoryName.selectedIndex > 0) {
         insideText = insideTextCategory;
-        yearPublished = " Category";
+        smallText = " Category";
       } else if (mechName.selectedIndex > 0 && categoryName.selectedIndex > 0) {
         insideText = insideTextMechanic;
-        yearPublished = " Mechanic";
+        smallText = " Mechanic";
       }
       //------------------
       const gameTemplate = document
         .getElementById("gameResultTemplate")
         .content.cloneNode(true);
       gameTemplate.querySelector(".gameLink").href = game.url;
+      gameTemplate.querySelector(".gameLinkTitle").href = game.url;
       gameTemplate.querySelector(".gameTitle").innerText = game.name;
       gameTemplate.querySelector(".gameImage").src = game.image_url;
       gameTemplate.querySelector(".gameImage").alt = game.name;
-      gameTemplate.querySelector("#insideText").innerText = yearPublished;
+      gameTemplate.querySelector("#smallText").innerText = smallText;
       gameTemplate.querySelector(".gameDetailMechanic").innerText = insideText;
       gameTemplate.querySelector(".gameDetailPrice").innerText = game.price_ca;
       gameTemplate.querySelector(".gameDetailMinPlayer").innerText =
@@ -254,12 +250,8 @@ document.querySelector(".clearBtn").addEventListener("click", function () {
   const allSelects = document.querySelectorAll("select");
 
   allSelects.forEach((element) => {
-    console.log(element);
     element.selectedIndex = 0;
   });
-
-  // document.getElementById("mechOption").selectedIndex = 0;
-  // doc
 });
 //
 //go get it!
