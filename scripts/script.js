@@ -193,7 +193,8 @@ projectBort.pageLoad = () => {
 };
 //
 //API call to populate game mechanic dropdown
-projectBort.loadDropdowMechanic = () => {
+projectBort.loadDropdowMechani
+    projectBort.sortMenu();c = () => {
   const mechanicUrl = new URL(
     "https://api.boardgameatlas.com/api/game/mechanics?"
   );
@@ -293,7 +294,17 @@ projectBort.sortMenu = () => {
   const sortClickMenu = document.querySelector(".sortClickMenu");
   const menuArrow = document.querySelector(".lni-arrow-down-circle");
 
+
+projectBort.sortMenu = () => {
+  const sortClickMenu = document.querySelector(".sortClickMenu");
+  const menuArrow = document.querySelector(".lni-arrow-down-circle");
+
   sortClickMenu.addEventListener("click", function () {
+    const sortConentDropdown = document.querySelector(".sortConentDropdown");
+    sortConentDropdown.classList.toggle("notVisible");
+    menuArrow.classList.toggle("arrowSwing");
+  });
+};  sortClickMenu.addEventListener("click", function () {
     const sortConentDropdown = document.querySelector(".sortConentDropdown");
     sortConentDropdown.classList.toggle("notVisible");
     menuArrow.classList.toggle("arrowSwing");
