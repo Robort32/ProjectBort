@@ -118,6 +118,10 @@ projectBort.showGames = (result) => {
   const resultArray = result.games;
   const gameResultContainer = document.getElementById("gameResultContainer");
   gameResultContainer.style.display = "grid";
+  projectBort.mechName = document.getElementById("mechOption");
+  projectBort.insideText =
+    projectBort.mechName.options[projectBort.mechName.selectedIndex].text;
+
   projectBort.removeNodes(gameResultContainer);
   //check to make sure templates are supported (catch added to fetch statement)
   if ("content" in document.createElement("template")) {
@@ -130,7 +134,7 @@ projectBort.showGames = (result) => {
       gameTemplate.querySelector(".gameImage").src = game.image_url;
       gameTemplate.querySelector(".gameImage").alt = game.name;
       gameTemplate.querySelector(".gameDetailMechanic").innerText =
-        "mechanic var";
+        projectBort.insideText;
       gameTemplate.querySelector(".gameDetailPrice").innerText = game.price_ca;
       gameTemplate.querySelector(".gameDetailMinPlayer").innerText =
         game.min_players;
