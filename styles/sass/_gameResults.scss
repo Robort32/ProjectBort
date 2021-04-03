@@ -125,14 +125,6 @@
   transition: transform 0.5s;
   cursor: pointer;
 }
-.sortDropdown:hover .lni,
-.sortDropdown:focus .lni {
-  transform: rotate(-180deg);
-}
-.sortDropdown:hover .sortContent ul,
-.sortDropdown:focus .sortContent ul {
-  visibility: visible;
-}
 .sortDropdown li {
   margin-top: 5px;
   padding: 5px 300px 5px 60px;
@@ -142,6 +134,12 @@
 .sortDropdown li:focus {
   background-color: $primary3;
   cursor: pointer;
+}
+.notVisible {
+  visibility: hidden;
+}
+.arrowSwing {
+  transform: rotate(-180deg);
 }
 //
 //
