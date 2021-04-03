@@ -100,9 +100,7 @@
 //
 .sortDropdown {
   display: none;
-  height: 70px;
   background-color: $shading2;
-  line-height: 70px;
 }
 .sortContent h4 {
   padding-left: 100px;
@@ -111,7 +109,7 @@
   position: relative;
 }
 .sortContent ul {
-  margin: 0;
+  margin-top: 20px;
   padding: 0;
   list-style: none;
   position: absolute;
@@ -131,8 +129,7 @@
   transform: rotate(-180deg);
 }
 .sortDropdown li {
-  margin-top: 5px;
-  padding: 5px 300px 5px 60px;
+  padding: 30px 270px 30px 60px;
   z-index: 5;
 }
 .sortDropdown li:hover,

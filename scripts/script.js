@@ -174,10 +174,10 @@ projectBort.showGames = (result) => {
   } else {
     error("Your browser does not support templates");
   }
+
   projectBort.sortByRating(result);
   projectBort.sortByPrice(result);
   projectBort.sortByName(result);
-  projectBort.sortMenu();
 };
 //
 
@@ -195,6 +195,8 @@ projectBort.pageLoad = () => {
     projectBort.loadDropdowMechanic();
     projectBort.loadDropdowCategorgies();
     projectBort.returnToTop();
+    projectBort.sortMenu();
+    projectBort.clearSearch();
   });
 };
 //
@@ -257,19 +259,26 @@ projectBort.returnToTop = () => {
 };
 //
 //
+projectBort.clearSearch = () => {
+  document.querySelector(".clearBtn").addEventListener("click", function () {
+    const allSelects = document.querySelectorAll("select");
+    allSelects.forEach((element) => {
+      element.selectedIndex = 0;
+    });
 
-document.querySelector(".clearBtn").addEventListener("click", function () {
-  const allSelects = document.querySelectorAll("select");
+    const sortConentDropdown = document.querySelector(".sortConentDropdown");
+    sortConentDropdown.classList.add("notVisible");
 
-  allSelects.forEach((element) => {
-    element.selectedIndex = 0;
+    const menuArrow = document.querySelector(".lni-arrow-down-circle");
+    menuArrow.classList.remove("arrowSwing");
   });
-});
+};
 //
 //sort results based on rating (highest to lowest)
 projectBort.sortByRating = (result) => {
   const sortAverageRating = document.getElementById("sortAverageRating");
   sortAverageRating.addEventListener("click", function () {
+    console.log("CLICKED RATING");
     const sortedResult = result.sort(
       (x, y) => y.average_user_rating - x.average_user_rating
     );
@@ -279,11 +288,8 @@ projectBort.sortByRating = (result) => {
 //sort results based on price (lowest to highest)
 projectBort.sortByPrice = (result) => {
   const sortLowestPrice = document.getElementById("sortLowestPrice");
-
   sortLowestPrice.addEventListener("click", function () {
-    const sortedResult = result.sort((x, y) => {
-      parseInt(x.price_ca) - parseInt(y.price_ca);
-    });
+    const sortedResult = result.sort((x, y) => x.price_ca - y.price_ca);
     projectBort.showGames(sortedResult);
   });
 };
