@@ -454,9 +454,9 @@ h5 {
   min-height: 70vh;
 }
 
-.robortcontainer img {
+.robortContainer img {
   width: 84%;
-
+}
 
 @media screen and (max-width: 960px) {
   .robortSection {
@@ -483,7 +483,6 @@ h5 {
   .robortSection {
     display: none;
   }
-
 }
 
 .searchContainer {
@@ -592,6 +591,20 @@ input[type="submit"] {
 
 input[type="button"] {
   background-color: #cbcbcb;
+  width: 100%;
+  line-height: 1px;
+  font-family: "Barlow", sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  background-color: #ff5757;
+  border: transparent;
+  border-radius: 15px;
+  height: 55px;
+  padding: 35px 45px;
+  white-space: normal;
+  word-wrap: break-word;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
   -ms-grid-row: 4;
   -ms-grid-row-span: 4;
   -ms-grid-column: 3;
@@ -599,13 +612,13 @@ input[type="button"] {
 }
 
 input[type="submit"]:hover,
-input[type="submit"]:focus {
+input[type="button"]:hover {
   -webkit-transform: scale(0.98);
           transform: scale(0.98);
   -webkit-box-shadow: 5px 5px 15px #cbcbcb;
           box-shadow: 5px 5px 15px #cbcbcb;
-  }
-
+  background-color: #ff6b6b;
+}
 
 input[type="button"]:hover,
 input[type="button"]:focus {
@@ -827,12 +840,9 @@ legend {
   font-size: 0.8rem;
 }
 
-
 .sortDropdown {
   display: none;
-  height: 70px;
   background-color: #e6e6e6;
-  line-height: 70px;
 }
 
 .sortContent h4 {
@@ -844,8 +854,7 @@ legend {
 }
 
 .sortContent ul {
-  visibility: hidden;
-  margin: 0;
+  margin-top: 20px;
   padding: 0;
   list-style: none;
   position: absolute;
@@ -863,20 +872,17 @@ legend {
   cursor: pointer;
 }
 
-.sortDropdown:hover .lni,
-.sortDropdown:focus .lni {
+.notVisible {
+  visibility: hidden;
+}
+
+.arrowSwing {
   -webkit-transform: rotate(-180deg);
           transform: rotate(-180deg);
 }
 
-.sortDropdown:hover .sortContent ul,
-.sortDropdown:focus .sortContent ul {
-  visibility: visible;
-}
-
 .sortDropdown li {
-  margin-top: 5px;
-  padding: 5px 300px 5px 60px;
+  padding: 30px 270px 30px 60px;
   z-index: 5;
 }
 
@@ -908,56 +914,6 @@ legend {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }
-
-
-.sortDropdown {
-  position: relative;
-  height: 70px;
-  background-color: #e6e6e6;
-  padding-left: 100px;
-  line-height: 70px;
-}
-
-.sortContent {
-  visibility: hidden;
-  position: absolute;
-  left: 150px;
-  z-index: 10;
-}
-
-.sortDropdown:hover .sortContent {
-  visibility: visible;
-}
-
-.sortDropdown ul {
-  padding: 0;
-  margin: 60px 0 0 0;
-  list-style: none;
-  background-color: #ffffff;
-  border-radius: 15px;
-}
-
-.sortDropdown li {
-  background-color: cadetblue;
-  display: inline-block;
-  padding: 5px 60px;
-  z-index: 5;
-}
-
-.sortClearFlex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.clearbtnContainer {
-  padding-right: 100px;
 }
 
 footer {
@@ -1025,9 +981,6 @@ footer {
   -webkit-box-align: normal;
       -ms-flex-align: normal;
           align-items: normal;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-
 }
 
 .footerText p {
