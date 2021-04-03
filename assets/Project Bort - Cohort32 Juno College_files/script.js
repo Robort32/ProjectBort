@@ -1,54 +1,62 @@
 const projectBort = {};
+
 projectBort.clientID = "b8a4fHq3xL";
+
 projectBort.submitDataToApi = () => {
   projectBort.submitBtn = document.querySelector(".submitBtn");
+
   projectBort.submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
+
     //grab the value of Mechanics and Categories (loaded in window from API first thing)
-    const useMerchanics = document.querySelector("#mechOption").value;
-    const useCategories = document.querySelector("#categoryOption").value;
+    projectBort.useMerchanics = document.querySelector("#mechOption").value;
+    projectBort.useCategories = document.querySelector("#categoryOption").value;
+
     //creating the price window selected by user
     projectBort.pricePoint();
     //creating the window of min/max players as selected by user
     projectBort.minMaxPlayers();
     //sending all the collected data to be called to API
     projectBort.apiCall(
-      minPlayerNumber,
-      maxPlayerNumber,
-      useMerchanics,
-      priceGreaterThen,
-      priceLowerThen,
-      useCategories
+      projectBort.minPlayerNumber,
+      projectBort.maxPlayerNumber,
+      projectBort.useMerchanics,
+      projectBort.priceGreaterThen,
+      projectBort.priceLowerThen,
+      projectBort.useCategories
     );
   });
 };
 //
 //Getting Value for minimum players and maximum players
 projectBort.minMaxPlayers = () => {
-  const minPlayerOption = document.querySelector("#minPlayerOption").value;
-  const maxPlayerOption = document.querySelector("#maxPlayerOption").value;
-  maxPlayerNumber = parseInt(maxPlayerOption, 10);
-  minPlayerNumber = parseInt(minPlayerOption, 10);
+  projectBort.minPlayerOption = document.querySelector(
+    "#minPlayerOption"
+  ).value;
+  projectBort.maxPlayerOption = document.querySelector(
+    "#maxPlayerOption"
+  ).value;
+  projectBort.minPlayerNumber = parseInt(projectBort.minPlayerOption, 10);
+  projectBort.maxPlayerNumber = parseInt(projectBort.maxPlayerOption, 10);
 };
 //
 //get value for price
 projectBort.pricePoint = () => {
-  const priceOption = document.querySelector("#priceOption").value;
-  let priceNumber = parseInt(priceOption, 10);
+  projectBort.priceOption = document.querySelector("#priceOption").value;
+
+  let priceNumber = parseInt(projectBort.priceOption, 10);
   if (priceNumber === 75) {
-    priceGreaterThen = 75;
-    priceLowerThen = 7500;
+    projectBort.priceGreaterThen = 75;
+    projectBort.priceLowerThen = 7500;
   } else {
-    priceGreaterThen = priceNumber;
-    priceLowerThen = priceNumber + 25;
+    projectBort.priceGreaterThen = priceNumber;
+    projectBort.priceLowerThen = priceNumber + 25;
   }
 };
 //
 //hide robort section when games are received OR display "nothing found"
 projectBort.hideRobortSection = (info) => {
-  const robortSection = document.querySelector(".robortSection");
-  const gameResultContainer = document.querySelector(".gameResultContainer");
- 
+  projectBort.robortSection = document.querySelector(".robortSection");
   projectBort.sortDropdown = document.querySelector(".sortDropdown");
   const robortLogo = document.getElementById("robortLogo");
   if (info.count === 0) {
@@ -61,14 +69,15 @@ projectBort.hideRobortSection = (info) => {
       inline: "nearest",
     });
   } else {
-    robortSection.classList.add("hidden");
-    gameResultContainer.scrollIntoView({
+    projectBort.robortSection.classList.add("hidden");
+    projectBort.sortDropdown.scrollIntoView({
       behavior: "smooth",
       block: "start",
       inline: "nearest",
     });
   }
 };
+
 //
 //Getting the information from the API
 projectBort.apiCall = (
@@ -91,6 +100,7 @@ projectBort.apiCall = (
     gt_max_players: maxPlayers,
     categories: categories,
   };
+
   //remove any unselected dropdown means
   const cleanUrl = new URLSearchParams();
   Object.entries(searchParams).forEach((value) => {
@@ -101,8 +111,8 @@ projectBort.apiCall = (
       cleanUrl.set(value[0], value[1]);
     }
   });
-  console.log(searchUrl);
   searchUrl.search = cleanUrl;
+
   fetch(searchUrl)
     .then((res) => {
       return res.json();
@@ -112,57 +122,38 @@ projectBort.apiCall = (
       projectBort.hideRobortSection(jsonResponse);
     });
 };
-
+//
 //show game results in cards
 projectBort.showGames = (result) => {
   const gameResultContainer = document.getElementById("gameResultContainer");
   const sortDropdown = document.querySelector(".sortDropdown");
   gameResultContainer.style.display = "grid";
   sortDropdown.style.display = "block";
-  const mechName = document.getElementById("mechOption");
-  const mechInsideText = mechName.options[mechName.selectedIndex].text;
-  const insideTextMechanic = mechName.options[mechName.selectedIndex].text;
-  const categoryName = document.getElementById("categoryOption");
-  const insideTextCategory =
-    categoryName.options[categoryName.selectedIndex].text;
   projectBort.removeNodes(gameResultContainer);
   //check to make sure templates are supported (catch added to fetch statement)
   if ("content" in document.createElement("template")) {
-    resultArray.forEach((game) => {
-      let insideText;
-      let smallText;
-      if (mechName.selectedIndex === 0 && categoryName.selectedIndex === 0) {
-        insideText = game.year_published;
-        console.log(insideText);
-        smallText = "Year Published ";
-      } else if (mechName.selectedIndex > 0) {
-        insideText = insideTextMechanic;
-        smallText = " Mechanic";
-        console.log(insideText);
-      } else if (categoryName.selectedIndex > 0) {
-        insideText = insideTextCategory;
-        smallText = " Category";
-      } else if (mechName.selectedIndex > 0 && categoryName.selectedIndex > 0) {
-        insideText = insideTextMechanic;
-        smallText = " Mechanic";
-      }
-   
     result.forEach((game) => {
       const gameTemplate = document
         .getElementById("gameResultTemplate")
         .content.cloneNode(true);
       gameTemplate.querySelector(".gameLink").href = game.url;
-      gameTemplate.querySelector(".gameLinkTitle").href = game.url;
       gameTemplate.querySelector(".gameTitle").innerText = game.name;
       gameTemplate.querySelector(".gameImage").src = game.image_url;
       gameTemplate.querySelector(".gameImage").alt = game.name;
-      gameTemplate.querySelector("#smallText").innerText = smallText;
-      gameTemplate.querySelector(".gameDetailMechanic").innerText = insideText;
-      gameTemplate.querySelector(".gameDetailPrice").innerText = `$ ${game.price_ca}`;
-      gameTemplate.querySelector(".gameDetailMinPlayer").innerText = game.min_players;
-      gameTemplate.querySelector(".gameDetailMaxPlayer").innerText = game.max_players;
-      gameTemplate.querySelector(".gameAvgRatingText").innerText = game.average_user_rating.toFixed(2);
-
+      gameTemplate.querySelector(
+        ".gameDetailPrice"
+      ).innerText = `$ ${game.price_ca}`;
+      gameTemplate.querySelector(".gameDetailMinPlayer").innerText =
+        game.min_players;
+      gameTemplate.querySelector(".gameDetailMaxPlayer").innerText =
+        game.max_players;
+      gameTemplate.querySelector(
+        ".gameAvgRatingText"
+      ).innerText = game.average_user_rating.toFixed(2);
+      gameTemplate.querySelector(".gameDetailPlaytime").innerText =
+        game.min_playtime;
+      gameTemplate.querySelector(".gameDetailYear").innerText =
+        game.year_published;
 
       gameResultContainer.appendChild(gameTemplate);
     });
@@ -253,11 +244,14 @@ projectBort.returnToTop = () => {
 //
 
 document.querySelector(".clearBtn").addEventListener("click", function () {
-  const allSelects = document.querySelectorAll("select");
+  projectBort.allSelects = document.querySelectorAll("select");
 
-  allSelects.forEach((element) => {
+  projectBort.allSelects.forEach((element) => {
     element.selectedIndex = 0;
   });
+
+  // document.getElementById("mechOption").selectedIndex = 0;
+  // doc
 });
 //
 //sort results based on rating (highest to lowest)
@@ -288,12 +282,12 @@ projectBort.sortByName = (result) => {
 };
 //
 //
-
 //go get it!
 projectBort.init = () => {
   projectBort.pageLoad();
   projectBort.submitDataToApi();
 };
+
 projectBort.init();
 //
 //
