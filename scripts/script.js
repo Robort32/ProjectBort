@@ -288,7 +288,18 @@ projectBort.sortByName = (result) => {
 };
 //
 //
+//sortMenu click for drowdown
+projectBort.sortMenu = () => {
+  const sortClickMenu = document.querySelector(".sortClickMenu");
+  const menuArrow = document.querySelector(".lni-arrow-down-circle");
 
+  sortClickMenu.addEventListener("click", function () {
+    const sortConentDropdown = document.querySelector(".sortConentDropdown");
+    sortConentDropdown.classList.toggle("notVisible");
+    menuArrow.classList.toggle("arrowSwing");
+  });
+};
+//
 //go get it!
 projectBort.init = () => {
   projectBort.pageLoad();
