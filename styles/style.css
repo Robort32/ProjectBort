@@ -388,8 +388,13 @@ h5 {
   height: 70vh;
 }
 
+
+.robortcontainer img {
+  width: 84%;
+
 .robortContainer img {
   width: 900px;
+
 }
 
 .searchContainer {
@@ -492,8 +497,30 @@ input[type="submit"] {
   grid-area: 1 / 3 / span 4;
 }
 
+
+input[type="button"] {
+  width: 100%;
+  line-height: 1px;
+  font-family: "Barlow", sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  background-color: #ff5757;
+  border: transparent;
+  border-radius: 15px;
+  height: 55px;
+  padding: 35px 45px;
+  white-space: normal;
+  word-wrap: break-word;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 4;
+  -ms-grid-column: 3;
+  grid-area: 4 /3 / span 4;
+}
+
 input[type="submit"]:hover,
-input[type="submit"]:focus {
+input[type="button"]:hover {
   background-color: #ff6b6b;
   -webkit-transform: scale(0.98);
           transform: scale(0.98);
@@ -511,8 +538,7 @@ legend {
 /* gameResult Section */
 /* main Results diplay styling */
 .gameResultContainer {
-  display: -ms-grid;
-  display: grid;
+  display: none;
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
   -ms-grid-rows: 1fr;
@@ -651,6 +677,57 @@ legend {
   font-size: 0.8rem;
 }
 
+
+.sortDropdown {
+  position: relative;
+  height: 70px;
+  background-color: #e6e6e6;
+  padding-left: 100px;
+  line-height: 70px;
+}
+
+.sortContent {
+  visibility: hidden;
+  position: absolute;
+  left: 150px;
+  z-index: 10;
+}
+
+.sortDropdown:hover .sortContent {
+  visibility: visible;
+}
+
+.sortDropdown ul {
+  padding: 0;
+  margin: 60px 0 0 0;
+  list-style: none;
+  background-color: #ffffff;
+  border-radius: 15px;
+}
+
+.sortDropdown li {
+  background-color: cadetblue;
+  display: inline-block;
+  padding: 5px 60px;
+  z-index: 5;
+}
+
+.sortClearFlex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.clearbtnContainer {
+  padding-right: 100px;
+}
+
 footer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -715,7 +792,7 @@ footer {
           justify-content: flex-start;
   -webkit-box-align: start;
       -ms-flex-align: start;
-          align-items: flex-start;
+        
 }
 
 .footerText p {
