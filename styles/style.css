@@ -1,5 +1,5 @@
 html {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -422,6 +422,9 @@ h5 {
 }
 
 @media screen and (max-width: 480px) {
+  .headerImage {
+    background-image: url("../assets/hero-unsplashMobile.jpg");
+  }
   .headerTextBox {
     height: 200px;
   }
@@ -591,20 +594,6 @@ input[type="submit"] {
 
 input[type="button"] {
   background-color: #cbcbcb;
-  width: 100%;
-  line-height: 1px;
-  font-family: "Barlow", sans-serif;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  background-color: #ff5757;
-  border: transparent;
-  border-radius: 15px;
-  height: 55px;
-  padding: 35px 45px;
-  white-space: normal;
-  word-wrap: break-word;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
   -ms-grid-row: 4;
   -ms-grid-row-span: 4;
   -ms-grid-column: 3;
@@ -612,7 +601,7 @@ input[type="button"] {
 }
 
 input[type="submit"]:hover,
-input[type="button"]:hover {
+input[type="submit"]:focus {
   -webkit-transform: scale(0.98);
           transform: scale(0.98);
   -webkit-box-shadow: 5px 5px 15px #cbcbcb;
@@ -710,7 +699,7 @@ legend {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 32rem;
+  height: 640px;
   border: 1px solid #171717;
   border-radius: 15px;
   -webkit-box-shadow: 5px 5px 15px #cbcbcb;
@@ -836,6 +825,10 @@ legend {
   text-transform: capitalize;
 }
 
+.gameDetailMechanic {
+  text-align: right;
+}
+
 .gameSmallText {
   font-size: 0.8rem;
 }
@@ -949,7 +942,6 @@ footer {
   width: 32%;
   padding-left: 40px;
   color: #ffffff;
-  line-height: 40px;
 }
 
 .footerText h3 {
@@ -981,16 +973,28 @@ footer {
   -webkit-box-align: normal;
       -ms-flex-align: normal;
           align-items: normal;
+  padding-bottom: 20px;
+}
+
+.footerTextSocial .lni {
+  margin: 0;
+}
+
+.footerTextSocial a:nth-child(2) {
+  padding-left: 20px;
 }
 
 .footerText p {
   padding-left: 20px;
 }
 
+.footerText p:nth-child(2) {
+  line-height: 35px;
+}
+
 .footerTextSocial a {
   color: #ffffff;
   font-size: 1.2rem;
-  padding: 0 10px;
 }
 
 .footerText img {

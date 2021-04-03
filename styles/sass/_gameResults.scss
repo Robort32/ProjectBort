@@ -15,7 +15,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 32rem;
+  height: 640px;
   border: 1px solid $black;
   border-radius: $borderRadius;
   box-shadow: 5px 5px 15px $shading1;
@@ -91,6 +91,9 @@
 }
 .gameDetailItem h5 {
   text-transform: capitalize;
+}
+.gameDetailMechanic {
+  text-align: right;
 }
 .gameSmallText {
   font-size: 0.8rem;

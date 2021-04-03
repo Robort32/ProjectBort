@@ -72,24 +72,11 @@ input[type="submit"] {
 }
 input[type="button"] {
   background-color: $shading1;
-  width: 100%;
-  line-height: 1px;
-  font-family: $headerFontType;
-  font-size: $headingFontSize4;
-  text-transform: uppercase;
-  background-color: $accent1;
-  border: transparent;
-  border-radius: $borderRadius;
-  height: 55px;
-  padding: 35px 45px;
-  white-space: normal;
-  word-wrap: break-word;
-  transition: all 0.3s;
   grid-area: 4 /3 / span 4;
 }
 
 input[type="submit"]:hover,
-input[type="button"]:hover {
+input[type="submit"]:focus {
   @include buttonPress;
   background-color: $accent2;
 }

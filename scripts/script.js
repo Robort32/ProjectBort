@@ -47,22 +47,25 @@ projectBort.pricePoint = () => {
 //hide robort section when games are received OR display "nothing found"
 projectBort.hideRobortSection = (info) => {
   const robortSection = document.querySelector(".robortSection");
-  const gameResultContainer = document.querySelector(".gameResultContainer");
- 
-  projectBort.sortDropdown = document.querySelector(".sortDropdown");
+  const sortDropdown = document.querySelector(".sortDropdown");
+  const gameResultContainer = document.getElementById("gameResultContainer");
   const robortLogo = document.getElementById("robortLogo");
+
   if (info.count === 0) {
     robortLogo.src = "./assets/robortLogoError.gif";
     robortLogo.alt = "Robort Error. Search Again";
-    projectBort.robortSection.classList.remove("hidden");
-    projectBort.robortSection.scrollIntoView({
+    sortDropdown.style.display = "none";
+    gameResultContainer.style.display = "none";
+
+    robortSection.classList.remove("hidden");
+    robortSection.scrollIntoView({
       behavior: "smooth",
       block: "end",
       inline: "nearest",
     });
   } else {
     robortSection.classList.add("hidden");
-    gameResultContainer.scrollIntoView({
+    sortDropdown.scrollIntoView({
       behavior: "smooth",
       block: "start",
       inline: "nearest",
@@ -83,7 +86,6 @@ projectBort.apiCall = (
   const searchUrl = new URL(projectBort.api);
   const searchParams = {
     client_id: projectBort.clientID,
-    // limit: 20,
     min_players: minPlayers,
     mechanics: mechanics,
     gt_price: gtprice,
@@ -101,7 +103,7 @@ projectBort.apiCall = (
       cleanUrl.set(value[0], value[1]);
     }
   });
-  console.log(searchUrl);
+
   searchUrl.search = cleanUrl;
   fetch(searchUrl)
     .then((res) => {
@@ -117,10 +119,11 @@ projectBort.apiCall = (
 projectBort.showGames = (result) => {
   const gameResultContainer = document.getElementById("gameResultContainer");
   const sortDropdown = document.querySelector(".sortDropdown");
+
   gameResultContainer.style.display = "grid";
   sortDropdown.style.display = "block";
+
   const mechName = document.getElementById("mechOption");
-  const mechInsideText = mechName.options[mechName.selectedIndex].text;
   const insideTextMechanic = mechName.options[mechName.selectedIndex].text;
   const categoryName = document.getElementById("categoryOption");
   const insideTextCategory =
@@ -128,17 +131,15 @@ projectBort.showGames = (result) => {
   projectBort.removeNodes(gameResultContainer);
   //check to make sure templates are supported (catch added to fetch statement)
   if ("content" in document.createElement("template")) {
-    resultArray.forEach((game) => {
+    result.forEach((game) => {
       let insideText;
       let smallText;
       if (mechName.selectedIndex === 0 && categoryName.selectedIndex === 0) {
         insideText = game.year_published;
-        console.log(insideText);
         smallText = "Year Published ";
       } else if (mechName.selectedIndex > 0) {
         insideText = insideTextMechanic;
         smallText = " Mechanic";
-        console.log(insideText);
       } else if (categoryName.selectedIndex > 0) {
         insideText = insideTextCategory;
         smallText = " Category";
@@ -146,8 +147,7 @@ projectBort.showGames = (result) => {
         insideText = insideTextMechanic;
         smallText = " Mechanic";
       }
-   
-    result.forEach((game) => {
+
       const gameTemplate = document
         .getElementById("gameResultTemplate")
         .content.cloneNode(true);
@@ -158,17 +158,23 @@ projectBort.showGames = (result) => {
       gameTemplate.querySelector(".gameImage").alt = game.name;
       gameTemplate.querySelector("#smallText").innerText = smallText;
       gameTemplate.querySelector(".gameDetailMechanic").innerText = insideText;
-      gameTemplate.querySelector(".gameDetailPrice").innerText = `$ ${game.price_ca}`;
-      gameTemplate.querySelector(".gameDetailMinPlayer").innerText = game.min_players;
-      gameTemplate.querySelector(".gameDetailMaxPlayer").innerText = game.max_players;
-      gameTemplate.querySelector(".gameAvgRatingText").innerText = game.average_user_rating.toFixed(2);
-
+      gameTemplate.querySelector(
+        ".gameDetailPrice"
+      ).innerText = `$ ${game.price_ca}`;
+      gameTemplate.querySelector(".gameDetailMinPlayer").innerText =
+        game.min_players;
+      gameTemplate.querySelector(".gameDetailMaxPlayer").innerText =
+        game.max_players;
+      gameTemplate.querySelector(
+        ".gameAvgRatingText"
+      ).innerText = game.average_user_rating.toFixed(2);
 
       gameResultContainer.appendChild(gameTemplate);
     });
   } else {
     error("Your browser does not support templates");
   }
+
   projectBort.sortByRating(result);
   projectBort.sortByPrice(result);
   projectBort.sortByName(result);
@@ -189,6 +195,8 @@ projectBort.pageLoad = () => {
     projectBort.loadDropdowMechanic();
     projectBort.loadDropdowCategorgies();
     projectBort.returnToTop();
+    projectBort.sortMenu();
+    projectBort.clearSearch();
   });
 };
 //
@@ -251,19 +259,26 @@ projectBort.returnToTop = () => {
 };
 //
 //
+projectBort.clearSearch = () => {
+  document.querySelector(".clearBtn").addEventListener("click", function () {
+    const allSelects = document.querySelectorAll("select");
+    allSelects.forEach((element) => {
+      element.selectedIndex = 0;
+    });
 
-document.querySelector(".clearBtn").addEventListener("click", function () {
-  const allSelects = document.querySelectorAll("select");
+    const sortConentDropdown = document.querySelector(".sortConentDropdown");
+    sortConentDropdown.classList.add("notVisible");
 
-  allSelects.forEach((element) => {
-    element.selectedIndex = 0;
+    const menuArrow = document.querySelector(".lni-arrow-down-circle");
+    menuArrow.classList.remove("arrowSwing");
   });
-});
+};
 //
 //sort results based on rating (highest to lowest)
 projectBort.sortByRating = (result) => {
   const sortAverageRating = document.getElementById("sortAverageRating");
   sortAverageRating.addEventListener("click", function () {
+    console.log("CLICKED RATING");
     const sortedResult = result.sort(
       (x, y) => y.average_user_rating - x.average_user_rating
     );
@@ -274,7 +289,7 @@ projectBort.sortByRating = (result) => {
 projectBort.sortByPrice = (result) => {
   const sortLowestPrice = document.getElementById("sortLowestPrice");
   sortLowestPrice.addEventListener("click", function () {
-    const sortedResult = result.sort((x, y) => x.price - y.price);
+    const sortedResult = result.sort((x, y) => x.price_ca - y.price_ca);
     projectBort.showGames(sortedResult);
   });
 };
@@ -287,7 +302,6 @@ projectBort.sortByName = (result) => {
   });
 };
 //
-//
 //sortMenu click for drowdown
 projectBort.sortMenu = () => {
   const sortClickMenu = document.querySelector(".sortClickMenu");
@@ -299,12 +313,11 @@ projectBort.sortMenu = () => {
     menuArrow.classList.toggle("arrowSwing");
   });
 };
-//
+
 //go get it!
 projectBort.init = () => {
   projectBort.pageLoad();
   projectBort.submitDataToApi();
 };
 projectBort.init();
-//
 //
