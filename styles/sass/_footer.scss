@@ -40,3 +40,32 @@ footer {
 .footerText img {
   height: 40px;
 }
+//
+//media queries
+@media screen and (max-width: 960px) {
+  .footerImage {
+    width: 40%;
+  }
+  .footerText {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .footerImage {
+    display: none;
+  }
+  .footerText {
+    padding: 40px;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 340px) {
+  .footerText h3,
+  .footerTextSocial a {
+    font-size: 1rem;
+    padding: 0;
+  }
+  .footerTextSocial .lni {
+    margin-left: 15px;
+  }
+}

@@ -4,8 +4,34 @@
   background: $shading1;
   min-height: 70vh;
 }
-.robortcontainer {
+.robortContainer {
   img {
     width: 84%;
+  }
+}
+//
+//
+@media screen and (max-width: 960px) {
+  .robortSection {
+    min-height: 15vh;
+  }
+  .robortContainer {
+    height: 60%;
+  }
+  .robortContainer img {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 660px) {
+  .robortSection {
+    min-height: 10vh;
+  }
+  .robortContainer {
+    height: 40%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .robortSection {
+    display: none;
   }
 }

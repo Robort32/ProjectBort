@@ -19,6 +19,13 @@
   background: $primary4;
   border-radius: $borderRadius;
 }
+.lineBreak {
+  width: 60%;
+  height: 2px;
+  margin: 15px auto;
+  background-color: $primary2;
+}
+
 .headerTextBox span {
   letter-spacing: 40px;
   font-weight: 900;
@@ -34,6 +41,12 @@
   width: 25%;
   padding-right: 20px;
   text-align: right;
+}
+.lineBreak {
+  width: 60%;
+  height: 2px;
+  margin: 15px auto;
+  background-color: $primary2;
 }
 //media queries
 

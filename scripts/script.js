@@ -129,6 +129,10 @@ projectBort.showGames = (result) => {
   const sortDropdown = document.querySelector(".sortDropdown");
   gameResultContainer.style.display = "grid";
   sortDropdown.style.display = "block";
+
+  const mechName = document.getElementById("mechOption");
+  const mechInsideText = mechName.options[mechName.selectedIndex].text;
+
   projectBort.removeNodes(gameResultContainer);
   //check to make sure templates are supported (catch added to fetch statement)
   if ("content" in document.createElement("template")) {
@@ -137,9 +141,13 @@ projectBort.showGames = (result) => {
         .getElementById("gameResultTemplate")
         .content.cloneNode(true);
       gameTemplate.querySelector(".gameLink").href = game.url;
+      gameTemplate.querySelector(".gameLinkTitle").href = game.url;
       gameTemplate.querySelector(".gameTitle").innerText = game.name;
       gameTemplate.querySelector(".gameImage").src = game.image_url;
       gameTemplate.querySelector(".gameImage").alt = game.name;
+      gameTemplate.querySelector(
+        ".gameDetailMechanic"
+      ).innerText = mechInsideText;
       gameTemplate.querySelector(
         ".gameDetailPrice"
       ).innerText = `$ ${game.price_ca}`;
@@ -150,10 +158,7 @@ projectBort.showGames = (result) => {
       gameTemplate.querySelector(
         ".gameAvgRatingText"
       ).innerText = game.average_user_rating.toFixed(2);
-      gameTemplate.querySelector(".gameDetailPlaytime").innerText =
-        game.min_playtime;
-      gameTemplate.querySelector(".gameDetailYear").innerText =
-        game.year_published;
+      gameResultContainer.appendChild(gameTemplate);
 
       gameResultContainer.appendChild(gameTemplate);
     });

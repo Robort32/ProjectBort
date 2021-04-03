@@ -48,15 +48,22 @@
   object-fit: cover;
   opacity: 0.8;
 }
+.gameLineBreak {
+  width: 60%;
+  height: 2px;
+  margin: 15px auto;
+  background-color: $primary2;
+}
 .gameTextContainer {
   padding: 10px 15px;
   width: 100%;
   min-height: 200px;
-  display: flex;
-  flex-direction: column;
+}
+.gameTitleContainer {
+  height: 3.5rem;
+  @include flexColumnCenterItems;
 }
 .gameTextContainer h3 {
-  height: 3.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -135,4 +142,28 @@
 .sortDropdown li:focus {
   background-color: $primary3;
   cursor: pointer;
+}
+//
+//
+@media screen and (max-width: 960px) {
+  .gameResultContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 660px) {
+  .gameResultContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .sortContent ul {
+    margin-left: 40px;
+  }
+}
+@media screen and (max-width: 480px) {
+  @media screen and (max-width: 660px) {
+    .gameResultContainer {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+@media screen and (max-width: 340px) {
 }
