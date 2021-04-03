@@ -1,17 +1,12 @@
 const projectBort = {};
-
 projectBort.clientID = "b8a4fHq3xL";
-
 projectBort.submitDataToApi = () => {
   projectBort.submitBtn = document.querySelector(".submitBtn");
-
   projectBort.submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
-
     //grab the value of Mechanics and Categories (loaded in window from API first thing)
     projectBort.useMerchanics = document.querySelector("#mechOption").value;
     projectBort.useCategories = document.querySelector("#categoryOption").value;
-
     //creating the price window selected by user
     projectBort.pricePoint();
     //creating the window of min/max players as selected by user
@@ -43,7 +38,6 @@ projectBort.minMaxPlayers = () => {
 //get value for price
 projectBort.pricePoint = () => {
   projectBort.priceOption = document.querySelector("#priceOption").value;
-
   let priceNumber = parseInt(projectBort.priceOption, 10);
   if (priceNumber === 75) {
     projectBort.priceGreaterThen = 75;
@@ -70,14 +64,13 @@ projectBort.hideRobortSection = (info) => {
     });
   } else {
     projectBort.robortSection.classList.add("hidden");
-    projectBort.sortDropdown.scrollIntoView({
+    projectBort.gameResultContainer.scrollIntoView({
       behavior: "smooth",
       block: "start",
       inline: "nearest",
     });
   }
 };
-
 //
 //Getting the information from the API
 projectBort.apiCall = (
@@ -100,7 +93,6 @@ projectBort.apiCall = (
     gt_max_players: maxPlayers,
     categories: categories,
   };
-
   //remove any unselected dropdown means
   const cleanUrl = new URLSearchParams();
   Object.entries(searchParams).forEach((value) => {
@@ -112,7 +104,6 @@ projectBort.apiCall = (
     }
   });
   searchUrl.search = cleanUrl;
-
   fetch(searchUrl)
     .then((res) => {
       return res.json();
@@ -158,7 +149,7 @@ projectBort.showGames = (result) => {
       gameTemplate.querySelector(
         ".gameAvgRatingText"
       ).innerText = game.average_user_rating.toFixed(2);
-      gameResultContainer.appendChild(gameTemplate);
+
 
       gameResultContainer.appendChild(gameTemplate);
     });
@@ -287,12 +278,12 @@ projectBort.sortByName = (result) => {
 };
 //
 //
+
 //go get it!
 projectBort.init = () => {
   projectBort.pageLoad();
   projectBort.submitDataToApi();
 };
-
 projectBort.init();
 //
 //
