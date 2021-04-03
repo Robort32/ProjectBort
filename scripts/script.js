@@ -5,66 +5,67 @@ projectBort.submitDataToApi = () => {
   projectBort.submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
     //grab the value of Mechanics and Categories (loaded in window from API first thing)
-    projectBort.useMerchanics = document.querySelector("#mechOption").value;
-    projectBort.useCategories = document.querySelector("#categoryOption").value;
+    const useMerchanics = document.querySelector("#mechOption").value;
+    const useCategories = document.querySelector("#categoryOption").value;
     //creating the price window selected by user
     projectBort.pricePoint();
     //creating the window of min/max players as selected by user
     projectBort.minMaxPlayers();
     //sending all the collected data to be called to API
     projectBort.apiCall(
-      projectBort.minPlayerNumber,
-      projectBort.maxPlayerNumber,
-      projectBort.useMerchanics,
-      projectBort.priceGreaterThen,
-      projectBort.priceLowerThen,
-      projectBort.useCategories
+      minPlayerNumber,
+      maxPlayerNumber,
+      useMerchanics,
+      priceGreaterThen,
+      priceLowerThen,
+      useCategories
     );
   });
 };
 //
 //Getting Value for minimum players and maximum players
 projectBort.minMaxPlayers = () => {
-  projectBort.minPlayerOption = document.querySelector(
-    "#minPlayerOption"
-  ).value;
-  projectBort.maxPlayerOption = document.querySelector(
-    "#maxPlayerOption"
-  ).value;
-  projectBort.minPlayerNumber = parseInt(projectBort.minPlayerOption, 10);
-  projectBort.maxPlayerNumber = parseInt(projectBort.maxPlayerOption, 10);
+  const minPlayerOption = document.querySelector("#minPlayerOption").value;
+  const maxPlayerOption = document.querySelector("#maxPlayerOption").value;
+  maxPlayerNumber = parseInt(maxPlayerOption, 10);
+  minPlayerNumber = parseInt(minPlayerOption, 10);
 };
 //
 //get value for price
 projectBort.pricePoint = () => {
-  projectBort.priceOption = document.querySelector("#priceOption").value;
-  let priceNumber = parseInt(projectBort.priceOption, 10);
+  const priceOption = document.querySelector("#priceOption").value;
+  let priceNumber = parseInt(priceOption, 10);
   if (priceNumber === 75) {
-    projectBort.priceGreaterThen = 75;
-    projectBort.priceLowerThen = 7500;
+    priceGreaterThen = 75;
+    priceLowerThen = 7500;
   } else {
-    projectBort.priceGreaterThen = priceNumber;
-    projectBort.priceLowerThen = priceNumber + 25;
+    priceGreaterThen = priceNumber;
+    priceLowerThen = priceNumber + 25;
   }
 };
 //
 //hide robort section when games are received OR display "nothing found"
 projectBort.hideRobortSection = (info) => {
-  projectBort.robortSection = document.querySelector(".robortSection");
-  projectBort.sortDropdown = document.querySelector(".sortDropdown");
+  const robortSection = document.querySelector(".robortSection");
+  const sortDropdown = document.querySelector(".sortDropdown");
+  const gameResultContainer = document.getElementById("gameResultContainer");
   const robortLogo = document.getElementById("robortLogo");
+
   if (info.count === 0) {
     robortLogo.src = "./assets/robortLogoError.gif";
     robortLogo.alt = "Robort Error. Search Again";
-    projectBort.robortSection.classList.remove("hidden");
-    projectBort.robortSection.scrollIntoView({
+    sortDropdown.style.display = "none";
+    gameResultContainer.style.display = "none";
+
+    robortSection.classList.remove("hidden");
+    robortSection.scrollIntoView({
       behavior: "smooth",
       block: "end",
       inline: "nearest",
     });
   } else {
-    projectBort.robortSection.classList.add("hidden");
-    projectBort.gameResultContainer.scrollIntoView({
+    robortSection.classList.add("hidden");
+    sortDropdown.scrollIntoView({
       behavior: "smooth",
       block: "start",
       inline: "nearest",
@@ -85,7 +86,6 @@ projectBort.apiCall = (
   const searchUrl = new URL(projectBort.api);
   const searchParams = {
     client_id: projectBort.clientID,
-    // limit: 20,
     min_players: minPlayers,
     mechanics: mechanics,
     gt_price: gtprice,
@@ -103,6 +103,7 @@ projectBort.apiCall = (
       cleanUrl.set(value[0], value[1]);
     }
   });
+
   searchUrl.search = cleanUrl;
   fetch(searchUrl)
     .then((res) => {
@@ -113,21 +114,40 @@ projectBort.apiCall = (
       projectBort.hideRobortSection(jsonResponse);
     });
 };
-//
+
 //show game results in cards
 projectBort.showGames = (result) => {
   const gameResultContainer = document.getElementById("gameResultContainer");
   const sortDropdown = document.querySelector(".sortDropdown");
+
   gameResultContainer.style.display = "grid";
   sortDropdown.style.display = "block";
 
   const mechName = document.getElementById("mechOption");
-  const mechInsideText = mechName.options[mechName.selectedIndex].text;
-
+  const insideTextMechanic = mechName.options[mechName.selectedIndex].text;
+  const categoryName = document.getElementById("categoryOption");
+  const insideTextCategory =
+    categoryName.options[categoryName.selectedIndex].text;
   projectBort.removeNodes(gameResultContainer);
   //check to make sure templates are supported (catch added to fetch statement)
   if ("content" in document.createElement("template")) {
     result.forEach((game) => {
+      let insideText;
+      let smallText;
+      if (mechName.selectedIndex === 0 && categoryName.selectedIndex === 0) {
+        insideText = game.year_published;
+        smallText = "Year Published ";
+      } else if (mechName.selectedIndex > 0) {
+        insideText = insideTextMechanic;
+        smallText = " Mechanic";
+      } else if (categoryName.selectedIndex > 0) {
+        insideText = insideTextCategory;
+        smallText = " Category";
+      } else if (mechName.selectedIndex > 0 && categoryName.selectedIndex > 0) {
+        insideText = insideTextMechanic;
+        smallText = " Mechanic";
+      }
+
       const gameTemplate = document
         .getElementById("gameResultTemplate")
         .content.cloneNode(true);
@@ -136,9 +156,8 @@ projectBort.showGames = (result) => {
       gameTemplate.querySelector(".gameTitle").innerText = game.name;
       gameTemplate.querySelector(".gameImage").src = game.image_url;
       gameTemplate.querySelector(".gameImage").alt = game.name;
-      gameTemplate.querySelector(
-        ".gameDetailMechanic"
-      ).innerText = mechInsideText;
+      gameTemplate.querySelector("#smallText").innerText = smallText;
+      gameTemplate.querySelector(".gameDetailMechanic").innerText = insideText;
       gameTemplate.querySelector(
         ".gameDetailPrice"
       ).innerText = `$ ${game.price_ca}`;
@@ -150,7 +169,6 @@ projectBort.showGames = (result) => {
         ".gameAvgRatingText"
       ).innerText = game.average_user_rating.toFixed(2);
 
-
       gameResultContainer.appendChild(gameTemplate);
     });
   } else {
@@ -159,6 +177,7 @@ projectBort.showGames = (result) => {
   projectBort.sortByRating(result);
   projectBort.sortByPrice(result);
   projectBort.sortByName(result);
+  projectBort.sortMenu();
 };
 //
 
@@ -240,14 +259,11 @@ projectBort.returnToTop = () => {
 //
 
 document.querySelector(".clearBtn").addEventListener("click", function () {
-  projectBort.allSelects = document.querySelectorAll("select");
+  const allSelects = document.querySelectorAll("select");
 
-  projectBort.allSelects.forEach((element) => {
+  allSelects.forEach((element) => {
     element.selectedIndex = 0;
   });
-
-  // document.getElementById("mechOption").selectedIndex = 0;
-  // doc
 });
 //
 //sort results based on rating (highest to lowest)
@@ -263,8 +279,11 @@ projectBort.sortByRating = (result) => {
 //sort results based on price (lowest to highest)
 projectBort.sortByPrice = (result) => {
   const sortLowestPrice = document.getElementById("sortLowestPrice");
+
   sortLowestPrice.addEventListener("click", function () {
-    const sortedResult = result.sort((x, y) => x.price - y.price);
+    const sortedResult = result.sort((x, y) => {
+      parseInt(x.price_ca) - parseInt(y.price_ca);
+    });
     projectBort.showGames(sortedResult);
   });
 };
@@ -277,7 +296,17 @@ projectBort.sortByName = (result) => {
   });
 };
 //
-//
+//sortMenu click for drowdown
+projectBort.sortMenu = () => {
+  const sortClickMenu = document.querySelector(".sortClickMenu");
+  const menuArrow = document.querySelector(".lni-arrow-down-circle");
+
+  sortClickMenu.addEventListener("click", function () {
+    const sortConentDropdown = document.querySelector(".sortConentDropdown");
+    sortConentDropdown.classList.toggle("notVisible");
+    menuArrow.classList.toggle("arrowSwing");
+  });
+};
 
 //go get it!
 projectBort.init = () => {
@@ -285,5 +314,4 @@ projectBort.init = () => {
   projectBort.submitDataToApi();
 };
 projectBort.init();
-//
 //

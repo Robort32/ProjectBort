@@ -111,7 +111,6 @@
   position: relative;
 }
 .sortContent ul {
-  visibility: hidden;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -125,13 +124,11 @@
   transition: transform 0.5s;
   cursor: pointer;
 }
-.sortDropdown:hover .lni,
-.sortDropdown:focus .lni {
-  transform: rotate(-180deg);
+.notVisible {
+  visibility: hidden;
 }
-.sortDropdown:hover .sortContent ul,
-.sortDropdown:focus .sortContent ul {
-  visibility: visible;
+.arrowSwing {
+  transform: rotate(-180deg);
 }
 .sortDropdown li {
   margin-top: 5px;
@@ -143,6 +140,7 @@
   background-color: $primary3;
   cursor: pointer;
 }
+
 //
 //
 @media screen and (max-width: 960px) {
@@ -166,41 +164,4 @@
   }
 }
 @media screen and (max-width: 340px) {
-  position: relative;
-  height: 70px;
-  background-color: $shading2;
-  padding-left: 100px;
-  line-height: 70px;
-}
-.sortContent {
-  visibility: hidden;
-  position: absolute;
-  left: 150px;
-  z-index: 10;
-}
-.sortDropdown:hover .sortContent {
-  visibility: visible;
-}
-.sortDropdown ul {
-  padding: 0;
-  margin: 60px 0 0 0;
-  list-style: none;
-  background-color: $white;
-  border-radius: $borderRadius;
-}
-.sortDropdown li {
-  background-color: cadetblue;
-  display: inline-block;
-  padding: 5px 60px;
-  z-index: 5;
-}
-
-.sortClearFlex {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.clearbtnContainer {
-  padding-right: 100px;
 }
