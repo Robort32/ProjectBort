@@ -607,6 +607,7 @@ input[type="submit"]:focus {
   -webkit-box-shadow: 5px 5px 15px #cbcbcb;
           box-shadow: 5px 5px 15px #cbcbcb;
   background-color: #ff6b6b;
+  cursor: pointer;
 }
 
 input[type="button"]:hover,
@@ -616,6 +617,7 @@ input[type="button"]:focus {
   -webkit-box-shadow: 5px 5px 15px #cbcbcb;
           box-shadow: 5px 5px 15px #cbcbcb;
   background-color: #5d7cb5;
+  cursor: pointer;
 }
 
 legend {

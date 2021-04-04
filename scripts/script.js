@@ -306,11 +306,25 @@ projectBort.sortByName = (result) => {
 projectBort.sortMenu = () => {
   const sortClickMenu = document.querySelector(".sortClickMenu");
   const menuArrow = document.querySelector(".lni-arrow-down-circle");
+  const sortConentDropdown = document.querySelector(".sortConentDropdown");
 
   sortClickMenu.addEventListener("click", function () {
-    const sortConentDropdown = document.querySelector(".sortConentDropdown");
     sortConentDropdown.classList.toggle("notVisible");
     menuArrow.classList.toggle("arrowSwing");
+  });
+};
+//
+//
+
+projectBort.hideMenu = () => {
+  const menuArrow = document.querySelector(".lni-arrow-down-circle");
+  const sortConentDropdown = document.querySelector(".sortConentDropdown");
+
+  document.addEventListener("click", function (e) {
+    if (e.target.closest("#sortMenu")) return;
+    if (e.target.closest(".lni-arrow-down-circle")) return;
+    sortConentDropdown.classList.add("notVisible");
+    menuArrow.classList.remove("arrowSwing");
   });
 };
 
@@ -318,6 +332,7 @@ projectBort.sortMenu = () => {
 projectBort.init = () => {
   projectBort.pageLoad();
   projectBort.submitDataToApi();
+  projectBort.hideMenu();
 };
 projectBort.init();
 //
