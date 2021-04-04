@@ -60,7 +60,8 @@ footer {
   }
 }
 @media screen and (max-width: 660px) {
-  .footerImage {
+  .footerImage,
+  .footerImageContainer {
     display: none;
   }
   .footerText {
@@ -68,7 +69,7 @@ footer {
     width: 100%;
   }
 }
-@media screen and (max-width: 340px) {
+@media screen and (max-width: 420px) {
   .footerText h3,
   .footerTextSocial a {
     font-size: 1rem;
