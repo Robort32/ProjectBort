@@ -477,9 +477,6 @@ h5 {
   .robortSection {
     display: none;
   }
-  .robortContainer {
-    height: 40%;
-  }
 }
 
 .searchContainer {
@@ -920,12 +917,6 @@ legend {
     margin-left: 0px;
   }
   .sortDropdown li {
-    padding: 30px 120px 30px 60px;
-  }
-}
-
-@media screen and (max-width: 340px) {
-  .sortDropdown li {
     padding: 30px 80px 30px 60px;
   }
 }
@@ -1032,7 +1023,8 @@ footer {
 }
 
 @media screen and (max-width: 660px) {
-  .footerImage {
+  .footerImage,
+  .footerImageContainer {
     display: none;
   }
   .footerText {
@@ -1041,7 +1033,7 @@ footer {
   }
 }
 
-@media screen and (max-width: 340px) {
+@media screen and (max-width: 420px) {
   .footerText h3,
   .footerTextSocial a {
     font-size: 1rem;
