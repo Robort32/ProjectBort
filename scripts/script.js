@@ -5,8 +5,8 @@ projectBort.clientID = "b8a4fHq3xL";
 //
 //combine user selection for api call
 projectBort.submitDataToApi = () => {
-  projectBort.submitBtn = document.querySelector(".submitBtn");
-  projectBort.submitBtn.addEventListener("click", function (e) {
+  const submitBtn = document.querySelector(".submitBtn");
+  submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
     //grab the value of Mechanics and Categories (loaded in window from API first thing)
     const useMerchanics = document.querySelector("#mechOption").value;
