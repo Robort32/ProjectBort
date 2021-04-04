@@ -384,7 +384,7 @@ h5 {
   background-color: #44587d;
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 960px) {
   .headerImage {
     height: 50vh;
   }
@@ -902,12 +902,34 @@ legend {
   .sortContent ul {
     margin-left: 40px;
   }
+  .sortDropdown li {
+    padding: 30px 200px 30px 60px;
+  }
 }
 
-@media screen and (max-width: 480px) and (max-width: 660px) {
+@media screen and (max-width: 660px) and (max-width: 480px) {
   .gameResultContainer {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
+  }
+  .gameAvgRating {
+    position: absolute;
+    top: -15px;
+    right: 0px;
+    padding: 10px;
+    background-color: #44587d;
+    color: #ffffff;
+    border-radius: 15px;
+    z-index: 1;
+  }
+  .sortContent ul {
+    margin-left: 0px;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .sortDropdown li {
+    padding: 30px 100px 30px 60px;
   }
 }
 
@@ -1096,5 +1118,11 @@ body {
 @media screen and (max-width: 960px) {
   .lineBreak {
     display: none;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .returnToTop {
+    right: 40px;
   }
 }
