@@ -1022,7 +1022,7 @@ footer {
   }
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 800px) {
   .footerImage,
   .footerImageContainer {
     display: none;
@@ -1030,17 +1030,6 @@ footer {
   .footerText {
     padding: 40px;
     width: 100%;
-  }
-}
-
-@media screen and (max-width: 420px) {
-  .footerText h3,
-  .footerTextSocial a {
-    font-size: 1rem;
-    padding: 0;
-  }
-  .footerTextSocial .lni {
-    margin-left: 15px;
   }
 }
 
