@@ -386,7 +386,7 @@ h5 {
 
 @media screen and (max-width: 960px) {
   .headerImage {
-    height: 50vh;
+    height: 300px;
   }
   .headerTextBox {
     display: -webkit-box;
