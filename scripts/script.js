@@ -1,5 +1,9 @@
 const projectBort = {};
+
 projectBort.clientID = "b8a4fHq3xL";
+
+//
+//combine user selection for api call
 projectBort.submitDataToApi = () => {
   projectBort.submitBtn = document.querySelector(".submitBtn");
   projectBort.submitBtn.addEventListener("click", function (e) {
@@ -50,7 +54,7 @@ projectBort.hideRobortSection = (info) => {
   const sortDropdown = document.querySelector(".sortDropdown");
   const gameResultContainer = document.getElementById("gameResultContainer");
   const robortLogo = document.getElementById("robortLogo");
-
+  //if search returns 0 results, display error, else snap screen to results display
   if (info.count === 0) {
     robortLogo.src = "./assets/robortLogoError.gif";
     robortLogo.alt = "Robort Error. Search Again";
@@ -103,7 +107,7 @@ projectBort.apiCall = (
       cleanUrl.set(value[0], value[1]);
     }
   });
-
+  //fetch using cleaned up search parameters
   searchUrl.search = cleanUrl;
   fetch(searchUrl)
     .then((res) => {
@@ -114,22 +118,25 @@ projectBort.apiCall = (
       projectBort.hideRobortSection(jsonResponse);
     });
 };
-
-//show game results in cards
+//
+// display game search results in cards
 projectBort.showGames = (result) => {
   const gameResultContainer = document.getElementById("gameResultContainer");
   const sortDropdown = document.querySelector(".sortDropdown");
+  const mechName = document.getElementById("mechOption");
+  const categoryName = document.getElementById("categoryOption");
 
   gameResultContainer.style.display = "grid";
   sortDropdown.style.display = "block";
 
-  const mechName = document.getElementById("mechOption");
+  //setting the mechanic/category text if selected by user
   const insideTextMechanic = mechName.options[mechName.selectedIndex].text;
-  const categoryName = document.getElementById("categoryOption");
   const insideTextCategory =
     categoryName.options[categoryName.selectedIndex].text;
+  //clear game containers
   projectBort.removeNodes(gameResultContainer);
-  //check to make sure templates are supported (catch added to fetch statement)
+
+  //if result is missing a mechanic/category, default to price display
   if ("content" in document.createElement("template")) {
     result.forEach((game) => {
       let insideText;
@@ -147,7 +154,7 @@ projectBort.showGames = (result) => {
         insideText = insideTextMechanic;
         smallText = " Mechanic";
       }
-
+      //populate individual cards
       const gameTemplate = document
         .getElementById("gameResultTemplate")
         .content.cloneNode(true);
@@ -172,6 +179,7 @@ projectBort.showGames = (result) => {
       gameResultContainer.appendChild(gameTemplate);
     });
   } else {
+    //in case user is on an older browswer
     error("Your browser does not support templates");
   }
 
@@ -179,8 +187,6 @@ projectBort.showGames = (result) => {
   projectBort.sortByPrice(result);
   projectBort.sortByName(result);
 };
-//
-
 //
 //remove all game cards
 projectBort.removeNodes = (template) => {
@@ -194,9 +200,9 @@ projectBort.pageLoad = () => {
   window.addEventListener("load", () => {
     projectBort.loadDropdowMechanic();
     projectBort.loadDropdowCategorgies();
-    projectBort.returnToTop();
     projectBort.sortMenu();
     projectBort.clearSearch();
+    projectBort.returnToTop();
   });
 };
 //
@@ -258,14 +264,14 @@ projectBort.returnToTop = () => {
   });
 };
 //
-//
+//clear search button
 projectBort.clearSearch = () => {
   document.querySelector(".clearBtn").addEventListener("click", function () {
     const allSelects = document.querySelectorAll("select");
     allSelects.forEach((element) => {
       element.selectedIndex = 0;
     });
-
+    //hide sortMenu if it's open
     const sortConentDropdown = document.querySelector(".sortConentDropdown");
     sortConentDropdown.classList.add("notVisible");
 
@@ -278,26 +284,32 @@ projectBort.clearSearch = () => {
 projectBort.sortByRating = (result) => {
   const sortAverageRating = document.getElementById("sortAverageRating");
   sortAverageRating.addEventListener("click", function () {
-    console.log("CLICKED RATING");
     const sortedResult = result.sort(
-      (x, y) => y.average_user_rating - x.average_user_rating
+      (itemOne, itemTwo) =>
+        itemTwo.average_user_rating - itemOne.average_user_rating
     );
     projectBort.showGames(sortedResult);
   });
 };
+//
 //sort results based on price (lowest to highest)
 projectBort.sortByPrice = (result) => {
   const sortLowestPrice = document.getElementById("sortLowestPrice");
   sortLowestPrice.addEventListener("click", function () {
-    const sortedResult = result.sort((x, y) => x.price_ca - y.price_ca);
+    const sortedResult = result.sort(
+      (itemOne, itemTwo) => itemOne.price_ca - itemTwo.price_ca
+    );
     projectBort.showGames(sortedResult);
   });
 };
+//
 //sort results alphabetically (a-z)
 projectBort.sortByName = (result) => {
   const sortAlphabetical = document.getElementById("sortAlphabetical");
   sortAlphabetical.addEventListener("click", function () {
-    const sortedResult = result.sort((a, b) => a.name.localeCompare(b.name));
+    const sortedResult = result.sort((itemOne, itemTwo) =>
+      itemOne.name.localeCompare(itemTwo.name)
+    );
     projectBort.showGames(sortedResult);
   });
 };
@@ -306,11 +318,25 @@ projectBort.sortByName = (result) => {
 projectBort.sortMenu = () => {
   const sortClickMenu = document.querySelector(".sortClickMenu");
   const menuArrow = document.querySelector(".lni-arrow-down-circle");
+  const sortConentDropdown = document.querySelector(".sortConentDropdown");
 
   sortClickMenu.addEventListener("click", function () {
-    const sortConentDropdown = document.querySelector(".sortConentDropdown");
     sortConentDropdown.classList.toggle("notVisible");
     menuArrow.classList.toggle("arrowSwing");
+  });
+  projectBort.hideMenu();
+};
+//
+//hide sort dropdown if you click anywhere on the screen
+projectBort.hideMenu = () => {
+  const menuArrow = document.querySelector(".lni-arrow-down-circle");
+  const sortConentDropdown = document.querySelector(".sortConentDropdown");
+
+  document.addEventListener("click", function (e) {
+    if (e.target.closest("#sortMenu")) return;
+    if (e.target.closest(".lni-arrow-down-circle")) return;
+    sortConentDropdown.classList.add("notVisible");
+    menuArrow.classList.remove("arrowSwing");
   });
 };
 

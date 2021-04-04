@@ -49,8 +49,9 @@
   background-color: $primary2;
 }
 //media queries
-
-@media screen and (max-width: 660px) {
+// @media screen and (max-width: 960px) {
+// }
+@media screen and (max-width: 960px) {
   .headerImage {
     height: 50vh;
   }
