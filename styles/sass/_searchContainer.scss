@@ -43,13 +43,14 @@ label {
   border: 1px solid $shading1;
   height: 40px;
   padding-left: 50px;
-  background-image: url("../assets/angle-double-down.svg");
+  background-image: url("../assets/angleDoubleDown.svg");
   background-size: $mainFontSize;
   background-repeat: no-repeat;
   background-position-x: 95%;
   background-position-y: center;
   border-radius: $borderRadius;
   transition: all 0.3s;
+  cursor: pointer;
 }
 input[type="submit"],
 input[type="button"] {
@@ -74,7 +75,6 @@ input[type="button"] {
   background-color: $shading1;
   grid-area: 4 /3 / span 4;
 }
-
 input[type="submit"]:hover,
 input[type="submit"]:focus {
   @include buttonPress;
@@ -94,7 +94,7 @@ legend {
   visibility: hidden;
 }
 //
-//
+//media queries
 @media screen and (max-width: 1140px) {
   .searchStart {
     left: 60px;
@@ -119,8 +119,6 @@ legend {
     width: 100%;
     grid-area: 7;
   }
-}
-@media screen and (max-width: 660px) {
 }
 @media screen and (max-width: 480px) {
   .form {

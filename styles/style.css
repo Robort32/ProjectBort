@@ -315,7 +315,7 @@ h5 {
 }
 
 .headerImage {
-  background-image: url("../assets/hero-unsplash.jpg");
+  background-image: url("../assets/heroUnsplash.jpg");
   background-color: #44587d;
   height: 70vh;
   background-position: center;
@@ -386,7 +386,7 @@ h5 {
 
 @media screen and (max-width: 960px) {
   .headerImage {
-    height: 50vh;
+    height: 300px;
   }
   .headerTextBox {
     display: -webkit-box;
@@ -423,7 +423,7 @@ h5 {
 
 @media screen and (max-width: 480px) {
   .headerImage {
-    background-image: url("../assets/hero-unsplashMobile.jpg");
+    background-image: url("../assets/heroUnsplashMobile.jpg");
   }
   .headerTextBox {
     height: 200px;
@@ -536,7 +536,7 @@ label {
   border: 1px solid #cbcbcb;
   height: 40px;
   padding-left: 50px;
-  background-image: url("../assets/angle-double-down.svg");
+  background-image: url("../assets/angleDoubleDown.svg");
   background-size: 1rem;
   background-repeat: no-repeat;
   background-position-x: 95%;
@@ -544,6 +544,7 @@ label {
   border-radius: 15px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 input[type="submit"],
@@ -864,13 +865,6 @@ legend {
 .sortDropdown li:focus {
   background-color: #5d7cb5;
   cursor: pointer;
-}
-
-@media screen and (max-width: 960px) {
-  .gameResultContainer {
-    -ms-grid-columns: (1fr)[3];
-        grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 @media screen and (max-width: 660px) {
