@@ -4,26 +4,20 @@
   background: $shading1;
   min-height: 70vh;
 }
-.robortContainer {
-  img {
-    width: 84%;
-  }
+.robortContainer img {
+  width: 84%;
 }
+
 //
 //
 @media screen and (max-width: 960px) {
-  .robortSection {
-    min-height: 15vh;
-  }
+  // .robortSection {
+  //   min-height: 15vh;
+  // }
   .robortContainer {
-    height: 60%;
+    // height: 300px;
   }
   .robortContainer img {
     width: 100%;
-  }
-}
-@media screen and (max-width: 660px) {
-  .robortSection {
-    display: none;
   }
 }
