@@ -24,14 +24,9 @@
 }
 @media screen and (max-width: 660px) {
   .robortSection {
-    min-height: 10vh;
+    display: none;
   }
   .robortContainer {
     height: 40%;
-  }
-}
-@media screen and (max-width: 480px) {
-  .robortSection {
-    display: none;
   }
 }
