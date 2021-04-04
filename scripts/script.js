@@ -1,3 +1,4 @@
+projectBort = {};
 projectBort.clientID = "b8a4fHq3xL";
 projectBort.submitDataToApi = () => {
   projectBort.submitBtn = document.querySelector(".submitBtn");
