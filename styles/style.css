@@ -901,7 +901,7 @@ legend {
   }
 }
 
-@media screen and (max-width: 660px) and (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .gameResultContainer {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
@@ -918,6 +918,9 @@ legend {
   }
   .sortContent ul {
     margin-left: 0px;
+  }
+  .sortDropdown li {
+    padding: 30px 120px 30px 60px;
   }
 }
 
