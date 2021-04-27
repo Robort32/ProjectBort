@@ -2,8 +2,88 @@ const projectBort = {};
 
 projectBort.clientID = "b8a4fHq3xL";
 
+//things that run on the page load - populating drop downs & general stylings
+projectBort.pageLoad = () => {
+  window.addEventListener("load", () => {
+    projectBort.loadDropdowMechanic();
+    projectBort.loadDropdowCategorgies();
+    projectBort.sortMenu();
+    projectBort.clearSearch();
+    projectBort.returnToTop();
+  });
+};
 //
-//combine user selection for api call
+//API call to populate game mechanic dropdown
+projectBort.loadDropdowMechanic = () => {
+  const mechanicUrl = new URL(
+    "https://api.boardgameatlas.com/api/game/mechanics?"
+  );
+  mechanicUrl.search = new URLSearchParams({
+    client_id: projectBort.clientID,
+  });
+  fetch(mechanicUrl).then((res) => {
+    res
+      .json()
+      .then((response) => {
+        projectBort.populateDropdown(response.mechanics, "#mechOption");
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  });
+};
+//
+//API call to populate game category dropdown
+projectBort.loadDropdowCategorgies = () => {
+  const categoryUrl = new URL(
+    "https://api.boardgameatlas.com/api/game/categories?"
+  );
+  categoryUrl.search = new URLSearchParams({
+    client_id: projectBort.clientID,
+  });
+  fetch(categoryUrl).then((res) => {
+    res
+      .json()
+      .then((response) => {
+        projectBort.populateDropdown(response.categories, "#categoryOption");
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  });
+};
+//
+//shared function to populate the dropdowns from a window load API call (categories & mechanics)
+projectBort.populateDropdown = (apiResult, location) => {
+  const dropdownLocation = document.querySelector(location);
+  apiResult.forEach((item) => {
+    const gameOption = document.createElement("option");
+    gameOption.textContent = item.name;
+    gameOption.value = item.id;
+    dropdownLocation.appendChild(gameOption);
+  });
+};
+
+//get price range selection
+projectBort.pricePoint = () => {
+  const priceOption = document.querySelector("#priceOption").value;
+  let priceNumber = parseInt(priceOption, 10);
+  if (priceNumber === 75) {
+    priceGreaterThen = 75;
+    priceLowerThen = 7500;
+  } else {
+    priceGreaterThen = priceNumber;
+    priceLowerThen = priceNumber + 25;
+  }
+};
+//Getting Value for minimum players and maximum players
+projectBort.minMaxPlayers = () => {
+  const minPlayerOption = document.querySelector("#minPlayerOption").value;
+  const maxPlayerOption = document.querySelector("#maxPlayerOption").value;
+  maxPlayerNumber = parseInt(maxPlayerOption, 10);
+  minPlayerNumber = parseInt(minPlayerOption, 10);
+};
+//combine all the user serach criteria selections for api call
 projectBort.submitDataToApi = () => {
   const submitBtn = document.querySelector(".submitBtn");
   submitBtn.addEventListener("click", function (e) {
@@ -26,57 +106,6 @@ projectBort.submitDataToApi = () => {
     );
   });
 };
-//
-//Getting Value for minimum players and maximum players
-projectBort.minMaxPlayers = () => {
-  const minPlayerOption = document.querySelector("#minPlayerOption").value;
-  const maxPlayerOption = document.querySelector("#maxPlayerOption").value;
-  maxPlayerNumber = parseInt(maxPlayerOption, 10);
-  minPlayerNumber = parseInt(minPlayerOption, 10);
-};
-//
-//get value for price
-projectBort.pricePoint = () => {
-  const priceOption = document.querySelector("#priceOption").value;
-  let priceNumber = parseInt(priceOption, 10);
-  if (priceNumber === 75) {
-    priceGreaterThen = 75;
-    priceLowerThen = 7500;
-  } else {
-    priceGreaterThen = priceNumber;
-    priceLowerThen = priceNumber + 25;
-  }
-};
-//
-//hide robort section when games are received OR display "nothing found"
-projectBort.hideRobortSection = (info) => {
-  const robortSection = document.querySelector(".robortSection");
-  const sortDropdown = document.querySelector(".sortDropdown");
-  const gameResultContainer = document.getElementById("gameResultContainer");
-  const robortLogo = document.getElementById("robortLogo");
-  //if search returns 0 results, display error, else snap screen to results display
-  if (info.count === 0) {
-    robortLogo.src = "./assets/robortLogoError.gif";
-    robortLogo.alt = "Robort Error. Search Again";
-    sortDropdown.style.display = "none";
-    gameResultContainer.style.display = "none";
-
-    robortSection.classList.remove("hidden");
-    robortSection.scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-      inline: "nearest",
-    });
-  } else {
-    robortSection.classList.add("hidden");
-    sortDropdown.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-      inline: "nearest",
-    });
-  }
-};
-//
 //Getting the information from the API
 projectBort.apiCall = (
   minPlayers,
@@ -116,9 +145,54 @@ projectBort.apiCall = (
     .then((jsonResponse) => {
       projectBort.showGames(jsonResponse.games);
       projectBort.hideRobortSection(jsonResponse);
+    })
+    .catch((error) => {
+      alert(error);
     });
 };
-//
+//clear search button
+projectBort.clearSearch = () => {
+  document.querySelector(".clearBtn").addEventListener("click", function () {
+    const allSelects = document.querySelectorAll("select");
+    allSelects.forEach((element) => {
+      element.selectedIndex = 0;
+    });
+    //hide sortMenu if it's open
+    const sortConentDropdown = document.querySelector(".sortConentDropdown");
+    sortConentDropdown.classList.add("notVisible");
+
+    const menuArrow = document.querySelector(".lni-arrow-down-circle");
+    menuArrow.classList.remove("arrowSwing");
+  });
+};
+//hide robort section when games are received OR display "nothing found"
+projectBort.hideRobortSection = (info) => {
+  const robortSection = document.querySelector(".robortSection");
+  const sortDropdown = document.querySelector(".sortDropdown");
+  const gameResultContainer = document.getElementById("gameResultContainer");
+  const robortLogo = document.getElementById("robortLogo");
+  //if search returns 0 results, display error, else snap screen to results display
+  if (info.count === 0) {
+    robortLogo.src = "./assets/robortLogoError.gif";
+    robortLogo.alt = "Robort Error. Search Again";
+    sortDropdown.style.display = "none";
+    gameResultContainer.style.display = "none";
+
+    robortSection.classList.remove("hidden");
+    robortSection.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+      inline: "nearest",
+    });
+  } else {
+    robortSection.classList.add("hidden");
+    sortDropdown.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    });
+  }
+};
 // display game search results in cards
 projectBort.showGames = (result) => {
   const gameResultContainer = document.getElementById("gameResultContainer");
@@ -187,7 +261,6 @@ projectBort.showGames = (result) => {
   projectBort.sortByPrice(result);
   projectBort.sortByName(result);
 };
-//
 //remove all game cards
 projectBort.removeNodes = (template) => {
   template.querySelectorAll(".gameCard").forEach((e) => {
@@ -195,90 +268,7 @@ projectBort.removeNodes = (template) => {
   });
 };
 //
-//things that run on the page load - populating drop downs & general stylings
-projectBort.pageLoad = () => {
-  window.addEventListener("load", () => {
-    projectBort.loadDropdowMechanic();
-    projectBort.loadDropdowCategorgies();
-    projectBort.sortMenu();
-    projectBort.clearSearch();
-    projectBort.returnToTop();
-  });
-};
-//
-//API call to populate game mechanic dropdown
-projectBort.loadDropdowMechanic = () => {
-  const mechanicUrl = new URL(
-    "https://api.boardgameatlas.com/api/game/mechanics?"
-  );
-  mechanicUrl.search = new URLSearchParams({
-    client_id: projectBort.clientID,
-  });
-  fetch(mechanicUrl).then((res) => {
-    res.json().then((response) => {
-      projectBort.populateDropdown(response.mechanics, "#mechOption");
-    });
-  });
-};
-//
-//API call to populate game category dropdown
-projectBort.loadDropdowCategorgies = () => {
-  const categoryUrl = new URL(
-    "https://api.boardgameatlas.com/api/game/categories?"
-  );
-  categoryUrl.search = new URLSearchParams({
-    client_id: projectBort.clientID,
-  });
-  fetch(categoryUrl).then((res) => {
-    res.json().then((response) => {
-      projectBort.populateDropdown(response.categories, "#categoryOption");
-    });
-  });
-};
-//
-//shared function to populate the dropdowns from a window load API call (categories & mechanics)
-projectBort.populateDropdown = (apiResult, location) => {
-  const dropdownLocation = document.querySelector(location);
-  apiResult.forEach((item) => {
-    const gameOption = document.createElement("option");
-    gameOption.textContent = item.name;
-    gameOption.value = item.id;
-    dropdownLocation.appendChild(gameOption);
-  });
-};
-//
-//Hiding/unhiding the back to top button
-projectBort.returnToTop = () => {
-  const backToTop = document.getElementById("returnToTop");
-  window.addEventListener("scroll", function () {
-    if (
-      document.body.scrollTop > 600 ||
-      document.documentElement.scrollTop > 600
-    ) {
-      backToTop.style.visibility = "visible";
-      backToTop.style.opacity = 1;
-    } else {
-      backToTop.style.visibility = "hidden";
-      backToTop.style.opacity = 0;
-    }
-  });
-};
-//
-//clear search button
-projectBort.clearSearch = () => {
-  document.querySelector(".clearBtn").addEventListener("click", function () {
-    const allSelects = document.querySelectorAll("select");
-    allSelects.forEach((element) => {
-      element.selectedIndex = 0;
-    });
-    //hide sortMenu if it's open
-    const sortConentDropdown = document.querySelector(".sortConentDropdown");
-    sortConentDropdown.classList.add("notVisible");
 
-    const menuArrow = document.querySelector(".lni-arrow-down-circle");
-    menuArrow.classList.remove("arrowSwing");
-  });
-};
 //
 //sort results based on rating (highest to lowest)
 projectBort.sortByRating = (result) => {
@@ -339,7 +329,23 @@ projectBort.hideMenu = () => {
     menuArrow.classList.remove("arrowSwing");
   });
 };
-
+//
+//Hiding/unhiding the back to top button
+projectBort.returnToTop = () => {
+  const backToTop = document.getElementById("returnToTop");
+  window.addEventListener("scroll", function () {
+    if (
+      document.body.scrollTop > 600 ||
+      document.documentElement.scrollTop > 600
+    ) {
+      backToTop.style.visibility = "visible";
+      backToTop.style.opacity = 1;
+    } else {
+      backToTop.style.visibility = "hidden";
+      backToTop.style.opacity = 0;
+    }
+  });
+};
 //go get it!
 projectBort.init = () => {
   projectBort.pageLoad();

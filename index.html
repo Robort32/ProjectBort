@@ -29,8 +29,10 @@
     </div>
     <!-- return to top of screen button-->
     <div class="returnToTop" id="returnToTop">
+      
       <a href="#topOfPage">
-        <img src="./assets/angleDoubleUp.svg" alt="return to top of screen arrow" /></a>
+        <span class="sr-only">return to the top of the page</span>
+        <img src="./assets/angleDoubleUp.svg" alt="return to top of screen arrow" aria-hidden="true"/></a>
     </div>
   </header>
   <!--  Header end -->
@@ -42,19 +44,19 @@
           <h4>start your search</h4>
         </div>
         <form action="" method="GET" class="searchStartForm" name="searchStartForm">
-          <label for="searchMechanics" class="">game mechanics</label>
+          <label for="mechOption">game mechanics</label>
           <select name="mechOption" id="mechOption" class="searchDropdown">
             <option value="makeASelection" disabled selected>
               Game Mechanics
             </option>
           </select>
-          <label for="searchCategories" class="">game category</label>
+          <label for="categoryOption">game category</label>
           <select name="categoryOption" id="categoryOption" class="searchDropdown">
             <option value="makeASelection" disabled selected hidden>
               Game Category
             </option>
           </select>
-          <label for="priceOption" class="">price range</label>
+          <label for="priceOption">price range</label>
           <select name="priceOption" id="priceOption" class="searchDropdown">
             <option value="" disabled selected>Price</option>
             <option value="0">Between $0-$25</option>
@@ -62,7 +64,7 @@
             <option value="50">Between $51-$75</option>
             <option value="75">Over $75</option>
           </select>
-          <label for="searchPlayers" class="">minimum players</label>
+          <label for="minPlayerOption"">minimum players</label>
           <select name="minPlayerOption" id="minPlayerOption" class="searchDropdown">
             <option value="makeASelection" disabled selected>
               Number of Players
@@ -71,7 +73,7 @@
             <option value="2">2 players</option>
             <option value="3">3 players</option>
           </select>
-          <label for="maxPlayerOption" class="">maximum players</label>
+          <label for="maxPlayerOption">maximum players</label>
           <select name="maxPlayerOption" id="maxPlayerOption" class="searchDropdown">
             <option value="makeASelection" disabled selected>
               Max Number of Players
@@ -81,8 +83,8 @@
             <option value="11">12 players</option>
           </select>
           <!-- submit button to generate game list -->
-          <input type="submit" value="search" class="submitBtn" />
-          <input type="button" value="clear" class="clearBtn" />
+          <input type="submit" value="search" class="submitBtn" aria-label="submit search"/>
+          <input type="button" value="clear" class="clearBtn" aria-label="clear search" />
         </form>
       </div>
     </section>
@@ -109,19 +111,21 @@
     <!-- game results start -->
     <sectione class="gameResultContainer wrapper wrapperTopBottom" id="gameResultContainer">
       <template id="gameResultTemplate" class="">
-        <div class="gameCard">
+        <div class="gameCard" aria-label="game search individual results">
           <div class="gameImageContainer">
             <div class="gameAvgRating">
               <p>Avg. Rating</p>
               <h5 class="gameAvgRatingText"></h5>
             </div>
             <a href="" target="_blank" class="gameLink">
+              <span class="sr-only">link for more information on board game</span>
               <img src="" alt="" class="gameImage" />
             </a>
           </div>
           <div class="gameTextContainer">
             <div class="gameTitleContainer">
               <a href="" target="_blank" class="gameLinkTitle">
+                <span class="sr-only">link for more information on board game</span>
                 <h3 class="gameTitle"></h3>
               </a>
             </div>
@@ -160,22 +164,27 @@
       <h3>created by</h3>
       <div class="footerTextSocial">
         <a href="https://www.github.com/holjas" target="_blank">
-          <i class="lni lni-github-original"></i></a>
+          <span class="sr-only">link to holly's github</span>
+          <i class="lni lni-github-original" aria-hidden="true"></i></a>
         <a href="https://www.linkedin.com/in/hollyjasiura" target="_blank">
-          <i class="lni lni-linkedIn-original"></i></a>
+          <span class="sr-only">link to holly's linkedin page</span>
+          <i class="lni lni-linkedIn-original" aria-hidden="true"></i></a>
         <p>Holly Jasiura</p>
       </div>
       <div class="footerTextSocial">
         <a href="https://github.com/Matthew-Whitely" target="_blank">
-          <i class="lni lni-github-original"></i></a>
+          <span class="sr-only">link to matthew's github</span>
+          <i class="lni lni-github-original" aria-hidden="true"></i></a>
         <a href="https://www.linkedin.com/in/matthew-whitely/" target="_blank">
-          <i class="lni lni-linkedIn-original"></i></a>
+          <span class="sr-only">link to matthew's linkedin</span>
+          <i class="lni lni-linkedIn-original" aria-hidden="true"></i></a>
         <p>Matthew Whitely</p>
       </div>
       <h3>created for</h3>
       <div class="footerTextSocial">
         <a href="https://www.junocollege.com" target="_blank">
-          <img src="./assets/junoLogo.jpg" alt="juno college logo" title="juno college logo" /></a>
+          <span class="sr-only">link to juno college of technology</span>
+          <img src="./assets/junoLogo.jpg" alt="juno college logo" title="juno college logo" aria-hidden="true"/></a>
         <p>Juno College</p>
       </div>
     </div>
